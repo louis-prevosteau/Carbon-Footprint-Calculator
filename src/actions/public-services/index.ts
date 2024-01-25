@@ -1,0 +1,1 @@
+export const SP_FOOTPRINT = 1474.03;
