@@ -1,4 +1,4 @@
-export const calcMotoFootprint = (
+export const getMotoFootprint = (
     type: string,
     distance: number
 ): number => {
@@ -22,7 +22,7 @@ export const calcMotoFootprint = (
     return Number(res.toFixed(2));
 };
 
-export const calcBikeFootprint = (
+export const getBikeFootprint = (
     bike = false,
     electricBike = false,
     other = false,
@@ -32,15 +32,15 @@ export const calcBikeFootprint = (
 ): number => {
     let res = 0;
     if (bike) res += 9.7;
-    if (electricBike && eBikeDistance) calcElectricBikeFootprint(res, eBikeDistance);
-    if (other && otherDistance) calcOtherFootprint(res, otherDistance);
+    if (electricBike && eBikeDistance) getElectricBikeFootprint(res, eBikeDistance);
+    if (other && otherDistance) getOtherFootprint(res, otherDistance);
     return Number(res.toFixed(2));
 };
 
-const calcElectricBikeFootprint = (base: number, distance: number): void => {
+const getElectricBikeFootprint = (base: number, distance: number): void => {
     base += distance * 0.00223;
 }
 
-const calcOtherFootprint = (base: number, distance: number): void => {
+const getOtherFootprint = (base: number, distance: number): void => {
     base += distance * 0.002;
 }

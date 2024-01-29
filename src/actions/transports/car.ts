@@ -1,4 +1,4 @@
-export const calcCarFootprint = (
+export const getCarFootprint = (
     distance: number,
     sameCar?: boolean,
     type?: string,
@@ -13,30 +13,30 @@ export const calcCarFootprint = (
     else {
         res += distance * 0.19;
         if (!sameCar) res += 203.9;
-        if (type) calcType(res, type);
-        if (type && motor) calcMotor(res, type, motor);
+        if (type) getType(res, type);
+        if (type && motor) getMotor(res, type, motor);
         if (people) res += 0.16 * distance / people;
-        if (type && motor && recent)  calcMotor(res, type, motor, recent);
-        if (motor === 'thermic' && conso && fuel) calcFuel(res, fuel, conso);
+        if (type && motor && recent)  getMotor(res, type, motor, recent);
+        if (motor === 'thermic' && conso && fuel) getFuel(res, fuel, conso);
         return Number(res.toFixed(2));
     }
 };
 
-export const calcVanFootprint = (
+export const getVanFootprint = (
     distance: number,
     conso: number
 ): number => {
     return Number(((conso / 100) * distance).toFixed(2));
 };
 
-export const calcCampingCarFootprint = (
+export const getCampingCarFootprint = (
     distance: number,
     conso: number
 ): number => {
     return Number(((conso / 100) * distance).toFixed(2));
 };
 
-const calcType = (base: number, type: string): void => {
+const getType = (base: number, type: string): void => {
     switch (type) {
         case 'small':
             base += 6625;
@@ -59,7 +59,7 @@ const calcType = (base: number, type: string): void => {
     }
 }
 
-const calcMotor = (base: number, type: string, motor: string, recent?: boolean): void => {
+const getMotor = (base: number, type: string, motor: string, recent?: boolean): void => {
     switch (motor) {
             case 'thermic':
                 if (type === 'small' || type === 'medium')
@@ -85,7 +85,7 @@ const calcMotor = (base: number, type: string, motor: string, recent?: boolean):
         if (recent) base *= (1 / 10)
 }
 
-const calcFuel = (base: number, fuel: string, conso: number): void => {
+const getFuel = (base: number, fuel: string, conso: number): void => {
     switch (fuel) {
         case 'gazole':
             base += (conso / 100) * 3.04;

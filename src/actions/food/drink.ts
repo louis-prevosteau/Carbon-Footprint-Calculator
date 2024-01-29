@@ -1,4 +1,4 @@
-export const calcHotDrinksFootprint = (drinks: HotDrinks, milk?: string): number => {
+export const getHotDrinksFootprint = (drinks: HotDrinks, milk?: string): number => {
     let res = 0;
     for (const drink in drinks) {
         switch (drink) {
@@ -34,15 +34,15 @@ const milkFootprint = (milk: string): number => {
     }
 };
 
-export const calcWaterBottleFootprint = (conso: boolean): number => {
+export const getWaterBottleFootprint = (conso: boolean): number => {
     return conso ? Number((0.27 * 365 * 1.5).toFixed(2)) : Number((0.27 * 135).toFixed(2));
 }
 
-export const calcSodasFootprint = (conso: number): number => {
+export const getSodasFootprint = (conso: number): number => {
     return Number((conso * ((0.51 + 0.91) / 2) * 52).toFixed(2));
 };
 
-export const calcAlcoolFootprint = (conso: number): number => {
+export const getAlcoolFootprint = (conso: number): number => {
     return Number((conso * ((1.12 + 1.22 + 0.91) / 3) * 52).toFixed(2));
 };
 

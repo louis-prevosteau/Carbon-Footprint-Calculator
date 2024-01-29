@@ -1,4 +1,4 @@
-export const calcFurnituresFootprint = (
+export const getFurnituresFootprint = (
     furnitures: Furnitures,
     people: number,
     preservation: string,

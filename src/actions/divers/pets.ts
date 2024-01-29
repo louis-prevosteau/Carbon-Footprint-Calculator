@@ -1,4 +1,4 @@
-export const calcPetsFootprint = (pets: Pets): number => {
+export const getPetsFootprint = (pets: Pets): number => {
     let res = 0;
     for (const pet in pets) {
         switch (pet) {

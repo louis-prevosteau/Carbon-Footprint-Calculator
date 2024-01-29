@@ -1,4 +1,4 @@
-export const calcHomeAppliancesFootprint = (
+export const getHomeAppliancesFootprint = (
     homeAppliances: HomeAppliances,
     people: number,
     preservation: string): number => {

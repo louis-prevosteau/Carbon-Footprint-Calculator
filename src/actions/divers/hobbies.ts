@@ -1,4 +1,4 @@
-export const calcSportFootprint = (sports: Sports): number => {
+export const getSportFootprint = (sports: Sports): number => {
     let res = 0;
     if (sports.athletics) res += 88.7;   
     if (sports.ball) res += 88.7;
@@ -15,7 +15,7 @@ export const calcSportFootprint = (sports: Sports): number => {
     return Number(res.toFixed(2));
 };
 
-export const calcCultureFootprint = (culture: Culture): number => {
+export const getCultureFootprint = (culture: Culture): number => {
     let res = 0;
     if (culture.books) res += 50.22 ;
     if (culture.museum) res += 2.3;

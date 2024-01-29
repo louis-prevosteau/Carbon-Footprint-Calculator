@@ -1,4 +1,4 @@
-export const calcBuildFootprint = (
+export const getBuildFootprint = (
     people: number,
     age: number,
     surface: number

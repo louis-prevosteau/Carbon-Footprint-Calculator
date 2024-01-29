@@ -1,4 +1,4 @@
-export const calcConsomableFootprint = (conso: string): number => {
+export const getConsomableFootprint = (conso: string): number => {
     switch (conso) {
         case 'small':
             return 1.09 * 12;

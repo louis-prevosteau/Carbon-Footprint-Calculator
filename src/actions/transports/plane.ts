@@ -1,4 +1,4 @@
-export const calcPlaneFootprint = (
+export const getPlaneFootprint = (
     shortFlightTime: number,
     mediumFlightTime: number,
     longFlightTime: number

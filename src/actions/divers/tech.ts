@@ -1,4 +1,4 @@
-export const calcDevicesFootprint = (
+export const getDevicesFootprint = (
     devices: TechDevices,
     preservation: string,
 ): number => {
@@ -68,7 +68,7 @@ export const calcDevicesFootprint = (
     return Number(res.toFixed(2));
 };
 
-export const calcStreamingFootprint = (duration: number): number => {
+export const getStreamingFootprint = (duration: number): number => {
     return Number((0.004 * duration * 365).toFixed(2));
 };
 

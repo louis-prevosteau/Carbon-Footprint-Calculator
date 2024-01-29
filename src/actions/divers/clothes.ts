@@ -1,4 +1,4 @@
-export const calcClothesFootprint = (clothes: Clothes): number => {
+export const getClothesFootprint = (clothes: Clothes): number => {
     let res = 0;
     for (const garment in clothes) {
         switch (garment) {
