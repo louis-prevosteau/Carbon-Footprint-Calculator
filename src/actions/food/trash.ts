@@ -4,10 +4,5 @@ export const getTrashFootprint = (level: string, antiWaste = false, compost = fa
 };
 
 const getTrashTips = (antiWaste: boolean, compost: boolean, stopPub: boolean, bulk: boolean): number => {
-    let res = 0;
-    if (antiWaste) res += 30;
-    if (stopPub) res += 12.948;
-    if (compost) res += 11.01;
-    if (bulk) res += 4.67;
-    return Number((-res).toFixed(2));
+    return Number(-(Number(antiWaste) * 30 + Number(stopPub) * 12.948 + Number(compost) * 11.01 + Number(bulk) * 4.67).toFixed(2));
 };

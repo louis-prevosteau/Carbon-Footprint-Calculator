@@ -1,23 +1,22 @@
 export const getCarFootprint = (
     distance: number,
-    sameCar?: boolean,
-    type?: string,
-    motor?: string,
-    people?: number,
-    recent?: boolean,
-    fuel?: string,
-    conso?: number): number => {
+    sameCar: boolean,
+    type: string,
+    motor: string,
+    people: number,
+    recent: boolean,
+    fuel: string,
+    conso: number): number => {
     let res = 0;
     if (distance === 0)
         return 0;
     else {
         res += distance * 0.19;
         if (!sameCar) res += 203.9;
-        if (type) getType(res, type);
-        if (type && motor) getMotor(res, type, motor);
-        if (people) res += 0.16 * distance / people;
-        if (type && motor && recent)  getMotor(res, type, motor, recent);
-        if (motor === 'thermic' && conso && fuel) getFuel(res, fuel, conso);
+        getType(res, type);
+        res += 0.16 * distance / people;
+        getMotor(res, type, motor, recent);
+        if (motor === 'thermic') getFuel(res, fuel, conso);
         return Number(res.toFixed(2));
     }
 };
@@ -59,7 +58,7 @@ const getType = (base: number, type: string): void => {
     }
 }
 
-const getMotor = (base: number, type: string, motor: string, recent?: boolean): void => {
+const getMotor = (base: number, type: string, motor: string, recent: boolean): void => {
     switch (motor) {
             case 'thermic':
                 if (type === 'small' || type === 'medium')

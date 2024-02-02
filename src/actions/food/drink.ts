@@ -1,4 +1,4 @@
-export const getHotDrinksFootprint = (drinks: HotDrinks, milk?: string): number => {
+export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string): number => {
     let res = 0;
     for (const drink in drinks) {
         switch (drink) {
@@ -9,7 +9,7 @@ export const getHotDrinksFootprint = (drinks: HotDrinks, milk?: string): number 
                 res += drinks[drink] * (0.04 * (1 - 0.25)) * 0.25;
                 break;
             case 'chocolate':
-                if (milk) res += drinks[drink] * ((27.06 * 0.02) + (milkFootprint(milk) * 0.2));
+                res += drinks[drink] * ((27.06 * 0.02) + (milkFootprint(milk) * 0.2));
                 break;
             case 'chicory':
                 res += drinks[drink] * 5.43 * 0.03;

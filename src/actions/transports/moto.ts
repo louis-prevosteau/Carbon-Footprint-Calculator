@@ -26,14 +26,14 @@ export const getBikeFootprint = (
     bike = false,
     electricBike = false,
     other = false,
-    eBikeDistance?: number,
-    otherDistance?: number,
+    eBikeDistance: number,
+    otherDistance: number,
 
 ): number => {
     let res = 0;
     if (bike) res += 9.7;
-    if (electricBike && eBikeDistance) getElectricBikeFootprint(res, eBikeDistance);
-    if (other && otherDistance) getOtherFootprint(res, otherDistance);
+    if (electricBike && eBikeDistance > 0) getElectricBikeFootprint(res, eBikeDistance);
+    if (other && otherDistance > 0) getOtherFootprint(res, otherDistance);
     return Number(res.toFixed(2));
 };
 

@@ -1,0 +1,67 @@
+{
+    "adornments": {
+        "km": "km / an",
+        "conso100": "l/100km",
+        "hours": "h / an",
+        "hoursPerWeek": "h / semaine"
+    },
+    "transports": {
+        "title": "Transports",
+        "car": {
+            "title": "Voiture",
+            "questions": {
+                "distance": "Quelle distance parcourez-vous en voiture dans une année ?",
+                "sameCar": "Utilisez-vous la même voiture pour vous déplacer ?",
+                "type": "Quel est le gabarit de votre voiture ?",
+                "motor": "Quelle est la motorisation de votre voiture ?",
+                "recent": "Votre voiture a-t-elle moins de 10 ans ?",
+                "people": "Quel est le nombre moyen de voyageurs dans la voiture ?",
+                "fuel": "Quel type de carburant votre voiture consomme-t-elle ?",
+                "conso": "Quelle est la consommation moyenne de votre voiture ?"
+            },
+            "motors": {
+                "thermic": "Thermique",
+                "hybrid": "Hybride",
+                "electric": "Electrique"
+            },
+            "types": {
+                "small": "Citadine",
+                "medium": "Compacte",
+                "vul": "Utilitaire",
+                "berline": "Berline",
+                "suv": "SUV"
+            },
+            "fuels": {
+                "essence": "Essence (E5, E10)",
+                "bio": "Biocarburants",
+                "gazole": "Gazole"
+            }
+        },
+        "plane": {
+            "title": "Avion",
+            "questions": {
+                "shortFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols de moins de 2h (court-courrier) ?",
+                "mediumFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols entre 2 et 6h (moyen-courrier) ?",
+                "longFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols de plus de 6h (long-courrier) ?"
+            }
+        },
+        "bus": {
+            "title": "Bus",
+            "questions": {
+                "hours": "Combien d'heures passez-vous dans un bus par semaine ?"
+            }
+        },
+        "train": {
+            "title": "Train",
+            "questions": {
+                "distance": "Quelle distance parcourez-vous en train dans une année ?"
+            }
+        },
+        "metro": {
+            "title": "Métro, Tram, RER",
+            "questions": {
+                "hours": "Combien d'heures passez-vous en métro, tram, RER par semaine ?"
+            }
+        }
+    }
+}

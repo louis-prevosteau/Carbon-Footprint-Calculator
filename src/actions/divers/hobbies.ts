@@ -1,26 +1,42 @@
 export const getSportFootprint = (sports: Sports): number => {
+    const sportsFootprints: Record<string, number> = {
+        athletics: 88.7,
+        ball: 88.7,
+        bodybuilding: 72.8,
+        equestring: 88.7,
+        externalSport: 24.9,
+        golf: 88.7,
+        martial: 88.7,
+        motors: 88.7,
+        other: 88.7,
+        surfing: 88.7,
+        swimming: 88.7,
+        winter: 138.7,
+    };
     let res = 0;
-    if (sports.athletics) res += 88.7;   
-    if (sports.ball) res += 88.7;
-    if (sports.bodybuilding) res += 72.8;
-    if (sports.equestring) res += 88.7;
-    if (sports.externalSport) res += 24.9
-    if (sports.golf) res += 88.7;
-    if (sports.martial) res += 88.7;
-    if (sports.motors) res += 88.7;
-    if (sports.other) res += 88.7;
-    if (sports.surfing) res += 88.7;
-    if (sports.swimming) res += 88.7;
-    if (sports.winter) res += 138.7;
+    for (const sport in sports) {
+        if (sports[sport as keyof Sports]) {
+            res += sportsFootprints[sport];
+        }
+    }
     return Number(res.toFixed(2));
 };
 
 export const getCultureFootprint = (culture: Culture): number => {
+    const cultureFootprints: Record<string, number> = {
+        books: 50.22,
+        museum: 2.3,
+        music: 3.47,
+        show: 29.17,
+    };
+
     let res = 0;
-    if (culture.books) res += 50.22 ;
-    if (culture.museum) res += 2.3;
-    if (culture.music) res += 3.47;
-    if (culture.show) res += 29.17;    
+    for (const type in culture) {
+        if (culture[type as keyof Culture]) {
+            res += cultureFootprints[type];
+        }
+    }
+
     return Number(res.toFixed(2));
 };
 
