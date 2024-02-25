@@ -3,6 +3,8 @@ export const getMotoFootprint = (
     distance: number
 ): number => {
     let res = 0;
+    if (distance === 0)
+        return 0;
     switch (type) {
         case 'thermic':
             res += distance * 0.08;
@@ -32,15 +34,7 @@ export const getBikeFootprint = (
 ): number => {
     let res = 0;
     if (bike) res += 9.7;
-    if (electricBike && eBikeDistance > 0) getElectricBikeFootprint(res, eBikeDistance);
-    if (other && otherDistance > 0) getOtherFootprint(res, otherDistance);
+    if (electricBike && eBikeDistance > 0) res += eBikeDistance;
+    if (other && otherDistance > 0) res += otherDistance;
     return Number(res.toFixed(2));
 };
-
-const getElectricBikeFootprint = (base: number, distance: number): void => {
-    base += distance * 0.00223;
-}
-
-const getOtherFootprint = (base: number, distance: number): void => {
-    base += distance * 0.002;
-}

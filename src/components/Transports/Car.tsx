@@ -2,6 +2,7 @@ import { Box, Grid, Paper, Input, Typography, InputAdornment, FormControlLabel, 
 import { getCarFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Caravan from './Caravan';
 
 const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
 
@@ -17,6 +18,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                 fuel: '',
                 conso: 0
             },
+            caravan: false,
             footprint: 0
         }
     );
@@ -46,6 +48,10 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
             );
             return newState;
         });
+    };
+
+    const addFootprint = (footprint: number) => {
+        setState({ ...state, footprint: state.footprint + footprint });
     };
 
     return (
@@ -143,38 +149,60 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                         labelPlacement='start'
                                     />
                                 </Grid>
+                                {state.params.motor === 'thermic' && (
+                                    <div>
+                                        <Grid container item alignItems='center' spacing={2}>
+                                            <Grid item>
+                                                <Typography variant='body1'>{t('transports.car.questions.fuel')}</Typography>
+                                            </Grid>
+                                            <Grid item>
+                                                <Select
+                                                    value={state.params.fuel}
+                                                    onChange={(e) => updateFootprint('fuel', e.target.value)}
+                                                >
+                                                    {['essence', 'bio', 'gazole'].map((fuel, index) => (
+                                                        <MenuItem key={index} value={fuel}>{t(`transports.car.fuels.${fuel}`)}</MenuItem>
+                                                    ))}
+                                                </Select>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid container item alignItems='center' spacing={2}>
+                                            <Grid item>
+                                                <Typography variant='body1'>{t('transports.car.questions.conso')}</Typography>
+                                            </Grid>
+                                            <Grid item>
+                                                <Input
+                                                    type='number'
+                                                    value={state.params.conso}
+                                                    onChange={(e) => updateFootprint('conso', e.target.value)}
+                                                    endAdornment={
+                                                        <InputAdornment position='end'>
+                                                            {t('adornments.conso100')}
+                                                        </InputAdornment>
+                                                    }
+                                                />
+                                            </Grid>
+                                        </Grid>
+                                    </div>
+                                )}
                                 <Grid container item alignItems='center' spacing={2}>
                                     <Grid item>
-                                        <Typography variant='body1'>{t('transports.car.questions.fuel')}</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Select
-                                            value={state.params.fuel}
-                                            onChange={(e) => updateFootprint('fuel', e.target.value)}
-                                        >
-                                            {['essence', 'bio', 'gazole'].map((fuel, index) => (
-                                                <MenuItem key={index} value={fuel}>{t(`transports.car.fuels.${fuel}`)}</MenuItem>
-                                            ))}
-                                        </Select>
-                                    </Grid>
-                                </Grid>
-                                <Grid container item alignItems='center' spacing={2}>
-                                    <Grid item>
-                                        <Typography variant='body1'>{t('transports.car.questions.conso')}</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Input
-                                            type='number'
-                                            value={state.params.conso}
-                                            onChange={(e) => updateFootprint('conso', e.target.value)}
-                                            endAdornment={
-                                                <InputAdornment position='end'>
-                                                    {t('adornments.conso100')}
-                                                </InputAdornment>
+                                        <FormControlLabel
+                                            label={
+                                                <Typography variant='body1'>{t('transports.car.questions.caravan')}</Typography>
                                             }
+                                            control={
+                                                <Switch
+                                                    checked={state.caravan}
+                                                    value={state.caravan}
+                                                    onChange={() => setState({ ...state, caravan: !state.caravan })}
+                                                />
+                                            }
+                                            labelPlacement='start'
                                         />
                                     </Grid>
                                 </Grid>
+                                {state.caravan && <Caravan motor={state.params.motor} people={state.params.people} handleDataToTransport={addFootprint}/>}
                             </Box>
                         )}
                     </Grid>

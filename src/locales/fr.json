@@ -17,7 +17,8 @@
                 "recent": "Votre voiture a-t-elle moins de 10 ans ?",
                 "people": "Quel est le nombre moyen de voyageurs dans la voiture ?",
                 "fuel": "Quel type de carburant votre voiture consomme-t-elle ?",
-                "conso": "Quelle est la consommation moyenne de votre voiture ?"
+                "conso": "Quelle est la consommation moyenne de votre voiture ?",
+                "caravan": "Possédez-vous une caravane ?"
             },
             "motors": {
                 "thermic": "Thermique",
@@ -35,6 +36,11 @@
                 "essence": "Essence (E5, E10)",
                 "bio": "Biocarburants",
                 "gazole": "Gazole"
+            }
+        },
+        "caravan": {
+            "questions": {
+                "distance": "Quelle distance parcourez-vous à l'année en caravane ?"
             }
         },
         "plane": {
@@ -61,6 +67,37 @@
             "title": "Métro, Tram, RER",
             "questions": {
                 "hours": "Combien d'heures passez-vous en métro, tram, RER par semaine ?"
+            }
+        },
+        "ferry": {
+            "title": "Ferry",
+            "questions": {
+                "hours": "Combien d'heures par an voyagez-vous en ferry ou croisière ?"
+            }
+        },
+        "moto": {
+            "title": "Deux Roues",
+            "questions": {
+                "distance": "Quelle distance parcourez-vous en deux roues (moto, scooter) dans une année ?",
+                "type": "Quel est le gabarit de votre deux roues ?"
+            },
+            "types": {
+                "thermic": "Scooter thermique",
+                "electric": "Scooter électrique",
+                "inf250": "Moto de moins de 250 cm3",
+                "sup250": "Moto de plus de 250 cm3"
+            }
+        },
+        "bike": {
+            "title": "Mobilité douce",
+            "options": {
+                "bike": "Vélo",
+                "electricBike": "Vélo à Assistance Electrique",
+                "other": "Petit véhicule électrique"
+            },
+            "questions": {
+                "eBikeDistance": "Combien de kilomètres faites-vous à l'année avec votre Vélo à Assistance Électrique (VAE) ?",
+                "otherDistance": "Combien de kilomètres faites-vous à l'année avec votre trottinette électrique, gyropode, monocycle électrique, hoverboard...?"
             }
         }
     }

@@ -28,6 +28,31 @@ export const getVanFootprint = (
     return Number(((conso / 100) * distance).toFixed(2));
 };
 
+export const getCaravanFootprint = (
+    people: number,
+    distance: number,
+    motor: string
+): number => {
+    let kiloFp = 0;
+    switch (motor) {
+        case 'thermic':
+            kiloFp = 0.13;
+            break;
+        case 'hybrid':
+            kiloFp = 0.11;
+            break;
+        case 'electric':
+            kiloFp = 0.03;
+            break;
+        default:
+            break;
+    }
+    const surconso = kiloFp * 0.25
+    const usage = (surconso * distance) / people;
+    const construction = (3800 * 25) / people;
+    return Number((usage + construction).toFixed(2));
+};
+
 export const getCampingCarFootprint = (
     distance: number,
     conso: number
