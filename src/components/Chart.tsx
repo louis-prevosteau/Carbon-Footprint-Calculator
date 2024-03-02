@@ -1,10 +1,69 @@
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import annotationPlugin from 'chartjs-plugin-annotation';
 import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 
-const Chart = () => {
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    annotationPlugin
+);
+
+const Chart = ({ data }: { data: number[] }) => {
+
+    const { t } = useTranslation();
+
     return (
-        <div>
-            
-        </div>
+        <Bar
+            data={{
+                labels: [
+                    t('chart.labels.transports'),    
+                    t('chart.labels.food'),
+                    t('chart.labels.house'),
+                    t('chart.labels.divers'),
+                    t('chart.labels.publicServices'),    
+                ],
+                datasets: [
+                    {
+                        label: t('chart.footprintAdornment'),
+                        data,
+                        backgroundColor: ['rgb(0, 0, 255)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', 'rgb(0, 0, 255)']
+                    }
+                ]
+            }}
+            options={{
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top' as const
+                    },
+                    annotation: {
+                        annotations: {
+                            limit: {
+                                type: 'line',
+                                scaleID: 'y',
+                                value: 2000,
+                                borderColor: 'red',
+                                borderWidth: 10,
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            stepSize: 500
+                        }
+                    }
+                }
+            }}
+        />
     );
 };
 

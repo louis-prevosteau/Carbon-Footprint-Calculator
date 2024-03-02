@@ -5,6 +5,16 @@
         "hours": "h / an",
         "hoursPerWeek": "h / semaine"
     },
+    "chart": {
+        "labels": {
+            "transports": "Transports",
+            "food": "Alimentation",
+            "house": "Logement",
+            "divers": "Divers",
+            "publicServices": "Services Publiques"
+        },
+        "footprintAdornment": "Empreinte (en kg / an)"
+    },
     "transports": {
         "title": "Transports",
         "car": {

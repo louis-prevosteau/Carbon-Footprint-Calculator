@@ -11,29 +11,26 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                 shortFlightTime: 0,
                 mediumFlightTime: 0,
                 longFlightTime: 0
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
+        const handleData = () => {
+            const footprint = getPlaneFootprint(
+                state.params.shortFlightTime,
+                state.params.mediumFlightTime,
+                state.params.longFlightTime
+            );
+            handleDataToTransport('plane',footprint);
+        };
         handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
+    }, [state.params.shortFlightTime, state.params.mediumFlightTime, state.params.longFlightTime]);
 
     const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
         setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getPlaneFootprint(
-                newState.params.shortFlightTime,
-                newState.params.mediumFlightTime,
-                newState.params.longFlightTime
-            );
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -50,7 +47,7 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.shortFlightTime}
-                                onChange={(e) => updateFootprint('shortFlightTime', e.target.value)}
+                                onChange={(e) => updateFootprint('shortFlightTime', Number(e.target.value))}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.hours')}
@@ -67,7 +64,7 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.mediumFlightTime}
-                                onChange={(e) => updateFootprint('mediumFlightTime', e.target.value)}
+                                onChange={(e) => updateFootprint('mediumFlightTime', Number(e.target.value))}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.hours')}
@@ -84,7 +81,7 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.longFlightTime}
-                                onChange={(e) => updateFootprint('longFlightTime', e.target.value)}
+                                onChange={(e) => updateFootprint('longFlightTime', Number(e.target.value))}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.hours')}
