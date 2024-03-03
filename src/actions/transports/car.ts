@@ -6,26 +6,19 @@ export const getCarFootprint = (
     people: number,
     recent: boolean,
     fuel: string,
-    conso: number): number => {
-    let res = 0;
-    if (distance === 0)
-        return 0;
-    else {
-        res += distance * 0.19;
-        if (!sameCar) res += 203.9;
-        getType(res, type);
-        res += 0.16 * distance / people;
-        getMotor(res, type, motor, recent);
-        if (motor === 'thermic') getFuel(res, fuel, conso);
-        return Number(res.toFixed(2));
-    }
+    conso: number
+): number => {
+    if (distance === 0) return 0;
+    else if (sameCar) {}
+    else if (!sameCar) {}
+    
 };
 
 export const getVanFootprint = (
     distance: number,
     conso: number
 ): number => {
-    return Number(((conso / 100) * distance).toFixed(2));
+    return (conso / 100) * distance;
 };
 
 export const getCaravanFootprint = (
@@ -50,77 +43,46 @@ export const getCaravanFootprint = (
     const surconso = kiloFp * 0.25
     const usage = (surconso * distance) / people;
     const construction = (3800 * 25) / people;
-    return Number((usage + construction).toFixed(2));
+    return usage + construction;
 };
 
 export const getCampingCarFootprint = (
     distance: number,
     conso: number
 ): number => {
-    return Number(((conso / 100) * distance).toFixed(2));
+    return (conso / 100) * distance;
 };
 
-const getType = (base: number, type: string): void => {
-    switch (type) {
-        case 'small':
-            base += 6625;
-            break;
-        case 'medium':
-            base += 7075;
-            break;
-        case 'vul':
-            base += 7150;
-            break;
-        case 'berline':
-            base += 7600;
-            break;
-        case 'suv':
-            base += 8050;
-            break;
-        default:
-            base += 7600;
-            break;
+const getUsage = (distance: number, motor: string, conso: number, fuel: string, type: string): number => {
+    let kmFp = 0;
+    let entPond = 0;
+    const clim = (1374000000 / 44677000) / distance;
+    if (motor === 'thermic') {
+        const consoKm = conso / 100;
+        let fpPerLitre = 0;
+        if (fuel === 'gazole') fpPerLitre = (3.1 + 3.04) / 2;
+        else if (fuel === 'essence') fpPerLitre = 2.7;
+        else if (fuel === 'bio') fpPerLitre = 1.11;
+        else if (fuel === 'gpl') fpPerLitre = 1.86;
+        kmFp = consoKm * fpPerLitre;
+        entPond = (((6036 * 1000000) * 0.07) / 44677000) / distance;
     }
-}
-
-const getMotor = (base: number, type: string, motor: string, recent: boolean): void => {
-    switch (motor) {
-            case 'thermic':
-                if (type === 'small' || type === 'medium')
-                    base += 6700;
-                else if (type === 'berline' || type === 'vul' || type === 'suv')
-                    base += 7600;
-                break;
-            case 'hybrid':
-                if (type === 'small' || type === 'medium')
-                    base += 9600;
-                else if (type === 'berline' || type === 'vul' || type === 'suv')
-                    base += 6900;
-                break;
-            case 'electric':
-                if (type === 'small' || type === 'medium')
-                    base += 10200;
-                else if (type === 'berline' || type === 'vul' || type === 'suv')
-                    base += 20200;
-                break;
-            default:
-                break;
-        }
-        if (recent) base *= (1 / 10)
-}
-
-const getFuel = (base: number, fuel: string, conso: number): void => {
-    switch (fuel) {
-        case 'gazole':
-            base += (conso / 100) * 3.04;
-            break;
-        case 'essence':
-            base += (conso / 100) * 2.7;
-            break;
-        case 'bio':
-            base += (conso / 100) * 1.1;
-            break;
-        default:
-            break;
+    else if (motor === 'hybrid') {
+        const consoKm = conso / 100;
+        let fpPerLitre = 0;
+        if (fuel === 'gazole') fpPerLitre = (3.1 + 3.04) / 2;
+        else if (fuel === 'essence') fpPerLitre = 2.7;
+        else if (fuel === 'bio') fpPerLitre = 1.11;
+        else if (fuel === 'gpl') fpPerLitre = 1.86;
+        kmFp = consoKm * fpPerLitre * 0.85;
+        entPond = ((((6036 * 1000000) * 0.07) / 44677000) / distance) * 0.9;
     }
+    else if (motor === 'electric') {
+        if (type === 'small') kmFp = 0.0159;
+        else if (type === 'medium') kmFp = 0.0198;
+        else kmFp = 0.0273;
+        entPond = ((((6036 * 1000000) * 0.07) / 44677000) / distance) * 0.75;
+    }
+    const baseKm = entPond + clim; 
+    return distance * (kmFp + baseKm)
 }

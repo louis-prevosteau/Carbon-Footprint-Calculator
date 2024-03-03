@@ -18,48 +18,45 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                 fuel: '',
                 conso: 0
             },
-            caravan: false,
-            footprint: 0
+            caravan: false
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: typeof state.params[keyof typeof state.params]) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getCarFootprint(
-                newState.params.distance,
-                newState.params.sameCar,
-                newState.params.type,
-                newState.params.motor,
-                newState.params.people,
-                newState.params.recent,
-                newState.params.fuel,
-                newState.params.conso
+        const handleData = () => {
+            const footprint = getCarFootprint(
+                state.params.distance, 
+                state.params.sameCar,
+                state.params.type,
+                state.params.motor,
+                state.params.people,
+                state.params.recent,
+                state.params.fuel,
+                state.params.conso    
             );
+            handleDataToTransport('car', footprint);
+        };
+        handleData();
+    }, [state.params.distance, state.params.sameCar, state.params.type, state.params.motor, state.params.people, state.params.recent, state.params.fuel, state.params.conso,]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { ...prevState, params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
 
     const addFootprint = (footprint: number) => {
-        setState({ ...state, footprint: state.footprint + footprint });
+        handleDataToTransport('car', footprint);
     };
 
     return (
         <Paper elevation={3}>
             <Typography variant='h5'>{t('transports.car.title')}</Typography>
             <Box>
-                <Grid container>
-                    <Grid container item alignItems='center' spacing={2}>
+                <Grid container direction='column' spacing={2}>
+                    <Grid container item xs={12} sm={6} md={4}>
                         <Grid item>
                             <Typography variant='body1'>{t('transports.car.questions.distance')}</Typography>
                         </Grid>
@@ -67,7 +64,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.distance}
-                                onChange={(e) => updateFootprint('distance', e.target.value)}
+                                onChange={(e) => updateParam('distance', e.target.value)}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.km')}
@@ -86,7 +83,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                             <Switch
                                                 checked={state.params.sameCar}
                                                 value={state.params.sameCar}
-                                                onChange={() => updateFootprint('sameCar', !state.params.sameCar)}
+                                                onChange={() => updateParam('sameCar', !state.params.sameCar)}
                                             />
                                         }
                                         labelPlacement='start'
@@ -99,7 +96,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                     <Grid item>
                                         <Select
                                             value={state.params.type}
-                                            onChange={(e) => updateFootprint('type', e.target.value)}
+                                            onChange={(e) => updateParam('type', e.target.value)}
                                         >
                                             {['small', 'medium', 'berline', 'vul', 'suv'].map((type, index) => (
                                                 <MenuItem key={index} value={type}>{t(`transports.car.types.${type}`)}</MenuItem>
@@ -114,7 +111,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                     <Grid item>
                                         <Select
                                             value={state.params.motor}
-                                            onChange={(e) => updateFootprint('motor', e.target.value)}
+                                            onChange={(e) => updateParam('motor', e.target.value)}
                                         >
                                             {['thermic', 'hybrid', 'electric'].map((motor, index) => (
                                                 <MenuItem key={index} value={motor}>{t(`transports.car.motors.${motor}`)}</MenuItem>
@@ -130,7 +127,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                     <Input
                                         type='number'
                                         value={state.params.people}
-                                        onChange={(e) => updateFootprint('people', e.target.value)}
+                                        onChange={(e) => updateParam('people', e.target.value)}
                                     />
                                     </Grid>
                                 </Grid>
@@ -143,7 +140,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                             <Switch
                                                 checked={state.params.recent}
                                                 value={state.params.recent}
-                                                onChange={() => updateFootprint('recent', !state.params.recent)}
+                                                onChange={() => updateParam('recent', !state.params.recent)}
                                             />
                                         }
                                         labelPlacement='start'
@@ -158,9 +155,9 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                             <Grid item>
                                                 <Select
                                                     value={state.params.fuel}
-                                                    onChange={(e) => updateFootprint('fuel', e.target.value)}
+                                                    onChange={(e) => updateParam('fuel', e.target.value)}
                                                 >
-                                                    {['essence', 'bio', 'gazole'].map((fuel, index) => (
+                                                    {['essence', 'bio', 'gazole', 'gpl'].map((fuel, index) => (
                                                         <MenuItem key={index} value={fuel}>{t(`transports.car.fuels.${fuel}`)}</MenuItem>
                                                     ))}
                                                 </Select>
@@ -174,7 +171,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                                 <Input
                                                     type='number'
                                                     value={state.params.conso}
-                                                    onChange={(e) => updateFootprint('conso', e.target.value)}
+                                                    onChange={(e) => updateParam('conso', e.target.value)}
                                                     endAdornment={
                                                         <InputAdornment position='end'>
                                                             {t('adornments.conso100')}
@@ -202,7 +199,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                         />
                                     </Grid>
                                 </Grid>
-                                {state.caravan && <Caravan motor={state.params.motor} people={state.params.people} handleDataToTransport={addFootprint}/>}
+                                {state.caravan && <Caravan motor={state.params.motor} people={state.params.people} handleDataToCar={addFootprint}/>}
                             </Box>
                         )}
                     </Grid>

@@ -13,5 +13,5 @@ export const getNewManufactsFootprint = (level: string): number => {
         default:
             break;
     }
-    return Number((128.62 * coefPreserv).toFixed(2));
+    return 128.62 * coefPreserv;
 };

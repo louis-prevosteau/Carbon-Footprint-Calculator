@@ -7,6 +7,7 @@ import Metro from './Metro';
 import Train from './Train';
 import Bike from './Bike';
 import Ferry from './Ferry';
+import { Grid } from '@mui/material';
 
 const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -24,8 +25,7 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
     );
 
     useEffect(() => {
-        const footprint = state.car + state.plane + state.train + state.moto + state.metro + state.bike + state.ferry;
-        console.log(footprint);
+        const footprint = state.car + state.plane + state.train + state.moto + state.metro + state.bus + state.bike + state.ferry;
         handleDataToChart('transports', Number(footprint));
     }, [state.car, state.bus, state.bike, state.plane, state.train, state.metro, state.moto, state.ferry]);
 
@@ -38,16 +38,32 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
     };
     
     return (
-        <div>
-            <Car handleDataToTransport={addFootprint} />
-            <Plane handleDataToTransport={addFootprint} />
-            <Moto handleDataToTransport={addFootprint} />
-            <Bus handleDataToTransport={addFootprint} />
-            <Metro handleDataToTransport={addFootprint} />
-            <Train handleDataToTransport={addFootprint} />
-            <Bike handleDataToTransport={addFootprint} />
-            <Ferry handleDataToTransport={addFootprint} />
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs={6} sm={3}>
+                <Car handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Plane handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Moto handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Bus handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Metro handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Train handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Bike handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <Ferry handleDataToTransport={addFootprint} />
+            </Grid>
+        </Grid>
     );
 };
 

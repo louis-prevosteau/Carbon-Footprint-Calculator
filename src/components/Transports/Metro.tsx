@@ -9,27 +9,24 @@ const Metro = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         {
             params: {
                 hours: 0
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getMetroFootprint(
-                newState.params.hours
+        const handleData = () => {
+            const footprint = getMetroFootprint(
+                state.params.hours
             );
+            handleDataToTransport('metro', footprint);
+        };
+        handleData();
+    }, [state.params.hours]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -47,7 +44,7 @@ const Metro = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.hours}
-                                onChange={(e) => updateFootprint('hours', e.target.value)}
+                                onChange={(e) => updateParam('hours', e.target.value)}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.hoursPerWeek')}

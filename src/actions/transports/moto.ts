@@ -21,7 +21,7 @@ export const getMotoFootprint = (
         default:
             break;
     }
-    return Number(res.toFixed(2));
+    return res;
 };
 
 export const getBikeFootprint = (
@@ -36,5 +36,5 @@ export const getBikeFootprint = (
     if (bike) res += 9.7;
     if (electricBike && eBikeDistance > 0) res += eBikeDistance;
     if (other && otherDistance > 0) res += otherDistance;
-    return Number(res.toFixed(2));
+    return res;
 };

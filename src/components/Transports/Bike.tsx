@@ -13,31 +13,28 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                 other: false,
                 eBikeDistance: 0,
                 otherDistance: 0,
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getBikeFootprint(
-                newState.params.bike,
-                newState.params.electricBike,
-                newState.params.other,
-                newState.params.eBikeDistance,
-                newState.params.otherDistance
+        const handleData = () => {
+            const footprint = getBikeFootprint(
+                state.params.bike,
+                state.params.electricBike,
+                state.params.other,
+                state.params.eBikeDistance,
+                state.params.otherDistance
             );
+            handleDataToTransport('bike',footprint);
+        };
+        handleData();
+    }, [state.params.bike, state.params.eBikeDistance, state.params.electricBike, state.params.other, state.params.otherDistance]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -46,17 +43,17 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         <Paper elevation={3}>
             <Typography variant='h5'>{t('transports.bike.title')}</Typography>
             <Box>
-                <Grid container direction='column'>
-                    <Grid container item direction='row' spacing={5}>
+                <Grid container direction='column' spacing={2}>
+                    <Grid container item xs={12} sm={6} md={4}>
                         <FormGroup>
                             <Grid item>
-                                <FormControlLabel control={<Checkbox checked={state.params.bike} onChange={() => updateFootprint('bike', !state.params.bike)} />} label={t('transports.bike.options.bike')} />
+                                <FormControlLabel control={<Checkbox checked={state.params.bike} onChange={() => updateParam('bike', !state.params.bike)} />} label={t('transports.bike.options.bike')} />
                             </Grid>
                             <Grid item>
-                                <FormControlLabel control={<Checkbox checked={state.params.electricBike} onChange={() => updateFootprint('electricBike', !state.params.electricBike)} />} label={t('transports.bike.options.electricBike')} />
+                                <FormControlLabel control={<Checkbox checked={state.params.electricBike} onChange={() => updateParam('electricBike', !state.params.electricBike)} />} label={t('transports.bike.options.electricBike')} />
                             </Grid>
                             <Grid item>
-                                <FormControlLabel control={<Checkbox checked={state.params.other} onChange={() => updateFootprint('other', !state.params.other)} />} label={t('transports.bike.options.other')} />
+                                <FormControlLabel control={<Checkbox checked={state.params.other} onChange={() => updateParam('other', !state.params.other)} />} label={t('transports.bike.options.other')} />
                             </Grid>                        
                         </FormGroup>                      
                     </Grid>
@@ -70,7 +67,7 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                     <Input
                                         type='number'
                                         value={state.params.eBikeDistance}
-                                        onChange={(e) => updateFootprint('eBikeDistance', e.target.value)}
+                                        onChange={(e) => updateParam('eBikeDistance', e.target.value)}
                                         endAdornment={
                                             <InputAdornment position='end'>
                                                 {t('adornments.km')}
@@ -89,7 +86,7 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                     <Input
                                         type='number'
                                         value={state.params.otherDistance}
-                                        onChange={(e) => updateFootprint('otherDistance', e.target.value)}
+                                        onChange={(e) => updateParam('otherDistance', e.target.value)}
                                         endAdornment={
                                             <InputAdornment position='end'>
                                                 {t('adornments.km')}

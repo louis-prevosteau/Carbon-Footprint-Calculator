@@ -9,27 +9,24 @@ const Train = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         {
             params: {
                 distance: 0
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getTrainFootprint(
-                newState.params.distance
+        const handleData = () => {
+            const footprint = getTrainFootprint(
+                state.params.distance
             );
+            handleDataToTransport('train', footprint);
+        };
+        handleData();
+    }, [state.params.distance]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -47,7 +44,7 @@ const Train = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.distance}
-                                onChange={(e) => updateFootprint('distance', e.target.value)}
+                                onChange={(e) => updateParam('distance', e.target.value)}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.km')}

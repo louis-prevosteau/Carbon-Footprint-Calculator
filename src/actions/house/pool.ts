@@ -3,5 +3,5 @@ export const getPoolFootprint = (surface: number, people: number): number => {
     const waterFootprint = volume * 0.0004;
     const chlore = 24.31;
     const build = 74.81;
-    return Number(((waterFootprint + chlore + build) / people).toFixed(2));
+    return (waterFootprint + chlore + build) / people;
 };

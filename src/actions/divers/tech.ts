@@ -65,11 +65,11 @@ export const getDevicesFootprint = (
                 break;
         }
     }
-    return Number(res.toFixed(2));
+    return res;
 };
 
 export const getStreamingFootprint = (duration: number): number => {
-    return Number((0.004 * duration * 365).toFixed(2));
+    return 0.004 * duration * 365;
 };
 
 interface TechDevices {

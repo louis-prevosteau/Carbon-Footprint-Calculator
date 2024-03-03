@@ -1,8 +1,17 @@
-export const getTrashFootprint = (level: string, antiWaste = false, compost = false, stopPub = false, bulk = false): number => {
+export const getTrashFootprint = (level: string, antiWaste: boolean, compost: boolean, stopPub: boolean, bulk: boolean): number => {
     if (level === 'zero') return 48.04;
-    else return Number((194.49 + getTrashTips(antiWaste, compost, stopPub, bulk)).toFixed(2));
+    else return 194.49 + getTrashTips(antiWaste, compost, stopPub, bulk);
 };
 
 const getTrashTips = (antiWaste: boolean, compost: boolean, stopPub: boolean, bulk: boolean): number => {
-    return Number(-(Number(antiWaste) * 30 + Number(stopPub) * 12.948 + Number(compost) * 11.01 + Number(bulk) * 4.67).toFixed(2));
+    const tips = [
+      { condition: antiWaste, impact: 30 },
+      { condition: compost, impact: 11.01 },
+      { condition: stopPub, impact: 12.948 },
+      { condition: bulk, impact: 4.67 },
+    ];
+    const res = tips.reduce((total, tip) => {
+      return total - (Number(tip.condition) * tip.impact);
+    }, 0);
+    return res;
 };

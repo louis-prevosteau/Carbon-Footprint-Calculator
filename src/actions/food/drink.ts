@@ -18,7 +18,7 @@ export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string): number =
                 break;
         }
     }
-    return Number((res * 52).toFixed(2));
+    return res * 52;
 };
 
 const milkFootprint = (milk: string): number => {
@@ -35,15 +35,15 @@ const milkFootprint = (milk: string): number => {
 };
 
 export const getWaterBottleFootprint = (conso: boolean): number => {
-    return conso ? Number((0.27 * 365 * 1.5).toFixed(2)) : Number((0.27 * 135).toFixed(2));
+    return conso ? 0.27 * 365 * 1.5 : 0.27 * 135;
 }
 
 export const getSodasFootprint = (conso: number): number => {
-    return Number((conso * ((0.51 + 0.91) / 2) * 52).toFixed(2));
+    return conso * ((0.51 + 0.91) / 2) * 52;
 };
 
 export const getAlcoolFootprint = (conso: number): number => {
-    return Number((conso * ((1.12 + 1.22 + 0.91) / 3) * 52).toFixed(2));
+    return conso * ((1.12 + 1.22 + 0.91) / 3) * 52;
 };
 
 interface HotDrinks {

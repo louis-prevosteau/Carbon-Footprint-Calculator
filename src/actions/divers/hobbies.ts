@@ -19,7 +19,7 @@ export const getSportFootprint = (sports: Sports): number => {
             res += sportsFootprints[sport];
         }
     }
-    return Number(res.toFixed(2));
+    return res;
 };
 
 export const getCultureFootprint = (culture: Culture): number => {
@@ -37,7 +37,7 @@ export const getCultureFootprint = (culture: Culture): number => {
         }
     }
 
-    return Number(res.toFixed(2));
+    return res;
 };
 
 interface Sports {

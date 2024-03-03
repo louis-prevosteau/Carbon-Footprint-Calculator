@@ -10,28 +10,25 @@ const Moto = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
             params: {
                 distance: 0,
                 type: ''
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getMotoFootprint(
-                newState.params.type,
-                newState.params.distance
+        const handleData = () => {
+            const footprint = getMotoFootprint(
+                state.params.type,
+                state.params.distance
             );
+            handleDataToTransport('moto', footprint);
+        };
+        handleData();
+    }, [state.params.distance, state.params.type]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -49,7 +46,7 @@ const Moto = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.distance}
-                                onChange={(e) => updateFootprint('distance', e.target.value)}
+                                onChange={(e) => updateParam('distance', e.target.value)}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.km')}
@@ -65,7 +62,7 @@ const Moto = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                         <Grid item>
                             <Select
                                 value={state.params.type}
-                                onChange={(e) => updateFootprint('type', e.target.value)}
+                                onChange={(e) => updateParam('type', e.target.value)}
                             >
                                 {['thermic', 'electric', 'inf250', 'sup250'].map((type, index) => (
                                     <MenuItem key={index} value={type}>{t(`transports.moto.types.${type}`)}</MenuItem>

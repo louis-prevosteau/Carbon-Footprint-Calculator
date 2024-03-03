@@ -18,7 +18,7 @@ export const getPetsFootprint = (pets: Pets): number => {
                 break;
         }
     }
-    return Number(res.toFixed(2));
+    return res;
 };
 
 interface Pets {

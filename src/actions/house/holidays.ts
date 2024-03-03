@@ -26,7 +26,7 @@ export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, peo
                 break;
         }
     }
-    return Number((res / people).toFixed(2));
+    return res / people;
 };
 
 export const getSecondaryResidenceFootprint = (people: number, surface: number, duration: number, location: string, season: string): number => {
@@ -87,7 +87,7 @@ export const getSecondaryResidenceFootprint = (people: number, surface: number, 
                 break;
         }
     res += seasonFactor * (19.95 + 1.73) * surface * dayRatio
-    return Number((res / people).toFixed(2));
+    return res / people;
 };
 
 interface HolidaysResidences {

@@ -13,7 +13,7 @@ export const getOutsideFootprint = (people: number, outsideMaterial: OutsideMate
             res += materialFootprints[material];
         }
     }   
-    return Number((res / people).toFixed(2));
+    return res / people;
 };
 
 interface OutsideMaterial {

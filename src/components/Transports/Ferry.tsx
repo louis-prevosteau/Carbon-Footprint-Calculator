@@ -9,27 +9,24 @@ const Ferry = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         {
             params: {
                 hours: 0
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getFerryFootprint(
-                newState.params.hours
+        const handleData = () => {
+            const footprint = getFerryFootprint(
+                state.params.hours
             );
+            handleDataToTransport('ferry', footprint);
+        };
+        handleData();
+    }, [state.params.hours]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -38,8 +35,8 @@ const Ferry = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         <Paper elevation={3}>
             <Typography variant='h5'>{t('transports.ferry.title')}</Typography>
             <Box>
-                <Grid container>
-                    <Grid container item alignItems='center' spacing={2}>
+                <Grid container direction='column' spacing={2}>
+                    <Grid container item xs={12} sm={6} md={4}>
                         <Grid item>
                             <Typography variant='body1'>{t('transports.ferry.questions.hours')}</Typography>
                         </Grid>
@@ -47,7 +44,7 @@ const Ferry = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.hours}
-                                onChange={(e) => updateFootprint('hours', e.target.value)}
+                                onChange={(e) => updateParam('hours', e.target.value)}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.hours')}

@@ -51,7 +51,7 @@ export const getFurnituresFootprint = (
                 break;
         }
     }
-    return Number((res / people).toFixed(2));
+    return res / people;
 };
 
 interface Furnitures {

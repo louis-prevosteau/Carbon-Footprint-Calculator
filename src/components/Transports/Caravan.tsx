@@ -3,33 +3,30 @@ import { getCaravanFootprint } from 'actions/transports';
 import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 
-const Caravan = ({ motor, people, handleDataToTransport }: { motor: string, people: number, handleDataToTransport: any }) => {
+const Caravan = ({ motor, people, handleDataToCar }: { motor: string, people: number, handleDataToCar: any }) => {
 
     const [state, setState] = useState(
         {
             params: {
                 distance: 0
-            },
-            footprint: 0
+            }
         }
     );
 
     useEffect(() => {
+        const handleData = () => {
+            const footprint = getCaravanFootprint(people, state.params.distance, motor);
+            handleDataToCar(footprint);
+        };
         handleData();
-    }, [state.footprint]);
+    }, [state.params.distance]);
 
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: typeof state.params[keyof typeof state.params]) => {
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
         setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getCaravanFootprint(people, newState.params.distance, motor);
-        return newState;
+            const newState = { ...prevState, params: { ...prevState.params, [paramName]: paramValue as never } };
+            return newState;
         });
-    }
+    };
 
     return (
         <Grid container>
@@ -41,7 +38,7 @@ const Caravan = ({ motor, people, handleDataToTransport }: { motor: string, peop
                     <Input
                         type='number'
                         value={state.params.distance}
-                        onChange={(e) => updateFootprint('distance', Number(e.target.value))}
+                        onChange={(e) => updateParam('distance', Number(e.target.value))}
                         endAdornment={
                             <InputAdornment position='end'>
                                 {t('adornments.km')}

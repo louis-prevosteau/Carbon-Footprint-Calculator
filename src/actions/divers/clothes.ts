@@ -39,7 +39,7 @@ export const getClothesFootprint = (clothes: Clothes): number => {
                 break;
         }
     }
-    return Number(res.toFixed(2));
+    return res;
 };
 
 interface Clothes {

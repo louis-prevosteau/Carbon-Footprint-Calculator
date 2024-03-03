@@ -24,7 +24,7 @@ export const getLunchFootprint = (lunches: WeekLunches): number => {
                 break;
         }
     }
-    return Number((res * 52).toFixed(2));
+    return res * 52;
 };
 
 export const getBreakfastFootprint = (value: string, milk: string): number => {
@@ -57,7 +57,7 @@ export const getBreakfastFootprint = (value: string, milk: string): number => {
         default:
             break;
     }
-    return Number((res * 365).toFixed(2));
+    return res * 365;
 };
 
 export const getSeasonBonus = (level: string, breakfast: string, milk: string, lunches: WeekLunches): number => {
@@ -65,11 +65,11 @@ export const getSeasonBonus = (level: string, breakfast: string, milk: string, l
         case 'never':
             return 0;
         case 'sometimes':
-            return Number(((- (1 / 3) / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)))).toFixed(2));
+            return (- (1 / 3) / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)));
         case 'often':
-            return Number(((- (2 / 3) / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)))).toFixed(2));
+            return (- (2 / 3) / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)));
         case 'always':
-            return Number(((- 1 / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)))).toFixed(2));
+            return (- 1 / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)));
         default:
             return 0;
     }
@@ -80,11 +80,11 @@ export const getLocalBonus = (level: string, breakfast: string, lunches: WeekLun
         case 'never':
             return 0;
         case 'sometimes':
-            return Number((- (1 / 3) * getLocalPart(lunches, breakfast, milk)).toFixed(2));
+            return - (1 / 3) * getLocalPart(lunches, breakfast, milk);
         case 'often':
-            return Number((- (2 / 3) * getLocalPart(lunches, breakfast, milk)).toFixed(2));
+            return - (2 / 3) * getLocalPart(lunches, breakfast, milk);
         case 'always':
-            return Number((- getLocalPart(lunches, breakfast, milk)).toFixed(2));
+            return - getLocalPart(lunches, breakfast, milk);
         default:
             return 0;
     }
@@ -116,7 +116,7 @@ const getLocalPart = (lunches: WeekLunches, breakfast: string, milk: string): nu
                 break;
         }
     }
-    return Number((res * 52 + getBreakfastFootprint(breakfast, milk) * 0.08).toFixed(2));
+    return res * 52 + getBreakfastFootprint(breakfast, milk) * 0.08;
 };
 
 interface WeekLunches {

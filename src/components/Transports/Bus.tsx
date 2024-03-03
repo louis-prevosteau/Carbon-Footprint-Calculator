@@ -9,27 +9,24 @@ const Bus = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         {
             params: {
                 hours: 0
-            },
-            footprint: 0
+            }
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        handleData();
-    }, [state.footprint]);
-
-    const handleData = () => {
-        handleDataToTransport(state.footprint);
-    };
-
-    const updateFootprint = (paramName: keyof typeof state.params, paramValue: any) => {
-        setState(prevState => {
-            const newState = { ...prevState };
-            newState.params[paramName] = paramValue as never;
-            newState.footprint = getBusFootprint(
-                newState.params.hours
+        const handleData = () => {
+            const footprint = getBusFootprint(
+                state.params.hours
             );
+            handleDataToTransport('bus', footprint);
+        };
+        handleData();
+    }, [state.params.hours]);
+
+    const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
+        setState(prevState => {
+            const newState = { params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
     };
@@ -47,7 +44,7 @@ const Bus = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                             <Input
                                 type='number'
                                 value={state.params.hours}
-                                onChange={(e) => updateFootprint('hours', e.target.value)}
+                                onChange={(e) => updateParam('hours', e.target.value)}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         {t('adornments.hoursPerWeek')}
