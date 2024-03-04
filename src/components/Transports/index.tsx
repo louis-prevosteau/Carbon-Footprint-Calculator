@@ -8,6 +8,7 @@ import Train from './Train';
 import Bike from './Bike';
 import Ferry from './Ferry';
 import { Grid } from '@mui/material';
+import CampingCar from './CampingCar';
 
 const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -21,13 +22,15 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
             bus: 0,
             bike: 0,
             ferry: 0,
+            van: 0,
+            campingCar: 0
         }
     );
 
     useEffect(() => {
-        const footprint = state.car + state.plane + state.train + state.moto + state.metro + state.bus + state.bike + state.ferry;
+        const footprint = state.car + state.plane + state.train + state.moto + state.metro + state.bus + state.bike + state.ferry + state.van + state.campingCar;
         handleDataToChart('transports', Number(footprint));
-    }, [state.car, state.bus, state.bike, state.plane, state.train, state.metro, state.moto, state.ferry]);
+    }, [state.car, state.bus, state.bike, state.plane, state.train, state.metro, state.moto, state.ferry, state.van, state.campingCar]);
 
     const addFootprint = (paramName: keyof typeof state, footprint: number) => {
         setState(prevState => {
@@ -41,6 +44,9 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
         <Grid container spacing={2}>
             <Grid item xs={6} sm={3}>
                 <Car handleDataToTransport={addFootprint} />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+                <CampingCar handleDataToTransport={addFootprint} />
             </Grid>
             <Grid item xs={6} sm={3}>
                 <Plane handleDataToTransport={addFootprint} />
