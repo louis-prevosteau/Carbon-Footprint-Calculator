@@ -7,10 +7,10 @@ export const getCarFootprint = (
     recent: boolean,
     fuel: string,
     conso: number
-): number => {
+) => {
     if (distance === 0) return 0;
-    else if (sameCar) {}
-    else if (!sameCar) {}
+    else if (sameCar) return (getUsage(distance, motor, conso, fuel, type) + getConstructAmort(motor, type, recent)) / people;
+    else if (!sameCar) return (getUsage(distance, motor, conso, fuel, type) + ((getConstruct(motor, type) as number / 10) * (distance / 15130))) / people;
     
 };
 
@@ -84,5 +84,34 @@ const getUsage = (distance: number, motor: string, conso: number, fuel: string, 
         entPond = ((((6036 * 1000000) * 0.07) / 44677000) / distance) * 0.75;
     }
     const baseKm = entPond + clim; 
-    return distance * (kmFp + baseKm)
+    return distance * (kmFp + baseKm);
+}
+
+const getConstruct = (motor: string, type: string) => {
+    if (motor === 'thermic') {
+        if (type === 'small' || type === 'medium') return 6700;
+        else if (type === 'berline' || type === 'vul' || type === 'suv') return 7600;    
+    } else if (motor === 'hybrid') {
+        if (type === 'small' || type === 'medium') return 9600;
+        else if (type === 'berline' || type === 'vul' || type === 'suv') return 6900;
+    } else if (motor === 'electric') {
+        if (type === 'small' || type === 'medium') return 10200;
+        else if (type === 'berline' || type === 'vul' || type === 'suv') return 20200;
+    }
+}
+
+const getConstructAmort = (motor: string, type: string, recent: boolean) => {
+    const amort = recent ? 0.1 : 0;
+    let construct = 0
+    if (motor === 'thermic') {
+        if (type === 'small' || type === 'medium') construct = 6700;
+        else if (type === 'berline' || type === 'vul' || type === 'suv') construct = 7600;    
+    } else if (motor === 'hybrid') {
+        if (type === 'small' || type === 'medium') construct = 9600;
+        else if (type === 'berline' || type === 'vul' || type === 'suv') construct = 6900;
+    } else if (motor === 'electric') {
+        if (type === 'small' || type === 'medium') construct = 10200;
+        else if (type === 'berline' || type === 'vul' || type === 'suv') construct = 20200;
+    }
+    return construct * amort;
 }
