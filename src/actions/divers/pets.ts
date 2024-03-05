@@ -1,4 +1,4 @@
-export const getPetsFootprint = (pets: Pets): number => {
+export const getPetsFootprint = (pets: Pets) => {
     let res = 0;
     for (const pet in pets) {
         switch (pet) {
@@ -18,7 +18,7 @@ export const getPetsFootprint = (pets: Pets): number => {
                 break;
         }
     }
-    return res;
+    return res.toFixed(2);
 };
 
 interface Pets {

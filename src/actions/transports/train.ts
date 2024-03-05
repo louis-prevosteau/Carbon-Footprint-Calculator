@@ -1,11 +1,11 @@
-export const getBusFootprint = (hours: number): number => {
-    return hours * 1.36 * 52;
+export const getBusFootprint = (hours: number) => {
+    return (hours * 1.3557 * 52).toFixed(2);
 };
 
-export const getMetroFootprint = (hours: number): number => {
-    return hours * 0.19 * 52;
+export const getMetroFootprint = (hours: number) => {
+    return (hours * 0.1851 * 52).toFixed(2);
 };
 
-export const getTrainFootprint = (distance: number): number => {
-    return distance * 0.01;
+export const getTrainFootprint = (distance: number) => {
+    return (distance * 0.00882).toFixed(2);
 };

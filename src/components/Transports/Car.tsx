@@ -3,6 +3,7 @@ import { getCarFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Caravan from './Caravan';
+import { lightBlue } from '@mui/material/colors';
 
 const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
 
@@ -52,7 +53,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     };
 
     return (
-        <Paper elevation={3}>
+        <Paper elevation={3} sx={{ padding: '20px', backgroundColor: lightBlue[500], borderRadius: '10px' }}>
             <Typography variant='h5'>{t('transports.car.title')}</Typography>
             <Box>
                 <Grid container direction='column' spacing={2}>

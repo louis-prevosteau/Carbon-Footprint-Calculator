@@ -1,4 +1,4 @@
-export const getOutsideFootprint = (people: number, outsideMaterial: OutsideMaterial): number => {
+export const getOutsideFootprint = (people: number, outsideMaterial: OutsideMaterial) => {
     const materialFootprints: Record<string, number> = {
         barbecue: 108.97,
         barbecueElec: 5.44,
@@ -13,7 +13,7 @@ export const getOutsideFootprint = (people: number, outsideMaterial: OutsideMate
             res += materialFootprints[material];
         }
     }   
-    return res / people;
+    return (res / people).toFixed(2);
 };
 
 interface OutsideMaterial {

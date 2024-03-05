@@ -9,23 +9,23 @@ export const getCarFootprint = (
     conso: number
 ) => {
     if (distance === 0) return 0;
-    else if (sameCar) return (getUsage(distance, motor, conso, fuel, type) + getConstructAmort(motor, type, recent)) / people;
-    else if (!sameCar) return (getUsage(distance, motor, conso, fuel, type) + ((getConstruct(motor, type) as number / 10) * (distance / 15130))) / people;
+    else if (sameCar) return ((getUsage(distance, motor, conso, fuel, type) + getConstructAmort(motor, type, recent)) / people).toFixed(2);
+    else if (!sameCar) return ((getUsage(distance, motor, conso, fuel, type) + ((getConstruct(motor, type) as number / 10) * (distance / 15130))) / people).toFixed(2);
     
 };
 
 export const getVanFootprint = (
     distance: number,
     conso: number
-): number => {
-    return (conso / 100) * distance;
+) => {
+    return ((conso / 100) * distance).toFixed(2);
 };
 
 export const getCaravanFootprint = (
     people: number,
     distance: number,
     motor: string
-): number => {
+) => {
     let kiloFp = 0;
     switch (motor) {
         case 'thermic':
@@ -43,14 +43,14 @@ export const getCaravanFootprint = (
     const surconso = kiloFp * 0.25
     const usage = (surconso * distance) / people;
     const construction = (3800 * 25) / people;
-    return usage + construction;
+    return (usage + construction).toFixed(2);
 };
 
 export const getCampingCarFootprint = (
     distance: number,
     conso: number
-): number => {
-    return (conso / 100) * distance;
+) => {
+    return ((conso / 100) * distance).toFixed(2);
 };
 
 const getUsage = (distance: number, motor: string, conso: number, fuel: string, type: string): number => {

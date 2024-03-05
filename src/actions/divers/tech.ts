@@ -1,7 +1,7 @@
 export const getDevicesFootprint = (
     devices: TechDevices,
     preservation: string,
-): number => {
+) => {
     let res = 0;
     let coefPreserv = 0;
     switch (preservation) {
@@ -65,11 +65,11 @@ export const getDevicesFootprint = (
                 break;
         }
     }
-    return res;
+    return res.toFixed(2);
 };
 
-export const getStreamingFootprint = (duration: number): number => {
-    return 0.004 * duration * 365;
+export const getStreamingFootprint = (duration: number) => {
+    return (0.004 * duration * 365).toFixed(2);
 };
 
 interface TechDevices {

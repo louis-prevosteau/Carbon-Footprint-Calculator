@@ -7,8 +7,10 @@ import Metro from './Metro';
 import Train from './Train';
 import Bike from './Bike';
 import Ferry from './Ferry';
-import { Grid } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 import CampingCar from './CampingCar';
+import { useTranslation } from 'react-i18next';
+import { blue, cyan } from '@mui/material/colors';
 
 const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -26,6 +28,7 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
             campingCar: 0
         }
     );
+    const { t } = useTranslation();
 
     useEffect(() => {
         const footprint = state.car + state.plane + state.train + state.moto + state.metro + state.bus + state.bike + state.ferry + state.van + state.campingCar;
@@ -41,35 +44,38 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
     };
     
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={6} sm={3}>
-                <Car handleDataToTransport={addFootprint} />
+        <Paper elevation={3} sx={{ border: '20px solid', borderColor: cyan[800], padding: '20px', marginBottom: '20px' }}>
+            <Typography variant='h4' sx={{ textAlign: 'center', pb: 5, color: blue['A200'], fontWeight: 'bold' }}>{t('transports.title')}</Typography>
+            <Grid container spacing={2}>
+                <Grid item xs={6} sm={3}>
+                    <Car handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <CampingCar handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Plane handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Moto handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Bus handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Metro handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Train handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Bike handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                    <Ferry handleDataToTransport={addFootprint} />
+                </Grid>
             </Grid>
-            <Grid item xs={6} sm={3}>
-                <CampingCar handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Plane handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Moto handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Bus handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Metro handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Train handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Bike handleDataToTransport={addFootprint} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Ferry handleDataToTransport={addFootprint} />
-            </Grid>
-        </Grid>
+        </Paper>
     );
 };
 

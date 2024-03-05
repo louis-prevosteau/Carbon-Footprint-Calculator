@@ -1,4 +1,5 @@
 import { Box, Grid, Input, InputAdornment, Paper, Typography } from '@mui/material';
+import { lightBlue } from '@mui/material/colors';
 import { getPlaneFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -36,7 +37,7 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     };
     
     return (
-        <Paper elevation={3}>
+        <Paper elevation={3} sx={{ padding: '20px', backgroundColor: lightBlue[500], borderRadius: '10px' }}>
             <Typography variant='h5'>{t('transports.plane.title')}</Typography>
             <Box>
                 <Grid container>

@@ -1,4 +1,5 @@
 import { Paper, Typography, Box, Grid, Input, InputAdornment } from '@mui/material';
+import { lightBlue } from '@mui/material/colors';
 import { getFerryFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -32,7 +33,7 @@ const Ferry = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     };
 
     return (
-        <Paper elevation={3}>
+        <Paper elevation={3} sx={{ backgroundColor: lightBlue[500], padding: '20px', borderRadius: '10px' }}>
             <Typography variant='h5'>{t('transports.ferry.title')}</Typography>
             <Box>
                 <Grid container direction='column' spacing={2}>

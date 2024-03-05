@@ -2,6 +2,7 @@ import Transports from 'components/Transports';
 import React, { useState } from 'react';
 import './i18n';
 import Chart from 'components/Chart';
+import PublicServices from 'components/PublicServices';
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
     <div>
       <Chart data={Object.values(state.sub)}/>
       <Transports handleDataToChart={addFootprint}/>
+      <PublicServices handleDataToChart={addFootprint}/>
     </div>
   );
 };

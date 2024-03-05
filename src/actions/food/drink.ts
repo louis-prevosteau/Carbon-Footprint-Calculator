@@ -1,4 +1,4 @@
-export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string): number => {
+export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
     let res = 0;
     for (const drink in drinks) {
         switch (drink) {
@@ -18,7 +18,7 @@ export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string): number =
                 break;
         }
     }
-    return res * 52;
+    return (res * 52).toFixed(2);
 };
 
 const milkFootprint = (milk: string): number => {

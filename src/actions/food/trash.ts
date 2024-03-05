@@ -1,6 +1,6 @@
-export const getTrashFootprint = (level: string, antiWaste: boolean, compost: boolean, stopPub: boolean, bulk: boolean): number => {
+export const getTrashFootprint = (level: string, antiWaste: boolean, compost: boolean, stopPub: boolean, bulk: boolean) => {
     if (level === 'zero') return 48.04;
-    else return 194.49 + getTrashTips(antiWaste, compost, stopPub, bulk);
+    else return (194.49 + getTrashTips(antiWaste, compost, stopPub, bulk)).toFixed(2);
 };
 
 const getTrashTips = (antiWaste: boolean, compost: boolean, stopPub: boolean, bulk: boolean): number => {

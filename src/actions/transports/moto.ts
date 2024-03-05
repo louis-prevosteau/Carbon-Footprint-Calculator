@@ -1,7 +1,7 @@
 export const getMotoFootprint = (
     type: string,
     distance: number
-): number => {
+) => {
     let res = 0;
     if (distance === 0)
         return 0;
@@ -21,7 +21,7 @@ export const getMotoFootprint = (
         default:
             break;
     }
-    return res;
+    return res.toFixed(2);
 };
 
 export const getBikeFootprint = (
@@ -31,10 +31,10 @@ export const getBikeFootprint = (
     eBikeDistance: number,
     otherDistance: number,
 
-): number => {
+) => {
     let res = 0;
     if (bike) res += 9.7;
     if (electricBike && eBikeDistance > 0) res += eBikeDistance;
     if (other && otherDistance > 0) res += otherDistance;
-    return res;
+    return res.toFixed(2);
 };

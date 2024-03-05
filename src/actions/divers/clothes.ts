@@ -1,4 +1,4 @@
-export const getClothesFootprint = (clothes: Clothes): number => {
+export const getClothesFootprint = (clothes: Clothes) => {
     let res = 0;
     for (const garment in clothes) {
         switch (garment) {
@@ -39,7 +39,7 @@ export const getClothesFootprint = (clothes: Clothes): number => {
                 break;
         }
     }
-    return res;
+    return res.toFixed(2);
 };
 
 interface Clothes {

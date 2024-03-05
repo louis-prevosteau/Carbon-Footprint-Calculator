@@ -1,4 +1,4 @@
-export const getLunchFootprint = (lunches: WeekLunches): number => {
+export const getLunchFootprint = (lunches: WeekLunches) => {
     let res = 0;
     for (const lunch in lunches) {
         switch (lunch) {
@@ -24,10 +24,10 @@ export const getLunchFootprint = (lunches: WeekLunches): number => {
                 break;
         }
     }
-    return res * 52;
+    return (res * 52).toFixed(2);
 };
 
-export const getBreakfastFootprint = (value: string, milk: string): number => {
+export const getBreakfastFootprint = (value: string, milk: string) => {
     let res = 0;
     switch (value) {
         case 'british':
@@ -57,25 +57,28 @@ export const getBreakfastFootprint = (value: string, milk: string): number => {
         default:
             break;
     }
-    return res * 365;
+    return (res * 365).toFixed(2);
 };
 
 export const getSeasonBonus = (level: string, breakfast: string, milk: string, lunches: WeekLunches): number => {
+    const breakfastFootprint = getBreakfastFootprint(breakfast, milk);
+    const lunchFootprint = getLunchFootprint(lunches);
+    const footprint = 0.073 * (Number(breakfastFootprint) + Number(lunchFootprint));
     switch (level) {
         case 'never':
             return 0;
         case 'sometimes':
-            return (- (1 / 3) / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)));
+            return Number((-(1 / 3) / 2.26 * footprint).toFixed(2));
         case 'often':
-            return (- (2 / 3) / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)));
+            return Number((-(2 / 3) / 2.26 * footprint).toFixed(2));
         case 'always':
-            return (- 1 / 2.26) * (0.073 * (getBreakfastFootprint(breakfast, milk) + getLunchFootprint(lunches)));
+            return Number((-1 / 2.26 * footprint).toFixed(2));
         default:
             return 0;
     }
 };
 
-export const getLocalBonus = (level: string, breakfast: string, lunches: WeekLunches, milk: string): number => {
+export const getLocalBonus = (level: string, breakfast: string, lunches: WeekLunches, milk: string) => {
     switch (level) {
         case 'never':
             return 0;
@@ -116,7 +119,7 @@ const getLocalPart = (lunches: WeekLunches, breakfast: string, milk: string): nu
                 break;
         }
     }
-    return res * 52 + getBreakfastFootprint(breakfast, milk) * 0.08;
+    return res * 52 + Number(getBreakfastFootprint(breakfast, milk)) * 0.08;
 };
 
 interface WeekLunches {

@@ -1,4 +1,4 @@
-export const getNewManufactsFootprint = (level: string): number => {
+export const getNewManufactsFootprint = (level: string) => {
     let coefPreserv = 0;
     switch (level) {
         case 'minimum':
@@ -13,5 +13,5 @@ export const getNewManufactsFootprint = (level: string): number => {
         default:
             break;
     }
-    return 128.62 * coefPreserv;
+    return (128.62 * coefPreserv).toFixed(2);
 };

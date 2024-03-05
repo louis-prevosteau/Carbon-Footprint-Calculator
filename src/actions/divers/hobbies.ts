@@ -1,4 +1,4 @@
-export const getSportFootprint = (sports: Sports): number => {
+export const getSportFootprint = (sports: Sports) => {
     const sportsFootprints: Record<string, number> = {
         athletics: 88.7,
         ball: 88.7,
@@ -19,10 +19,10 @@ export const getSportFootprint = (sports: Sports): number => {
             res += sportsFootprints[sport];
         }
     }
-    return res;
+    return res.toFixed(2);
 };
 
-export const getCultureFootprint = (culture: Culture): number => {
+export const getCultureFootprint = (culture: Culture) => {
     const cultureFootprints: Record<string, number> = {
         books: 50.22,
         museum: 2.3,
@@ -37,7 +37,7 @@ export const getCultureFootprint = (culture: Culture): number => {
         }
     }
 
-    return res;
+    return res.toFixed(2);
 };
 
 interface Sports {

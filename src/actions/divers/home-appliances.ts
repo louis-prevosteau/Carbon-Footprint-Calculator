@@ -2,7 +2,7 @@ export const getHomeAppliancesFootprint = (
     homeAppliances: HomeAppliances,
     people: number,
     preservation: string
-): number => {
+) => {
     let res = 0;
     let coefPreserv = 0;
     switch (preservation) {
@@ -69,7 +69,7 @@ export const getHomeAppliancesFootprint = (
                 break;
         }
     }
-    return res / people;
+    return (res / people).toFixed(2);
 };
 
 interface HomeAppliances {

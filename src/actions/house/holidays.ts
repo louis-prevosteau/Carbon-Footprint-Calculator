@@ -1,4 +1,4 @@
-export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, people: number): number => {
+export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, people: number) => {
     let res = 0;
     for (const residence in holidaysResidences) {
         switch (residence) {
@@ -26,10 +26,10 @@ export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, peo
                 break;
         }
     }
-    return res / people;
+    return (res / people).toFixed(2);
 };
 
-export const getSecondaryResidenceFootprint = (people: number, surface: number, duration: number, location: string, season: string): number => {
+export const getSecondaryResidenceFootprint = (people: number, surface: number, duration: number, location: string, season: string) => {
     let res = 0;
     res += surface * 9.5;
     const dayRatio = duration / 365;
@@ -87,7 +87,7 @@ export const getSecondaryResidenceFootprint = (people: number, surface: number, 
                 break;
         }
     res += seasonFactor * (19.95 + 1.73) * surface * dayRatio
-    return res / people;
+    return (res / people).toFixed(2);
 };
 
 interface HolidaysResidences {

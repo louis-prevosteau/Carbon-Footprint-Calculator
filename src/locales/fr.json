@@ -1,4 +1,5 @@
 {
+    "ok": "Ok",
     "adornments": {
         "km": "km / an",
         "conso100": "l/100km",
@@ -13,7 +14,8 @@
             "divers": "Divers",
             "publicServices": "Services Publiques"
         },
-        "footprintAdornment": "Empreinte (en kg / an)"
+        "footprintAdornment": "Empreinte (en kg / an)",
+        "target": "Objectif de 2 tonnes de CO2eq / personne / an pour limiter le réchaffement climatique à 2°C"
     },
     "transports": {
         "title": "Transports",
@@ -51,6 +53,13 @@
         "caravan": {
             "questions": {
                 "distance": "Quelle distance parcourez-vous à l'année en caravane ?"
+            }
+        },
+        "campingCar": {
+            "title": "Camping Car",
+            "questions": {
+                "distance": "Quelle distance parcourez-vous à l'année en camping car ?",
+                "conso": "Quelle est la consommation moyenne de votre camping car ?"
             }
         },
         "plane": {
@@ -110,5 +119,9 @@
                 "otherDistance": "Combien de kilomètres faites-vous à l'année avec votre trottinette électrique, gyropode, monocycle électrique, hoverboard...?"
             }
         }
+    },
+    "publicServices": {
+        "title": "Services Publiques",
+        "question": "Nous attribuons l'empreinte des services publics (éducation, santé...) et marchands (télécom, assurance...) à chaque citoyen de façon égale."
     }
 }

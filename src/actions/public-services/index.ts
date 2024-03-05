@@ -1,1 +1,3 @@
-export const SP_FOOTPRINT = 1474.03;
+export const getSPFootprint = (sp: boolean): number => {
+    return sp ? 1474.03 : 0;
+};

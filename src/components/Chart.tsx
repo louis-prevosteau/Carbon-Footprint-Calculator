@@ -1,3 +1,5 @@
+import { Box } from '@mui/material';
+import { cyan, grey } from '@mui/material/colors';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import React from 'react';
@@ -20,50 +22,57 @@ const Chart = ({ data }: { data: number[] }) => {
     const { t } = useTranslation();
 
     return (
-        <Bar
-            data={{
-                labels: [
-                    t('chart.labels.transports'),    
-                    t('chart.labels.food'),
-                    t('chart.labels.house'),
-                    t('chart.labels.divers'),
-                    t('chart.labels.publicServices'),    
-                ],
-                datasets: [
-                    {
-                        label: t('chart.footprintAdornment'),
-                        data,
-                        backgroundColor: ['rgb(0, 0, 255)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', 'rgb(0, 0, 255)']
-                    }
-                ]
-            }}
-            options={{
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top' as const
+        <Box sx={{ display: 'flex', justifyContent: 'center', width: '85%' }}>
+            <Bar
+                data={{
+                    labels: [
+                        t('chart.labels.transports'),    
+                        t('chart.labels.food'),
+                        t('chart.labels.house'),
+                        t('chart.labels.divers'),
+                        t('chart.labels.publicServices'),    
+                    ],
+                    datasets: [
+                        {
+                            label: t('chart.footprintAdornment'),
+                            data,
+                            backgroundColor: [cyan[800], 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', grey[500]]
+                        }
+                    ]
+                }}
+                options={{
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top' as const,
+                            display: false
+                        },
+                        annotation: {
+                            annotations: {
+                                limit: {
+                                    type: 'line',
+                                    scaleID: 'y',
+                                    value: 2000,
+                                    borderColor: 'red',
+                                    borderWidth: 5,
+                                    label: {
+                                        content: t('chart.target'),
+                                        display: true
+                                    }
+                                }
+                            }
+                        }
                     },
-                    annotation: {
-                        annotations: {
-                            limit: {
-                                type: 'line',
-                                scaleID: 'y',
-                                value: 2000,
-                                borderColor: 'red',
-                                borderWidth: 10,
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 500
                             }
                         }
                     }
-                },
-                scales: {
-                    y: {
-                        ticks: {
-                            stepSize: 500
-                        }
-                    }
-                }
-            }}
-        />
+                }}
+            />
+        </Box>
     );
 };
 

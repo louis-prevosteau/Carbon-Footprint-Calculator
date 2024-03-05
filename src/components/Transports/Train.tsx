@@ -1,4 +1,5 @@
 import { Paper, Typography, Box, Grid, Input, InputAdornment } from '@mui/material';
+import { lightBlue } from '@mui/material/colors';
 import { getTrainFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -32,7 +33,7 @@ const Train = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     };
 
     return (
-        <Paper elevation={3}>
+        <Paper elevation={3} sx={{ padding: '20px', backgroundColor: lightBlue[500], borderRadius: '10px' }}>
             <Typography variant='h5'>{t('transports.train.title')}</Typography>
             <Box>
                 <Grid container>
