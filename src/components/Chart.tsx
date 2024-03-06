@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { cyan, grey } from '@mui/material/colors';
+import { amber, cyan, grey } from '@mui/material/colors';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import React from 'react';
@@ -36,7 +36,7 @@ const Chart = ({ data }: { data: number[] }) => {
                         {
                             label: t('chart.footprintAdornment'),
                             data,
-                            backgroundColor: [cyan[800], 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', grey[500]]
+                            backgroundColor: [cyan[800], amber[600], 'rgb(0, 0, 255)', 'rgb(0, 0, 255)', grey[500]]
                         }
                     ]
                 }}

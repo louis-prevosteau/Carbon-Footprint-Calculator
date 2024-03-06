@@ -120,6 +120,26 @@
             }
         }
     },
+    "food": {
+        "title": "Alimentation",
+        "trash": {
+            "title": "Déchets",
+            "questions": {
+                "level": "Comment estimeriez-vous la quantité de déchets que vous jetez ?"
+            },
+            "levelOptions": {
+                "base": "Je jette sans faire attention",
+                "reduction": "Je limite mes déchets",
+                "zero": "Je suis zéro-déchet"
+            },
+            "tips": {
+                "antiWaste": "Anti-gaspillage alimentaire",
+                "compost": "Compostage",
+                "stopPub": "Stop Pub",
+                "bulk": "Achats en vrac"
+            }
+        }
+    },
     "publicServices": {
         "title": "Services Publiques",
         "question": "Nous attribuons l'empreinte des services publics (éducation, santé...) et marchands (télécom, assurance...) à chaque citoyen de façon égale."

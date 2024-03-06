@@ -44,7 +44,7 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
     };
     
     return (
-        <Paper elevation={3} sx={{ border: '20px solid', borderColor: cyan[800], padding: '20px', marginBottom: '20px' }}>
+        <Paper elevation={3} sx={{ border: '20px solid', borderColor: cyan[800], padding: '20px' }}>
             <Typography variant='h4' sx={{ textAlign: 'center', pb: 5, color: blue['A200'], fontWeight: 'bold' }}>{t('transports.title')}</Typography>
             <Grid container spacing={2}>
                 <Grid item xs={6} sm={3}>

@@ -27,7 +27,7 @@ const PublicServices = ({ handleDataToChart }: { handleDataToChart: any }) => {
     };
 
     return (
-        <Paper elevation={3} sx={{ border: '20px solid', borderColor: grey[500], padding: '20px', marginBottom: '20px' }}>
+        <Paper elevation={3} sx={{ border: '20px solid', borderColor: grey[500], padding: '20px' }}>
             <Typography variant='h4' sx={{ textAlign: 'center', pb: 5, color: grey[400], fontWeight: 'bold' }}>{t('publicServices.title')}</Typography>
             <Grid container direction='row' justifyContent='space-between'>
                 <Grid item>
