@@ -16,13 +16,10 @@ const Train = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getTrainFootprint(
-                state.params.distance
-            );
-            handleDataToTransport('train', footprint);
-        };
-        handleData();
+        const footprint = getTrainFootprint(
+            state.params.distance
+        );
+        handleDataToTransport('train', footprint);
     }, [state.params.distance]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

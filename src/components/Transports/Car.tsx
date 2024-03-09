@@ -25,20 +25,17 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getCarFootprint(
-                state.params.distance, 
-                state.params.sameCar,
-                state.params.type,
-                state.params.motor,
-                state.params.people,
-                state.params.recent,
-                state.params.fuel,
-                state.params.conso    
-            );
-            handleDataToTransport('car', footprint);
-        };
-        handleData();
+        const footprint = getCarFootprint(
+            state.params.distance, 
+            state.params.sameCar,
+            state.params.type,
+            state.params.motor,
+            state.params.people,
+            state.params.recent,
+            state.params.fuel,
+            state.params.conso    
+        );
+        handleDataToTransport('car', footprint);
     }, [state.params.distance, state.params.sameCar, state.params.type, state.params.motor, state.params.people, state.params.recent, state.params.fuel, state.params.conso,]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

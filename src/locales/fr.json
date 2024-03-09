@@ -138,6 +138,33 @@
                 "stopPub": "Stop Pub",
                 "bulk": "Achats en vrac"
             }
+        },
+        "lunch": {
+            "title": "Repas",
+            "question": "Comment se composent vos repas sur une semaine type ?",
+            "lunches": {
+                "vegan": "Végétalien",
+                "vegetarian": "Végétarien",
+                "meat1": "Poulet, Porc, Fromage",
+                "meat2": "Boeuf, Veau, Agneau",
+                "fish1": "Saumon, Sardine, Maquereau",
+                "fish2": "Poisson blanc"
+            }
+        },
+        "breakfast": {
+            "title": "Petit Déjeuner",
+            "question": "Quel petit déjeuner vous correspond le plus ?",
+            "types": {
+                "british": "Britanique",
+                "continental": "Continental",
+                "milk": "Lait et Céréales",
+                "vegan": "Fruits"
+            },
+            "milks": {
+                "cow": "Lait de vache",
+                "soy": "Lait de soja",
+                "oat": "Lait d'avoine"
+            }
         }
     },
     "publicServices": {

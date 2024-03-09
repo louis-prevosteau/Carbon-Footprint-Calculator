@@ -21,29 +21,25 @@ export const getVanFootprint = (
     return ((conso / 100) * distance).toFixed(2);
 };
 
+type EmissionsPerKilometer = {
+    [key: string]: number;
+};
+
 export const getCaravanFootprint = (
-    people: number,
+    numberOfPeople: number,
     distance: number,
-    motor: string
+    motorType: string
 ) => {
-    let kiloFp = 0;
-    switch (motor) {
-        case 'thermic':
-            kiloFp = 0.13;
-            break;
-        case 'hybrid':
-            kiloFp = 0.11;
-            break;
-        case 'electric':
-            kiloFp = 0.03;
-            break;
-        default:
-            break;
-    }
-    const surconso = kiloFp * 0.25
-    const usage = (surconso * distance) / people;
-    const construction = (3800 * 25) / people;
-    return (usage + construction).toFixed(2);
+    const emissionsPerKilometer: EmissionsPerKilometer = {
+        thermic: 0.13,
+        hybrid: 0.11,
+        electric: 0.03,
+    };
+    const surchargeEmissionsPerKm = emissionsPerKilometer[motorType] * 0.25;
+    const totalUsageEmissions = (surchargeEmissionsPerKm * distance) / numberOfPeople;
+    const constructionEmissions = (3800 * 25) / numberOfPeople;
+    const totalFootprint = totalUsageEmissions + constructionEmissions;
+    return totalFootprint.toFixed(2);
 };
 
 export const getCampingCarFootprint = (

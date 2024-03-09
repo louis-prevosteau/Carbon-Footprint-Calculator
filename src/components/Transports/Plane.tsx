@@ -18,15 +18,12 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getPlaneFootprint(
-                state.params.shortFlightTime,
-                state.params.mediumFlightTime,
-                state.params.longFlightTime
-            );
-            handleDataToTransport('plane',footprint);
-        };
-        handleData();
+        const footprint = getPlaneFootprint(
+            state.params.shortFlightTime,
+            state.params.mediumFlightTime,
+            state.params.longFlightTime
+        );
+        handleDataToTransport('plane',footprint);
     }, [state.params.shortFlightTime, state.params.mediumFlightTime, state.params.longFlightTime]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

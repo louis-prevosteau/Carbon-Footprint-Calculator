@@ -20,17 +20,14 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getBikeFootprint(
-                state.params.bike,
-                state.params.electricBike,
-                state.params.other,
-                state.params.eBikeDistance,
-                state.params.otherDistance
-            );
-            handleDataToTransport('bike',footprint);
-        };
-        handleData();
+        const footprint = getBikeFootprint(
+            state.params.bike,
+            state.params.electricBike,
+            state.params.other,
+            state.params.eBikeDistance,
+            state.params.otherDistance
+        );
+        handleDataToTransport('bike',footprint);
     }, [state.params.bike, state.params.eBikeDistance, state.params.electricBike, state.params.other, state.params.otherDistance]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

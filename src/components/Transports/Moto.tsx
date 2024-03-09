@@ -17,14 +17,11 @@ const Moto = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getMotoFootprint(
-                state.params.type,
-                state.params.distance
-            );
-            handleDataToTransport('moto', footprint);
-        };
-        handleData();
+        const footprint = getMotoFootprint(
+            state.params.type,
+            state.params.distance
+        );
+        handleDataToTransport('moto', footprint);
     }, [state.params.distance, state.params.type]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

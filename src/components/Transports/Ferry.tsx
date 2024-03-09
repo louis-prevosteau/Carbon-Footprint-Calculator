@@ -16,13 +16,10 @@ const Ferry = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getFerryFootprint(
-                state.params.hours
-            );
-            handleDataToTransport('ferry', footprint);
-        };
-        handleData();
+        const footprint = getFerryFootprint(
+            state.params.hours
+        );
+        handleDataToTransport('ferry', footprint);
     }, [state.params.hours]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

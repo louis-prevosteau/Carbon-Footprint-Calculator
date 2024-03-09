@@ -16,13 +16,10 @@ const Metro = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getMetroFootprint(
-                state.params.hours
-            );
-            handleDataToTransport('metro', footprint);
-        };
-        handleData();
+        const footprint = getMetroFootprint(
+            state.params.hours
+        );
+        handleDataToTransport('metro', footprint);
     }, [state.params.hours]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

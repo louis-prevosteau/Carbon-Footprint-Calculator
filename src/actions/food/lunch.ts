@@ -1,125 +1,71 @@
-export const getLunchFootprint = (lunches: WeekLunches) => {
-    let res = 0;
-    for (const lunch in lunches) {
-        switch (lunch) {
-            case 'vegan':
-                res += lunches[lunch] * 0.785;
-                break;
-            case 'vegetarian':
-                res += lunches[lunch] * 1.115;
-                break;
-            case 'meat1':
-                res += lunches[lunch] * 2.1;
-                break;
-            case 'meat2':
-                res += lunches[lunch] * 5.51;
-                break;
-            case 'fish1':
-                res += lunches[lunch] * 1.63;
-                break;
-            case 'fish2':
-                res += lunches[lunch] * 2.37;
-                break;
-            default:
-                break;
-        }
-    }
+export const getLunchFootprint = (lunches: WeekLunches): string => {
+    const footprintFactors = {
+        vegan: 0.785,
+        vegetarian: 1.115,
+        meat1: 2.1,
+        meat2: 5.51,
+        fish1: 1.63,
+        fish2: 2.37,
+    };
+    let res = Object.keys(lunches).reduce((acc, key) => {
+        return acc + (lunches[key as keyof WeekLunches] * (footprintFactors[key as keyof typeof footprintFactors] || 0));
+    }, 0);
     return (res * 52).toFixed(2);
 };
 
-export const getBreakfastFootprint = (value: string, milk: string) => {
-    let res = 0;
-    switch (value) {
-        case 'british':
-            res += 1.124;
-            break;
-        case 'continental':
-            res += 0.289;
-            break;
-        case 'vegan':
-            res += 0.419;
-            break;
-        case 'milk':
-            switch (milk) {
-                case 'cow':
-                    res += 0.47;
-                    break;
-                case 'soy':
-                    res += 0.29;
-                    break;
-                case 'oat':
-                    res += 0.312;
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
+export const getBreakfastFootprint = (value: string, milk: string): string => {
+    const breakfastFootprint = {
+        british: 1.124,
+        continental: 0.289,
+        vegan: 0.419,
+    };
+    let res = breakfastFootprint[value as keyof typeof breakfastFootprint] || 0;
+    const milkFootprint = {
+        cow: 0.47,
+        soy: 0.29,
+        oat: 0.312,
+    };
+    if (value === 'milk') {
+        res += milkFootprint[milk as keyof typeof milkFootprint] || 0;
     }
     return (res * 365).toFixed(2);
 };
 
-export const getSeasonBonus = (level: string, breakfast: string, milk: string, lunches: WeekLunches): number => {
-    const breakfastFootprint = getBreakfastFootprint(breakfast, milk);
-    const lunchFootprint = getLunchFootprint(lunches);
-    const footprint = 0.073 * (Number(breakfastFootprint) + Number(lunchFootprint));
-    switch (level) {
-        case 'never':
-            return 0;
-        case 'sometimes':
-            return Number((-(1 / 3) / 2.26 * footprint).toFixed(2));
-        case 'often':
-            return Number((-(2 / 3) / 2.26 * footprint).toFixed(2));
-        case 'always':
-            return Number((-1 / 2.26 * footprint).toFixed(2));
-        default:
-            return 0;
-    }
+export const getSeasonBonus = (level: string, breakfastFP: number, lunchesFP: number): number => {
+    const footprint = 0.073 * (breakfastFP + lunchesFP);
+    const levelFactors = {
+        never: 0,
+        sometimes: -(1 / 3) / 2.26,
+        often: -(2 / 3) / 2.26,
+        always: -1 / 2.26,
+    };
+    return Number((footprint * (levelFactors[level as keyof typeof levelFactors] || 0)).toFixed(2));
 };
 
-export const getLocalBonus = (level: string, breakfast: string, lunches: WeekLunches, milk: string) => {
-    switch (level) {
-        case 'never':
-            return 0;
-        case 'sometimes':
-            return - (1 / 3) * getLocalPart(lunches, breakfast, milk);
-        case 'often':
-            return - (2 / 3) * getLocalPart(lunches, breakfast, milk);
-        case 'always':
-            return - getLocalPart(lunches, breakfast, milk);
-        default:
-            return 0;
-    }
+export const getLocalBonus = (level: string, lunches: WeekLunches, breakfastFB: number): number => {
+    const localPart = getLocalPart(lunches, breakfastFB);
+    const levelFactors = {
+        never: 0,
+        sometimes: -(1 / 3),
+        often: -(2 / 3),
+        always: -1,
+    };
+    return levelFactors[level as keyof typeof levelFactors] * localPart;
 };
 
-const getLocalPart = (lunches: WeekLunches, breakfast: string, milk: string): number => {
-    let res = 0;
-    for (const lunch in lunches) {
-        switch (lunch) {
-            case 'vegan':
-                res += lunches[lunch] * 0.785 * 0.12;
-                break;
-            case 'vegetarian':
-                res += lunches[lunch] * 1.115 * 0.08;
-                break;
-            case 'meat1':
-                res += lunches[lunch] * 2.1 * 0.03;
-                break;
-            case 'meat2':
-                res += lunches[lunch] * 5.51 * 0.01;
-                break;
-            case 'fish1':
-                res += lunches[lunch] * 1.63 * 0.05;
-                break;
-            case 'fish2':
-                res += lunches[lunch] * 2.37 * 0.06;
-                break;
-            default:
-                break;
-        }
-    }
-    return res * 52 + Number(getBreakfastFootprint(breakfast, milk)) * 0.08;
+const getLocalPart = (lunches: WeekLunches, breakfastFP: number): number => {
+    const localFactors = {
+        vegan: 0.785 * 0.12,
+        vegetarian: 1.115 * 0.08,
+        meat1: 2.1 * 0.03,
+        meat2: 5.51 * 0.01,
+        fish1: 1.63 * 0.05,
+        fish2: 2.37 * 0.06,
+    };
+    let res = Object.keys(lunches).reduce((acc, key) => {
+        return acc + (lunches[key as keyof WeekLunches] * (localFactors[key as keyof typeof localFactors] || 0));
+    }, 0);
+    return res * 52 + breakfastFP * 0.08;
 };
 
 interface WeekLunches {

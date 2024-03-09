@@ -14,14 +14,11 @@ const CampingCar = ({ handleDataToTransport }: { handleDataToTransport: any }) =
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getCampingCarFootprint(
-                state.params.distance, 
-                state.params.conso    
-            );
-            handleDataToTransport('campingCar', footprint);
-        };
-        handleData();
+        const footprint = getCampingCarFootprint(
+            state.params.distance, 
+            state.params.conso    
+        );
+        handleDataToTransport('campingCar', footprint);
     }, [state.params.distance, state.params.conso]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

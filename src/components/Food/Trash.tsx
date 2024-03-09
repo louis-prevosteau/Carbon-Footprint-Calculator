@@ -20,17 +20,14 @@ const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getTrashFootprint(
-                state.params.level,
-                state.params.antiWaste,
-                state.params.compost,
-                state.params.stopPub,
-                state.params.bulk
-            );
-            handleDataToFood(footprint);
-        };
-        handleData();
+        const footprint = getTrashFootprint(
+            state.params.level,
+            state.params.antiWaste,
+            state.params.compost,
+            state.params.stopPub,
+            state.params.bulk
+        );
+        handleDataToFood('trash', footprint);
     }, [state.params.level, state.params.antiWaste, state.params.compost, state.params.stopPub, state.params.bulk]);
     
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
@@ -54,7 +51,6 @@ const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
                                 value={state.params.level}
                                 onChange={(e) => updateParam('level', e.target.value)}
                             >
-                                <MenuItem value=''></MenuItem>
                                 {['base', 'reduction', 'zero'].map((level) => (
                                     <MenuItem key={level} value={level}>{t(`food.trash.levelOptions.${level}`)}</MenuItem>
                                 ))}

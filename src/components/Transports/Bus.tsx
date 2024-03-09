@@ -16,13 +16,10 @@ const Bus = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const handleData = () => {
-            const footprint = getBusFootprint(
-                state.params.hours
-            );
-            handleDataToTransport('bus', footprint);
-        };
-        handleData();
+        const footprint = getBusFootprint(
+            state.params.hours
+        );
+        handleDataToTransport('bus', footprint);
     }, [state.params.hours]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
