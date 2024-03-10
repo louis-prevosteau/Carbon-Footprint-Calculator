@@ -165,6 +165,26 @@
                 "soy": "Lait de soja",
                 "oat": "Lait d'avoine"
             }
+        },
+        "local": {
+            "title": "Localité",
+            "question": "Consommez-vous des produits locaux ?",
+            "levels": {
+                "never": "Jamais",
+                "sometimes": "Parfois",
+                "often": "Souvent",
+                "always": "Toujours"
+            }
+        },
+        "season": {
+            "title": "Saisonalité",
+            "question": "Consommez-vous des produits de saison ?",
+            "levels": {
+                "never": "Jamais",
+                "sometimes": "Parfois",
+                "often": "Souvent",
+                "always": "Toujours"
+            }
         }
     },
     "publicServices": {

@@ -6,7 +6,7 @@ import { getLunchFootprint } from 'actions/food';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Lunch = ({ handleDataToFood }: { handleDataToFood: any }) => {
+const Lunch = ({ handleDataToFood, updateLunchParams }: { handleDataToFood: any, updateLunchParams: any }) => {
 
     const [state, setState] = useState(
         {
@@ -25,6 +25,7 @@ const Lunch = ({ handleDataToFood }: { handleDataToFood: any }) => {
     useEffect(() => {
         const footprint = getLunchFootprint(state.params);
         handleDataToFood('lunch', footprint);
+        updateLunchParams(state.params);
     }, [state.params.vegan, state.params.vegetarian, state.params.meat1, state.params.meat2, state.params.fish1, state.params.fish2]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {

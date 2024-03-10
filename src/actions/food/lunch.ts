@@ -43,6 +43,7 @@ export const getSeasonBonus = (level: string, breakfastFP: number, lunchesFP: nu
 };
 
 export const getLocalBonus = (level: string, lunches: WeekLunches, breakfastFB: number): number => {
+    if (level === '' && Object.values(lunches).every((v) => v === 0) && breakfastFB === 0) return 0;
     const localPart = getLocalPart(lunches, breakfastFB);
     const levelFactors = {
         never: 0,
@@ -68,7 +69,7 @@ const getLocalPart = (lunches: WeekLunches, breakfastFP: number): number => {
     return res * 52 + breakfastFP * 0.08;
 };
 
-interface WeekLunches {
+export interface WeekLunches {
     vegan: number;
     vegetarian: number;
     meat1: number;
