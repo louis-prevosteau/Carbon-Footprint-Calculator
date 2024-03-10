@@ -1,20 +1,15 @@
 import { Box } from '@mui/material';
 import { amber, cyan, grey } from '@mui/material/colors';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import annotationPlugin from 'chartjs-plugin-annotation';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
 
 
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
     Tooltip,
     Legend,
-    annotationPlugin
+    ArcElement
 );
 
 const Chart = ({ data }: { data: number[] }) => {
@@ -22,8 +17,8 @@ const Chart = ({ data }: { data: number[] }) => {
     const { t } = useTranslation();
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', width: '85%' }}>
-            <Bar
+        <Box sx={{ display: 'flex', justifyContent: 'center', width: '25%' }}>
+            <Doughnut
                 data={{
                     labels: [
                         t('chart.labels.transports'),    
@@ -46,28 +41,6 @@ const Chart = ({ data }: { data: number[] }) => {
                         legend: {
                             position: 'top' as const,
                             display: false
-                        },
-                        annotation: {
-                            annotations: {
-                                limit: {
-                                    type: 'line',
-                                    scaleID: 'y',
-                                    value: 2000,
-                                    borderColor: 'red',
-                                    borderWidth: 5,
-                                    label: {
-                                        content: t('chart.target'),
-                                        display: true
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            ticks: {
-                                stepSize: 500
-                            }
                         }
                     }
                 }}
