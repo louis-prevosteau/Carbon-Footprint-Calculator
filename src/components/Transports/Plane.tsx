@@ -38,57 +38,25 @@ const Plane = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
             <Typography variant='h5'>{t('transports.plane.title')}</Typography>
             <Box>
                 <Grid container>
-                    <Grid container item alignItems='center' spacing={2}>
-                        <Grid item>
-                            <Typography variant='body1'>{t('transports.plane.questions.shortFlightTime')}</Typography>
+                    {Object.keys(state.params).map((time) => (
+                        <Grid key={time} container item alignItems='center' spacing={2}>
+                            <Grid item>
+                                <Typography variant='body1'>{t(`transports.plane.questions.${time}`)}</Typography>
+                            </Grid>
+                            <Grid item>
+                                <Input
+                                    type='number'
+                                    value={state.params[time as keyof typeof state.params]}
+                                    onChange={(e) => updateParam(time as keyof typeof state.params, Number(e.target.value))}
+                                    endAdornment={
+                                        <InputAdornment position='end'>
+                                            {t('adornments.hours')}
+                                        </InputAdornment>
+                                    }
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <Input
-                                type='number'
-                                value={state.params.shortFlightTime}
-                                onChange={(e) => updateParam('shortFlightTime', Number(e.target.value))}
-                                endAdornment={
-                                    <InputAdornment position='end'>
-                                        {t('adornments.hours')}
-                                    </InputAdornment>
-                                }
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container item alignItems='center' spacing={2}>
-                        <Grid item>
-                            <Typography variant='body1'>{t('transports.plane.questions.mediumFlightTime')}</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Input
-                                type='number'
-                                value={state.params.mediumFlightTime}
-                                onChange={(e) => updateParam('mediumFlightTime', Number(e.target.value))}
-                                endAdornment={
-                                    <InputAdornment position='end'>
-                                        {t('adornments.hours')}
-                                    </InputAdornment>
-                                }
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container item alignItems='center' spacing={2}>
-                        <Grid item>
-                            <Typography variant='body1'>{t('transports.plane.questions.longFlightTime')}</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Input
-                                type='number'
-                                value={state.params.longFlightTime}
-                                onChange={(e) => updateParam('longFlightTime', Number(e.target.value))}
-                                endAdornment={
-                                    <InputAdornment position='end'>
-                                        {t('adornments.hours')}
-                                    </InputAdornment>
-                                }
-                            />
-                        </Grid>
-                    </Grid>
+                    ))}
                 </Grid>
             </Box>
         </Paper>

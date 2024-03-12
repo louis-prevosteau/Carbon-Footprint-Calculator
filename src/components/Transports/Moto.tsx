@@ -3,6 +3,7 @@ import { lightBlue } from '@mui/material/colors';
 import { getMotoFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MOTO_TYPES } from 'utils/constants';
 
 const Moto = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
 
@@ -62,7 +63,7 @@ const Moto = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                 value={state.params.type}
                                 onChange={(e) => updateParam('type', e.target.value)}
                             >
-                                {['thermic', 'electric', 'inf250', 'sup250'].map((type, index) => (
+                                {MOTO_TYPES.map((type, index) => (
                                     <MenuItem key={index} value={type}>{t(`transports.moto.types.${type}`)}</MenuItem>
                                 ))}
                             </Select>

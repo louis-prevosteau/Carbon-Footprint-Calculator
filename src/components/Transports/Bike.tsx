@@ -37,6 +37,25 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
         });
     };
 
+    const options = Object.keys(state.params).reduce((acc, key) => {
+        if (typeof state.params[key as keyof typeof state.params] === 'boolean') {
+          acc.push(
+            <Grid item key={key}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.params[key as keyof typeof state.params] as boolean}
+                    onChange={() => updateParam(key as keyof typeof state.params, !state.params[key as keyof typeof state.params])}
+                  />
+                }
+                label={t(`transports.bike.options.${key}`)}
+              />
+            </Grid>
+          );
+        }
+        return acc;
+      }, [] as JSX.Element[]);
+
     return (
         <Paper elevation={3} sx={{ padding: '20px', backgroundColor: lightBlue[500], borderRadius: '10px' }}>
             <Typography variant='h5'>{t('transports.bike.title')}</Typography>
@@ -44,15 +63,7 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                 <Grid container direction='column' spacing={2}>
                     <Grid container item xs={12} sm={6} md={4}>
                         <FormGroup>
-                            <Grid item>
-                                <FormControlLabel control={<Checkbox checked={state.params.bike} onChange={() => updateParam('bike', !state.params.bike)} />} label={t('transports.bike.options.bike')} />
-                            </Grid>
-                            <Grid item>
-                                <FormControlLabel control={<Checkbox checked={state.params.electricBike} onChange={() => updateParam('electricBike', !state.params.electricBike)} />} label={t('transports.bike.options.electricBike')} />
-                            </Grid>
-                            <Grid item>
-                                <FormControlLabel control={<Checkbox checked={state.params.other} onChange={() => updateParam('other', !state.params.other)} />} label={t('transports.bike.options.other')} />
-                            </Grid>                        
+                            {options}                        
                         </FormGroup>                      
                     </Grid>
                     <Grid container item direction='column' spacing={5}>

@@ -3,6 +3,7 @@ import { amber } from '@mui/material/colors';
 import { getTrashFootprint } from 'actions/food';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { TRASH_LEVELS } from 'utils/constants';
 
 const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
 
@@ -36,6 +37,25 @@ const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
             return newState;
         });
     };
+
+    const trashTips = Object.keys(state.params).reduce((acc, key) => {
+        if (typeof state.params[key as keyof typeof state.params] === 'boolean') {
+          acc.push(
+            <Grid item key={key}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.params[key as keyof typeof state.params] as boolean}
+                    onChange={() => updateParam(key as keyof typeof state.params, !state.params[key as keyof typeof state.params])}
+                  />
+                }
+                label={t(`food.trash.tips.${key}`)}
+              />
+            </Grid>
+          );
+        }
+        return acc;
+      }, [] as JSX.Element[]);
     
     return (
         <Paper elevation={3} sx={{ padding: '20px', backgroundColor: amber[200], borderRadius: '10px' }}>
@@ -51,7 +71,7 @@ const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
                                 value={state.params.level}
                                 onChange={(e) => updateParam('level', e.target.value)}
                             >
-                                {['base', 'reduction', 'zero'].map((level) => (
+                                {TRASH_LEVELS.map((level) => (
                                     <MenuItem key={level} value={level}>{t(`food.trash.levelOptions.${level}`)}</MenuItem>
                                 ))}
                             </Select>
@@ -60,18 +80,7 @@ const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
                     {state.params.level === 'reduction' && (
                         <Grid container item xs={12} sm={6} md={4}>
                             <FormGroup>
-                                <Grid item>
-                                    <FormControlLabel control={<Checkbox checked={state.params.antiWaste} onChange={() => updateParam('antiWaste', !state.params.antiWaste)} />} label={t('food.trash.tips.antiWaste')} />
-                                </Grid>
-                                <Grid item>
-                                    <FormControlLabel control={<Checkbox checked={state.params.compost} onChange={() => updateParam('compost', !state.params.compost)} />} label={t('food.trash.tips.compost')} />
-                                </Grid>
-                                <Grid item>
-                                    <FormControlLabel control={<Checkbox checked={state.params.stopPub} onChange={() => updateParam('stopPub', !state.params.stopPub)} />} label={t('food.trash.tips.stopPub')} />
-                                </Grid>
-                                <Grid item>
-                                    <FormControlLabel control={<Checkbox checked={state.params.bulk} onChange={() => updateParam('bulk', !state.params.bulk)} />} label={t('food.trash.tips.bulk')} />
-                                </Grid>                        
+                                {trashTips}                       
                             </FormGroup>                      
                         </Grid>
                     )}

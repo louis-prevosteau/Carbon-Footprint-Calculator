@@ -3,6 +3,7 @@ import { amber } from '@mui/material/colors';
 import { WeekLunches, getLocalBonus } from 'actions/food';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { LEVELS } from 'utils/constants';
 
 const Local = ({ handleDataToFood, lunches, breakfastFP }: { handleDataToFood: any, lunches: Object, breakfastFP: number }) => {
 
@@ -42,62 +43,23 @@ const Local = ({ handleDataToFood, lunches, breakfastFP }: { handleDataToFood: a
                                     value={state.params.level}
                                     onChange={(e) => updateParam('level', e.target.value)}
                                 >
-                                    <FormControlLabel
-                                        value='never'
-                                        control={
-                                            <Radio
-                                                sx={{
-                                                color: amber[300],
-                                                '&.Mui-checked': {
-                                                color: amber[700],
-                                                },
-                                            }}
-                                            />
-                                        }
-                                        label={t('food.local.levels.never')}
-                                    />
-                                    <FormControlLabel
-                                        value='sometimes'
-                                        control={
-                                            <Radio
-                                                sx={{
-                                                color: amber[300],
-                                                '&.Mui-checked': {
-                                                color: amber[700],
-                                                },
-                                            }}
-                                            />
-                                        }
-                                        label={t('food.local.levels.sometimes')}
-                                    />
-                                    <FormControlLabel
-                                        value='often'
-                                        control={
-                                            <Radio
-                                                sx={{
-                                                color: amber[300],
-                                                '&.Mui-checked': {
-                                                color: amber[700],
-                                                },
-                                            }}
-                                            />
-                                        }
-                                        label={t('food.local.levels.often')}
-                                    />
-                                    <FormControlLabel
-                                        value='always'
-                                        control={
-                                            <Radio
-                                                sx={{
-                                                color: amber[300],
-                                                '&.Mui-checked': {
-                                                color: amber[700],
-                                                },
-                                            }}
-                                            />
-                                        }
-                                        label={t('food.local.levels.always')}
-                                    />
+                                    {LEVELS.map((level) => (
+                                        <FormControlLabel
+                                            key={level}
+                                            value={level}
+                                            control={
+                                                <Radio
+                                                    sx={{
+                                                    color: amber[300],
+                                                    '&.Mui-checked': {
+                                                    color: amber[700],
+                                                    },
+                                                }}
+                                                />
+                                            }
+                                            label={t(`food.local.levels.${level}`)}
+                                        />
+                                    ))}
                                 </RadioGroup>
                             </FormGroup>
                         </Grid>

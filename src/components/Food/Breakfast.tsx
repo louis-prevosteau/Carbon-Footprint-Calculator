@@ -3,6 +3,7 @@ import { amber } from '@mui/material/colors';
 import { getBreakfastFootprint } from 'actions/food';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BREAKFASTS } from 'utils/constants';
 
 const Breakfast = ({ handleDataToFood }: { handleDataToFood: any }) => {
 
@@ -42,46 +43,23 @@ const Breakfast = ({ handleDataToFood }: { handleDataToFood: any }) => {
                                 value={state.params.value}
                                 onChange={(e) => updateParam('value', e.target.value)}
                             >
-                                <FormControlLabel value='british' control={
-                                    <Radio
-                                        sx={{
-                                            color: amber[300],
-                                            '&.Mui-checked': {
-                                            color: amber[700],
-                                            },
-                                        }}
+                                {BREAKFASTS.map((breakFast) => (
+                                    <FormControlLabel
+                                        key={breakFast}
+                                        value={breakFast}
+                                        control={
+                                            <Radio
+                                                sx={{
+                                                    color: amber[300],
+                                                    '&.Mui-checked': {
+                                                    color: amber[700],
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        label={t(`food.breakfast.types.${breakFast}`)}
                                     />
-                                } label={t('food.breakfast.types.british')} />
-                                <FormControlLabel value='continental' control={
-                                    <Radio
-                                        sx={{
-                                            color: amber[300],
-                                            '&.Mui-checked': {
-                                            color: amber[700],
-                                            },
-                                        }}
-                                    />
-                                } label={t('food.breakfast.types.continental')} />
-                                <FormControlLabel value='milk' control={
-                                    <Radio
-                                        sx={{
-                                            color: amber[300],
-                                            '&.Mui-checked': {
-                                            color: amber[700],
-                                            },
-                                        }}
-                                    />
-                                } label={t('food.breakfast.types.milk')} />
-                                <FormControlLabel value='vegan' control={
-                                    <Radio
-                                        sx={{
-                                            color: amber[300],
-                                            '&.Mui-checked': {
-                                            color: amber[700],
-                                            },
-                                        }}
-                                    />
-                                } label={t('food.breakfast.types.vegan')} />
+                                ))}
                             </RadioGroup>
                         </FormGroup>
                     </Grid>

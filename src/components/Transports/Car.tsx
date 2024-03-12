@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Caravan from './Caravan';
 import { lightBlue } from '@mui/material/colors';
+import { CAR_FUELS, CAR_MOTORS, CAR_TYPES } from 'utils/constants';
 
 const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
 
@@ -96,7 +97,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                             value={state.params.type}
                                             onChange={(e) => updateParam('type', e.target.value)}
                                         >
-                                            {['small', 'medium', 'berline', 'vul', 'suv'].map((type, index) => (
+                                            {CAR_TYPES.map((type, index) => (
                                                 <MenuItem key={index} value={type}>{t(`transports.car.types.${type}`)}</MenuItem>
                                             ))}
                                         </Select>
@@ -111,7 +112,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                             value={state.params.motor}
                                             onChange={(e) => updateParam('motor', e.target.value)}
                                         >
-                                            {['thermic', 'hybrid', 'electric'].map((motor, index) => (
+                                            {CAR_MOTORS.map((motor, index) => (
                                                 <MenuItem key={index} value={motor}>{t(`transports.car.motors.${motor}`)}</MenuItem>
                                             ))}
                                         </Select>
@@ -155,7 +156,7 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                                     value={state.params.fuel}
                                                     onChange={(e) => updateParam('fuel', e.target.value)}
                                                 >
-                                                    {['essence', 'bio', 'gazole', 'gpl'].map((fuel, index) => (
+                                                    {CAR_FUELS.map((fuel, index) => (
                                                         <MenuItem key={index} value={fuel}>{t(`transports.car.fuels.${fuel}`)}</MenuItem>
                                                     ))}
                                                 </Select>
