@@ -1,4 +1,5 @@
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Remove, Add } from '@mui/icons-material';
+import { Box, Grid, IconButton, Input, Paper, Typography } from '@mui/material';
 import { amber } from '@mui/material/colors';
 import { getHotDrinksFootprint } from 'actions/food';
 import React, { useEffect, useState } from 'react';
@@ -32,6 +33,39 @@ const HotDrinks = ({ handleDataToFood }: { handleDataToFood: any }) => {
         });
     };
 
+    const drinks = Object.keys(state.params).reduce((acc, drink) => {
+        if (typeof state.params[drink as keyof typeof state.params] === 'number') {
+            acc.push(
+                <Grid key={drink} container item direction='row' spacing={4} alignItems='center'>
+                    <Grid item>
+                        <IconButton
+                            onClick={() => updateParam(drink as keyof typeof state.params, state.params[drink as keyof typeof state.params] as number- 1)}
+                            disabled={state.params[drink as keyof typeof state.params] === 0}
+                        >
+                            <Remove />
+                        </IconButton>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`food.hotDrinks.drinks.${drink}`)}</Typography>
+                        <Input
+                            type='number'
+                            value={state.params[drink as keyof typeof state.params]}
+                            onChange={(e) => updateParam(drink as keyof typeof state.params, Number(e.target.value))}
+                            inputProps={{min: 0, style: { textAlign: 'center' }}}
+                            sx={{ width: '80px' }}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <IconButton onClick={() => updateParam(drink as keyof typeof state.params, state.params[drink as keyof typeof state.params] as number + 1)}>
+                            <Add />
+                        </IconButton>
+                    </Grid>
+                </Grid>
+            );
+        }
+        return acc;
+    }, [] as JSX.Element[])
+
     return (
         <Paper elevation={3} sx={{ padding: '20px', backgroundColor: amber[200], borderRadius: '10px' }}>
             <Typography variant='h5'>{t('food.hotDrinks.title')}</Typography>
@@ -41,9 +75,7 @@ const HotDrinks = ({ handleDataToFood }: { handleDataToFood: any }) => {
                         <Grid item>
                             <Typography variant='body1'>{t('food.hotDrinks.questions.drink')}</Typography>
                         </Grid>
-                        <Grid item>
-                            
-                        </Grid>
+                        {drinks}
                     </Grid>
                 </Grid>
             </Box>

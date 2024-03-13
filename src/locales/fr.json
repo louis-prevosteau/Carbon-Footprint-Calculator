@@ -1,10 +1,26 @@
 {
+    "common": {
+        "frequencies": {
+            "never": "Jamais",
+            "sometimes": "Parfois",
+            "often": "Souvent",
+            "always": "Toujours"
+        },
+        "milks": {
+            "cow": "Lait de vache",
+            "soy": "Lait de soja",
+            "oat": "Lait d'avoine"
+        },
+        "yes": "Oui",
+        "no": "Non"
+    },
     "ok": "Ok",
     "adornments": {
         "km": "km / an",
         "conso100": "l/100km",
         "hours": "h / an",
-        "hoursPerWeek": "h / semaine"
+        "hoursPerWeek": "h / semaine",
+        "literPerWeek": "l / semaine"
     },
     "chart": {
         "labels": {
@@ -159,32 +175,43 @@
                 "continental": "Continental",
                 "milk": "Lait et Céréales",
                 "vegan": "Fruits"
-            },
-            "milks": {
-                "cow": "Lait de vache",
-                "soy": "Lait de soja",
-                "oat": "Lait d'avoine"
             }
         },
         "local": {
             "title": "Localité",
-            "question": "Consommez-vous des produits locaux ?",
-            "levels": {
-                "never": "Jamais",
-                "sometimes": "Parfois",
-                "often": "Souvent",
-                "always": "Toujours"
-            }
+            "question": "Consommez-vous des produits locaux ?"
         },
         "season": {
             "title": "Saisonalité",
-            "question": "Consommez-vous des produits de saison ?",
-            "levels": {
-                "never": "Jamais",
-                "sometimes": "Parfois",
-                "often": "Souvent",
-                "always": "Toujours"
+            "question": "Consommez-vous des produits de saison ?"
+        },
+        "alcool": {
+            "title": "Alcool",
+            "questions": {
+                "conso": "Quelle est votre consommation d'alcool par semaine ?"
             }
+        },
+        "hotDrinks": {
+            "title": "Boissons Chaudes",
+            "questions": {
+                "drink": "Quelle est votre consommation de boissons chaudes pour une semaine type (nombre de tasses par semaine) ?"
+            },
+            "drinks": {
+                "coffee": "Café",
+                "tea": "Thé",
+                "chocolate": "Chocolat chaud",
+                "chicory": "Chicorée"
+            }
+        },
+        "waterBottle": {
+            "title": "Eau en Bouteille",
+            "question": "Buvez-vous votre eau en bouteille ?"
+        },
+        "sodas": {
+            "title": "Sodas",
+            "questions": {
+                "conso": "Quelle est votre consommation de sodas par semaine ?"
+            } 
         }
     },
     "publicServices": {

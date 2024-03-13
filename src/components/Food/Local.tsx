@@ -57,7 +57,7 @@ const Local = ({ handleDataToFood, lunches, breakfastFP }: { handleDataToFood: a
                                                 }}
                                                 />
                                             }
-                                            label={t(`food.local.levels.${level}`)}
+                                            label={t(`common.frequencies.${level}`)}
                                         />
                                     ))}
                                 </RadioGroup>

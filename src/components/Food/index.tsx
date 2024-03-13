@@ -7,6 +7,10 @@ import Lunch from './Lunch';
 import Breakfast from './Breakfast';
 import Local from './Local';
 import Season from './Season';
+import Alcool from './Alcool';
+import HotDrinks from './HotDrinks';
+import WaterBottle from './WaterBottle';
+import Sodas from './Sodas';
 
 const Food = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -18,7 +22,11 @@ const Food = ({ handleDataToChart }: { handleDataToChart: any }) => {
                 drink: 0,
                 trash: 0,
                 local: 0,
-                season: 0
+                season: 0,
+                alcool: 0,
+                hotDrinks: 0,
+                waterBottle: 0,
+                sodas: 0
             },
             lunches: {
                 vegan: 0,
@@ -35,7 +43,7 @@ const Food = ({ handleDataToChart }: { handleDataToChart: any }) => {
     useEffect(() => {
         const footprint = Object.values(state.sub).reduce((a, b) => a + b, 0);
         handleDataToChart('food', footprint);
-    }, [state.sub.drink, state.sub.lunch, state.sub.breakfast, state.sub.trash, state.sub.local, state.sub.season]);
+    }, [state.sub.drink, state.sub.lunch, state.sub.breakfast, state.sub.trash, state.sub.local, state.sub.season, state.sub.hotDrinks, state.sub.waterBottle, state.sub.sodas]);
     
     const updateLunchParams = (params: any) => {
         setState(prevState => {
@@ -73,16 +81,16 @@ const Food = ({ handleDataToChart }: { handleDataToChart: any }) => {
                     <Season handleDataToFood={addFootprint} lunchFP={state.sub.lunch} breakfastFP={state.sub.breakfast} />
                 </Grid>
                 <Grid item xs={4}>
-
+                    <HotDrinks handleDataToFood={addFootprint} />
                 </Grid>
                 <Grid item xs={4}>
-
+                    <WaterBottle handleDataToFood={addFootprint} />
                 </Grid>
                 <Grid item xs={4}>
-                
+                    <Sodas handleDataToFood={addFootprint} />
                 </Grid>            
                 <Grid item xs={4}>
-                
+                    <Alcool handleDataToFood={addFootprint} />
                 </Grid>                       
             </Grid>
         </Paper>
