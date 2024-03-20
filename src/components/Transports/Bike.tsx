@@ -61,6 +61,9 @@ const Bike = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
             <Typography variant='h5'>{t('transports.bike.title')}</Typography>
             <Box>
                 <Grid container direction='column' spacing={2}>
+                    <Grid item>
+                        <Typography variant='body1'>{t('transports.bike.mainQuestion')}</Typography>
+                    </Grid>
                     <Grid container item xs={12} sm={6} md={4}>
                         <FormGroup>
                             {options}                        

@@ -38,37 +38,19 @@ const WaterBottle = ({ handleDataToFood }: { handleDataToFood: any }) => {
                     <Grid item>
                         <FormGroup>
                             <RadioGroup
-                                value={state.params.conso}
-                                onChange={(e) => updateParam('conso', e.target.value)}
+                                value={state.params.conso.toString()}
+                                onChange={(e) => updateParam('conso', !state.params.conso)}
                             >
                                 <FormControlLabel
-                                    value={state.params.conso}
-                                    control={
-                                        <Radio
-                                            sx={{
-                                            color: amber[300],
-                                            '&.Mui-checked': {
-                                            color: amber[700],
-                                            },
-                                        }}
-                                        />
-                                    }
+                                    value="true"
+                                    control={<Radio sx={{ color: amber[300], '&.Mui-checked': { color: amber[700] } }} />}
                                     label={t('common.yes')}
                                 />
                                 <FormControlLabel
-                                    value={!state.params.conso}
-                                    control={
-                                        <Radio
-                                            sx={{
-                                            color: amber[300],
-                                            '&.Mui-checked': {
-                                            color: amber[700],
-                                            },
-                                        }}
-                                        />
-                                    }
+                                    value="false"
+                                    control={<Radio sx={{ color: amber[300], '&.Mui-checked': { color: amber[700] } }} />}
                                     label={t('common.no')}
-                                />                            
+                                />
                             </RadioGroup>
                         </FormGroup>                    
                     </Grid>

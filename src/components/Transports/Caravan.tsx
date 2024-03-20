@@ -16,7 +16,7 @@ const Caravan = ({ motor, people, handleDataToCar }: { motor: string, people: nu
     useEffect(() => {
         const footprint = getCaravanFootprint(people, state.params.distance, motor);
         handleDataToCar(footprint);
-    }, [state.params.distance]);
+    }, [state.params.distance, people, motor]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
         setState(prevState => {

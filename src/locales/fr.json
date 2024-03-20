@@ -1,4 +1,5 @@
 {
+    "title": "Mon Empreinte Carbone",
     "common": {
         "frequencies": {
             "never": "Jamais",
@@ -20,7 +21,11 @@
         "conso100": "l/100km",
         "hours": "h / an",
         "hoursPerWeek": "h / semaine",
-        "literPerWeek": "l / semaine"
+        "literPerWeek": "l / semaine",
+        "squareMetter": "m²",
+        "age": "an(s)",
+        "kWh": "kWh",
+        "perCent": "%"
     },
     "chart": {
         "labels": {
@@ -125,6 +130,7 @@
         },
         "bike": {
             "title": "Mobilité douce",
+            "mainQuestion": "Quels sont vos modes de déplacements \"efficaces\" ?",
             "options": {
                 "bike": "Vélo",
                 "electricBike": "Vélo à Assistance Electrique",
@@ -212,6 +218,61 @@
             "questions": {
                 "conso": "Quelle est votre consommation de sodas par semaine ?"
             } 
+        }
+    },
+    "house": {
+        "title": "Logement",
+        "build": "Construction",
+        "questions": {
+            "people": "Combien y a-t-il de personnes dans votre logement ?",
+            "surface": "Quelle est la surface de votre logement ?",
+            "age": "Quel est l'âge de votre logement ?",
+            "apartment": "Votre logement est-il un appartement ?"
+        },
+        "electricity": {
+            "title": "Electricité",
+            "questions": {
+                "conso": "Quelle est votre consommation annuelle d'électricité ?"
+            }
+        },
+        "wood": {
+            "title": "Bois ou granulés",
+            "types": {
+                "log": "Bûches",
+                "pellets": "Granulés"
+            },
+            "questions": {
+                "type": "Quel type de bois utilisez-vous ?",
+                "consoWood": "Quelle la consommation annuelle de bois en bûches de votre foyer ?",
+                "consoGranul": "Quelle est la consommation annuelle de bois en granulés de votre foyer ?"
+            }
+        },
+        "gaz": {
+            "title": "Réseau de gaz",
+            "questions": {
+                "conso": "Quelle est la consommation annuelle de gaz de votre foyer ?",
+                "biogaz": "Avez-vous souscrit à un contrat gaz incluant du biogaz (ou biométhane) ?",
+                "part": "Quelle est la part de biogaz garantie par votre contrat de gaz ?"
+            }
+        },
+        "gazBottle": {
+            "title": "Gaz en bouteille",
+            "questions": {
+                "conso": "Quelle est la consommation annuelle de gaz en bouteille de votre foyer ?"
+            }
+        },
+        "heat": {
+            "title": "Chauffage",
+            "options": {
+                "electricity": "Electricité",
+                "heatPump": "Pompe à Chaleur",
+                "wood": "Bois ou granulés",
+                "gaz": "Réseau de gaz",
+                "gazBottle": "Bouteille de gaz",
+                "heatNetwork": "Réseau de chaleur",
+                "propane": "Propane en citerne",
+                "fuel": "Fioul domestique"
+            }
         }
     },
     "publicServices": {

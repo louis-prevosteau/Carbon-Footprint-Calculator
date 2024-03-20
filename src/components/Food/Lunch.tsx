@@ -40,12 +40,12 @@ const Lunch = ({ handleDataToFood, updateLunchParams }: { handleDataToFood: any,
             <Typography variant='h5'>{t('food.lunch.title')}</Typography>
             <Box>
                 <Grid container>
-                    <Grid container item alignItems='center' spacing={2}>
+                    <Grid container item alignItems='center' spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         <Grid item>
                             <Typography variant='body1'>{t('food.lunch.question')}</Typography>
                         </Grid>
                         {Object.keys(state.params).map((item) => (
-                            <Grid key={item} container item direction='row' spacing={4} alignItems='center'>
+                            <Grid key={item} container item direction='row' lg={6} alignItems='center'>
                                 <Grid item>
                                     <IconButton
                                         onClick={() => updateParam(item as keyof typeof state.params, state.params[item as keyof typeof state.params] - 1)}

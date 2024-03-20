@@ -74,19 +74,21 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                         {state.params.distance > 0 && (
                             <Box>
                                 <Grid container item alignItems='center' spacing={2}>
-                                    <FormControlLabel
-                                        label={
-                                            <Typography variant='body1'>{t('transports.car.questions.sameCar')}</Typography>
-                                        }
-                                        control={
-                                            <Switch
-                                                checked={state.params.sameCar}
-                                                value={state.params.sameCar}
-                                                onChange={() => updateParam('sameCar', !state.params.sameCar)}
-                                            />
-                                        }
-                                        labelPlacement='start'
-                                    />
+                                    <Grid item>
+                                        <FormControlLabel
+                                            label={
+                                                <Typography variant='body1'>{t('transports.car.questions.sameCar')}</Typography>
+                                            }
+                                            control={
+                                                <Switch
+                                                    checked={state.params.sameCar}
+                                                    value={state.params.sameCar}
+                                                    onChange={() => updateParam('sameCar', !state.params.sameCar)}
+                                                />
+                                            }
+                                            labelPlacement='start'
+                                        />
+                                    </Grid>
                                 </Grid>
                                 <Grid container item alignItems='center' spacing={2}>
                                     <Grid item>
@@ -131,19 +133,21 @@ const Car = ({ handleDataToTransport }: { handleDataToTransport: any }) => {
                                     </Grid>
                                 </Grid>
                                 <Grid container item alignItems='center' spacing={2}>
-                                    <FormControlLabel
-                                        label={
-                                            <Typography variant='body1'>{t('transports.car.questions.recent')}</Typography>
-                                        }
-                                        control={
-                                            <Switch
-                                                checked={state.params.recent}
-                                                value={state.params.recent}
-                                                onChange={() => updateParam('recent', !state.params.recent)}
-                                            />
-                                        }
-                                        labelPlacement='start'
-                                    />
+                                    <Grid item>
+                                        <FormControlLabel
+                                            label={
+                                                <Typography variant='body1'>{t('transports.car.questions.recent')}</Typography>
+                                            }
+                                            control={
+                                                <Switch
+                                                    checked={state.params.recent}
+                                                    value={state.params.recent}
+                                                    onChange={() => updateParam('recent', !state.params.recent)}
+                                                />
+                                            }
+                                            labelPlacement='start'
+                                        />
+                                    </Grid>
                                 </Grid>
                                 {state.params.motor === 'thermic' && (
                                     <div>

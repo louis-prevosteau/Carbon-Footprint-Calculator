@@ -36,7 +36,7 @@ const HotDrinks = ({ handleDataToFood }: { handleDataToFood: any }) => {
     const drinks = Object.keys(state.params).reduce((acc, drink) => {
         if (typeof state.params[drink as keyof typeof state.params] === 'number') {
             acc.push(
-                <Grid key={drink} container item direction='row' spacing={4} alignItems='center'>
+                <Grid key={drink} container item direction='row' xs={2} sm={4} md={2} alignItems='center'>
                     <Grid item>
                         <IconButton
                             onClick={() => updateParam(drink as keyof typeof state.params, state.params[drink as keyof typeof state.params] as number- 1)}
@@ -71,7 +71,7 @@ const HotDrinks = ({ handleDataToFood }: { handleDataToFood: any }) => {
             <Typography variant='h5'>{t('food.hotDrinks.title')}</Typography>
             <Box>
                 <Grid container>
-                    <Grid container item direction='column' spacing={2}>
+                    <Grid container item direction='column' spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         <Grid item>
                             <Typography variant='body1'>{t('food.hotDrinks.questions.drink')}</Typography>
                         </Grid>

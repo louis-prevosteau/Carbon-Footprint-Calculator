@@ -31,9 +31,20 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const footprint = state.car + state.plane + state.train + state.moto + state.metro + state.bus + state.bike + state.ferry + state.van + state.campingCar;
+        const footprint = Object.values(state).reduce((a, b) => a + b, 0);;
         handleDataToChart('transports', Number(footprint));
-    }, [state.car, state.bus, state.bike, state.plane, state.train, state.metro, state.moto, state.ferry, state.van, state.campingCar]);
+    }, [
+        state.car,
+        state.bus,
+        state.bike,
+        state.plane,
+        state.train,
+        state.metro,
+        state.moto,
+        state.ferry,
+        state.van,
+        state.campingCar]
+    );
 
     const addFootprint = (paramName: keyof typeof state, footprint: number) => {
         setState(prevState => {
@@ -47,31 +58,31 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
         <Paper elevation={3} sx={{ border: '20px solid', borderColor: cyan[800], padding: '20px' }}>
             <Typography variant='h4' sx={{ textAlign: 'center', pb: 5, color: blue['A200'], fontWeight: 'bold' }}>{t('transports.title')}</Typography>
             <Grid container spacing={2}>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Car handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <CampingCar handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Plane handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Moto handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Bus handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Metro handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Train handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Bike handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
                     <Ferry handleDataToTransport={addFootprint} />
                 </Grid>
             </Grid>
