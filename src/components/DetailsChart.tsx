@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { amber, cyan, grey, lightGreen, purple } from '@mui/material/colors';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import React from 'react';
@@ -12,12 +12,12 @@ ChartJS.register(
     ArcElement
 );
 
-const Chart = ({ data }: { data: number[] }) => {
+const DetailsChart = ({ data }: { data: number[] }) => {
 
     const { t } = useTranslation();
 
     return (
-        <Box sx={{ width: '25%', margin: 'auto' }}>
+        <Box sx={{ display: 'flex', width: '35%' }}>
             <Doughnut
                 data={{
                     labels: [
@@ -41,6 +41,10 @@ const Chart = ({ data }: { data: number[] }) => {
                         legend: {
                             position: 'top' as const,
                             display: false
+                        },
+                        title: {
+                            display: true,
+                            text: t('chart.details')
                         }
                     }
                 }}
@@ -49,4 +53,4 @@ const Chart = ({ data }: { data: number[] }) => {
     );
 };
 
-export default Chart;
+export default DetailsChart;

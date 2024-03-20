@@ -1,13 +1,14 @@
 import Transports from 'components/Transports';
 import React, { useState } from 'react';
 import './i18n';
-import Chart from 'components/Chart';
+import DetailsChart from 'components/DetailsChart';
 import PublicServices from 'components/PublicServices';
 import Food from 'components/Food';
 import House from 'components/House';
-import { Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { indigo } from '@mui/material/colors';
+import GlobalChart from 'components/GlobalChart';
 
 const App = () => {
 
@@ -39,7 +40,10 @@ const App = () => {
   return (
     <div>
       <Typography variant='h2' textAlign='center' fontWeight='medium' color={indigo[900]}>{t('title')}</Typography>
-      <Chart data={Object.values(state.sub)}/>
+      <Grid container justifyContent='center' alignItems='center' pb={2}>
+        <DetailsChart data={Object.values(state.sub)}/>
+        <GlobalChart footprint={Object.values(state.sub).reduce((a, b) => a + b, 0)} />
+      </Grid>
       <House handleDataToChart={addFootprint} />
       <Transports handleDataToChart={addFootprint}/>
       <Food handleDataToChart={addFootprint} />

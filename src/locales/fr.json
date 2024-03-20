@@ -28,6 +28,8 @@
         "perCent": "%"
     },
     "chart": {
+        "details": "Répartition de mon empreinte carbone",
+        "global": "Mon Bilan",
         "labels": {
             "transports": "Transports",
             "food": "Alimentation",
@@ -36,6 +38,7 @@
             "publicServices": "Services Publiques"
         },
         "footprintAdornment": "Empreinte (en kg / an)",
+        "totalFootprint": "Empreinte Totale",
         "target": "Objectif de 2 tonnes de CO2eq / personne / an pour limiter le réchaffement climatique à 2°C"
     },
     "transports": {
