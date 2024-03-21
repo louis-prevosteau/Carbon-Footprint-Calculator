@@ -1,10 +1,10 @@
-import { Box, Grid, Input, InputAdornment, Paper, Typography } from '@mui/material';
+import { Paper, Typography, Box, Grid, Input, InputAdornment } from '@mui/material';
 import { green } from '@mui/material/colors';
-import { getElectricityFootprint } from 'actions/house';
+import { getPropaneFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Electricity = ({ people, handleDataToHeat }: { people: number, handleDataToHeat: any }) => {
+const Propane = ({ people, handleDataToHeat }: { people: number, handleDataToHeat: any }) => {
 
     const [state, setState] = useState(
         {
@@ -16,9 +16,9 @@ const Electricity = ({ people, handleDataToHeat }: { people: number, handleDataT
     const { t } = useTranslation();
 
     useEffect(() => {
-        const footprint = getElectricityFootprint(state.params.conso, people);
-        handleDataToHeat('electricity', footprint);
-    }, [state.params.conso, people]);
+        const footprint = getPropaneFootprint(state.params.conso, people);
+        handleDataToHeat('propane', footprint);
+    }, [people, state.params.conso]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
         setState(prevState => {
@@ -29,24 +29,20 @@ const Electricity = ({ people, handleDataToHeat }: { people: number, handleDataT
 
     return (
         <Paper elevation={15} sx={{ padding: '20px', backgroundColor: green['A100'], borderRadius: '10px' }}>
-            <Typography variant='h5'>{t('house.electricity.title')}</Typography>
+            <Typography variant='h5'>{t('house.propane.title')}</Typography>
             <Box>
                 <Grid container direction='column' spacing={2}>
                     <Grid item xs={12} md={6}>
-                        <Grid container item alignItems='center' spacing={2}>
-                            <Grid item>
-                                <Typography variant='body1'>{t('house.electricity.questions.conso')}</Typography>
+                        <Grid  container alignItems="center" spacing={2}>
+                            <Grid  item >
+                                <Typography variant='body1'>{t('house.propane.questions.conso')}</Typography>
                             </Grid>
                             <Grid item>
                                 <Input
                                     type='number'
                                     value={state.params.conso}
                                     onChange={(e) => updateParam('conso', e.target.value)}
-                                    endAdornment={
-                                        <InputAdornment position='end'>
-                                            {t('adornments.kWh')}
-                                        </InputAdornment>
-                                    }
+                                    endAdornment={<InputAdornment position='end'>{t('adornments.kg')}</InputAdornment>}
                                 />
                             </Grid>
                         </Grid>
@@ -57,4 +53,4 @@ const Electricity = ({ people, handleDataToHeat }: { people: number, handleDataT
     );
 };
 
-export default Electricity;
+export default Propane;

@@ -6,6 +6,9 @@ import Electricity from './Electricity';
 import Wood from './Wood';
 import Gaz from './Gaz';
 import GazBottle from './GazBottle';
+import Propane from './Propane';
+import HeatNetwork from './HeatNetwork';
+import Fuel from './Fuel';
 
 const Heat = ({ people, handleDataToHouse }: { people: number, handleDataToHouse: any }) => {
 
@@ -84,26 +87,19 @@ const Heat = ({ people, handleDataToHouse }: { people: number, handleDataToHouse
                             </Paper>
                         </Grid>
                     ))}
-                    {(state.options.electricity || state.options.heatPump) && (
-                        <Grid item>
-                            <Electricity people={people} handleDataToHeat={addFootprint} />
-                        </Grid>
-                    )}
-                    {state.options.wood && (
-                        <Grid item>
-                            <Wood people={people} handleDataToHeat={addFootprint} />
-                        </Grid>
-                    )}
-                    {state.options.gaz && (
-                        <Grid item>
-                            <Gaz people={people} handleDataToHeat={addFootprint} />
-                        </Grid>
-                    )}
-                    {state.options.gazBottle && (
-                        <Grid item>
-                            <GazBottle people={people} handleDataToHeat={addFootprint} />
-                        </Grid>
-                    )}
+                    {Object.entries(state.options).map(([option, checked]) => (
+                        checked && (
+                            <Grid item key={option}>
+                                {(option === 'electricity' || option === 'heatPump') && <Electricity people={people} handleDataToHeat={addFootprint} />}
+                                {option === 'wood' && <Wood people={people} handleDataToHeat={addFootprint} />}
+                                {option === 'gaz' && <Gaz people={people} handleDataToHeat={addFootprint} />}
+                                {option === 'gazBottle' && <GazBottle people={people} handleDataToHeat={addFootprint} />}
+                                {option === 'propane' && <Propane people={people} handleDataToHeat={addFootprint} />}
+                                {option === 'heatNetwork' && <HeatNetwork people={people} handleDataToHeat={addFootprint} />}
+                                {option === 'fuel' && <Fuel people={people} handleDataToHeat={addFootprint} />}
+                            </Grid>
+                        )
+                    ))}
                 </Grid>
             </Box>
         </Paper>

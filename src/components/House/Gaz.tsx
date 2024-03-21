@@ -33,7 +33,7 @@ const Gaz = ({ people, handleDataToHeat }: { people: number, handleDataToHeat: a
         <Paper elevation={15} sx={{ padding: '20px', backgroundColor: green['A100'], borderRadius: '10px' }}>
             <Typography variant='h5'>{t('house.gaz.title')}</Typography>
             <Box>
-                <Grid container direction='column'  spacing={2}>
+                <Grid container direction='column' spacing={2}>
                     <Grid item xs={12} md={6}>
                         <Grid  container alignItems="center" spacing={2}>
                             <Grid  item >

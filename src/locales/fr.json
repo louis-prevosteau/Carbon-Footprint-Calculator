@@ -18,10 +18,12 @@
     "ok": "Ok",
     "adornments": {
         "km": "km / an",
+        "kg": "kg / an",
         "conso100": "l/100km",
         "hours": "h / an",
         "hoursPerWeek": "h / semaine",
         "literPerWeek": "l / semaine",
+        "liter": "l / an",
         "squareMetter": "m²",
         "age": "an(s)",
         "kWh": "kWh",
@@ -262,6 +264,24 @@
             "title": "Gaz en bouteille",
             "questions": {
                 "conso": "Quelle est la consommation annuelle de gaz en bouteille de votre foyer ?"
+            }
+        },
+        "propane": {
+            "title": "Propane",
+            "questions": {
+                "conso": "Quelle est la consommation annuelle de gaz propane en citerne de votre foyer ?"
+            }
+        },
+        "heatNetwork": {
+            "title": "Réseau de chaleur",
+            "questions": {
+                "conso": "Quelle est votre consommation annuelle d'énergie via le réseau de chaleur raccordé à votre foyer ?"
+            }
+        },
+        "fuel": {
+            "title": "Fioul domestique",
+            "questions": {
+                "conso": "Quelle est votre consommation annuelle de fioul domestique ?"
             }
         },
         "heat": {
