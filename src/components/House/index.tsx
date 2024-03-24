@@ -4,6 +4,8 @@ import { getBuildFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Heat from './Heat';
+import AirConditioning from './AirConditioning';
+import Holydays from './Holidays';
 
 const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -148,10 +150,10 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
                     <Heat people={state.params.people} handleDataToHouse={addFootprint} />
                 </Grid>
                 <Grid item xs={12} sm={3}>
-                    
+                    <AirConditioning people={state.params.people} handleDataToHouse={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
-                    
+                <Grid item lg={9} xs={12} sm={3}>
+                    <Holydays people={state.params.people} handleDataToHouse={addFootprint} />
                 </Grid>
                 <Grid item xs={12} sm={3}>
                     

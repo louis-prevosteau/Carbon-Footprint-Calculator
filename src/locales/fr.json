@@ -284,6 +284,12 @@
                 "conso": "Quelle est votre consommation annuelle de fioul domestique ?"
             }
         },
+        "airConditioning": {
+            "title": "Climatisation",
+            "questions": {
+                "clim": "Combien de climatiseurs possédez-vous pour refroidir votre logement ?"
+            }
+        },
         "heat": {
             "title": "Chauffage",
             "options": {
@@ -295,6 +301,18 @@
                 "heatNetwork": "Réseau de chaleur",
                 "propane": "Propane en citerne",
                 "fuel": "Fioul domestique"
+            }
+        },
+        "holidays": {
+            "title": "Vacances",
+            "options": {
+                "hotel": "Hôtel (nombre de nuits / an)",
+                "camping": "Camping (nombre de nuits / an)",
+                "youthHotel": "Auberge de jeunesse (nombre de nuits / an)",
+                "homeRental": "Location meublés (nombre de nuits / an)",
+                "familly": "Famille (nombre de nuits / an)",
+                "homeExchange": "Echange de maisons (nombre de nuits / an)",
+                "secondaryResidence": "Je possède une résidence secondaire"
             }
         }
     },

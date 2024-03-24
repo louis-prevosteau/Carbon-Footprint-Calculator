@@ -65,7 +65,7 @@ const Heat = ({ people, handleDataToHouse }: { people: number, handleDataToHouse
                 <Grid container spacing={6} justifyContent='flex-start'>
                     {Object.keys(state.options).map((option) => (
                         <Grid item key={option}>
-                            <Paper elevation={1} sx={{ padding: '20px', backgroundColor: green['A100'], borderRadius: '8px' }}>
+                            <Paper elevation={1} sx={{ padding: '20px', height: '40%', width: '170px', backgroundColor: green['A100'], borderRadius: '8px' }}>
                                 <FormGroup>
                                     <FormControlLabel
                                         control={
