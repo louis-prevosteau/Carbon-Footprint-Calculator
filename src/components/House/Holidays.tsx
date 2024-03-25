@@ -4,6 +4,7 @@ import { green } from '@mui/material/colors';
 import { getHolidaysFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import SecondaryResidence from './SecondaryResidence';
 
 const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToHouse: any }) => {
 
@@ -96,6 +97,7 @@ const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToH
                         label={t('house.holidays.options.secondaryResidence')}
                     />
                 </Paper>
+                {state.secondaryResidence && (<SecondaryResidence people={people} handleDataToHolidays={setSecondaryResFP} />)}
             </Box>
         </Paper>
     );

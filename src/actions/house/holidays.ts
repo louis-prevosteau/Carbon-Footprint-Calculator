@@ -1,3 +1,5 @@
+import { SEASON_FACTORS } from "utils/constants";
+
 export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, people: number) => {
     let res = 0;
     for (const residence in holidaysResidences) {
@@ -29,64 +31,16 @@ export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, peo
     return (res / people).toFixed(2);
 };
 
+const getSeasonFactor = (location: string, season: string): number => {
+    return SEASON_FACTORS[location][season] || SEASON_FACTORS.default[season];
+};
+
 export const getSecondaryResidenceFootprint = (people: number, surface: number, duration: number, location: string, season: string) => {
     let res = 0;
     res += surface * 9.5;
     const dayRatio = duration / 365;
     res += surface * 1.48 * dayRatio;
-    let seasonFactor = 0;
-    if (location === 'mediterranean')
-        switch (season) {
-            case 'summer':
-                seasonFactor = 0;
-                break;    
-            case 'summer+':
-                seasonFactor = 0.13;
-                break;
-            case 'winter':
-                seasonFactor = 1.41;
-                break;
-            case 'winter+':
-                seasonFactor = 1.62;
-                break;    
-            default:
-                break;
-        }    
-    else if (location === 'mountain')
-        switch (season) {
-            case 'summer':
-                seasonFactor = 0.06;
-                break;    
-            case 'summer+':
-                seasonFactor = 0.76;
-                break;
-            case 'winter':
-                seasonFactor = 2.68;
-                break;
-            case 'winter+':
-                seasonFactor = 2.15;
-                break;    
-            default:
-                break;
-        }
-    else
-        switch (season) {
-            case 'summer':
-                seasonFactor = 0.06;
-                break;    
-            case 'summer+':
-                seasonFactor = 0.46;
-                break;
-            case 'winter':
-                seasonFactor = 2.26;
-                break;
-            case 'winter+':
-                seasonFactor = 1.71;
-                break;    
-            default:
-                break;
-        }
-    res += seasonFactor * (19.95 + 1.73) * surface * dayRatio
+    res += getSeasonFactor(location, season) * (19.95 + 1.73) * surface * dayRatio
     return (res / people).toFixed(2);
 };
 

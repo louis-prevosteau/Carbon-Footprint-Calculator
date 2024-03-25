@@ -1,39 +1,20 @@
+import { CULTURE_FOOTPRINTS, SPORTS_FOOTPRINTS } from "utils/constants";
+
 export const getSportFootprint = (sports: Sports) => {
-    const sportsFootprints: Record<string, number> = {
-        athletics: 88.7,
-        ball: 88.7,
-        bodybuilding: 72.8,
-        equestring: 88.7,
-        externalSport: 24.9,
-        golf: 88.7,
-        martial: 88.7,
-        motors: 88.7,
-        other: 88.7,
-        surfing: 88.7,
-        swimming: 88.7,
-        winter: 138.7,
-    };
     let res = 0;
     for (const sport in sports) {
         if (sports[sport as keyof Sports]) {
-            res += sportsFootprints[sport];
+            res += SPORTS_FOOTPRINTS[sport];
         }
     }
     return res.toFixed(2);
 };
 
 export const getCultureFootprint = (culture: Culture) => {
-    const cultureFootprints: Record<string, number> = {
-        books: 50.22,
-        museum: 2.3,
-        music: 3.47,
-        show: 29.17,
-    };
-
     let res = 0;
     for (const type in culture) {
         if (culture[type as keyof Culture]) {
-            res += cultureFootprints[type];
+            res += CULTURE_FOOTPRINTS[type];
         }
     }
 

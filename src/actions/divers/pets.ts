@@ -1,25 +1,10 @@
+import { PET_FOOTPRINTS } from "utils/constants";
+
 export const getPetsFootprint = (pets: Pets) => {
-    let res = 0;
-    for (const pet in pets) {
-        switch (pet) {
-            case 'littleDog':
-                res += pets[pet] * 128.27;
-                break;
-            case 'mediumDog':
-                res += pets[pet] * 357.47;
-                break;
-            case 'bigDog':
-                res += pets[pet] * 598.65;
-                break;
-            case 'cat':
-                res += pets[pet] * 54.94;
-                break;
-            default:
-                break;
-        }
-    }
-    return res.toFixed(2);
-};
+    return Object.values(pets)
+      .reduce((acc, petCount) => acc + petCount * PET_FOOTPRINTS[Object.keys(PET_FOOTPRINTS)[0]as keyof typeof PET_FOOTPRINTS], 0)
+      .toFixed(2);
+  };
 
 interface Pets {
     littleDog: number;

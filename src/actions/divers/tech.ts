@@ -1,69 +1,27 @@
+import { PRESERV_FACTOR } from "utils/constants";
+
 export const getDevicesFootprint = (
     devices: TechDevices,
     preservation: string,
 ) => {
     let res = 0;
-    let coefPreserv = 0;
-    switch (preservation) {
-        case 'new':
-            coefPreserv = 1 / 2;
-            break;
-        case 'minimum':
-            coefPreserv = 2 /3;
-            break;
-        case 'medium':
-            coefPreserv = 1;
-            break;
-        case 'maximum':
-            coefPreserv = 4 / 3;
-            break;
-        default:
-            break;
-    }
+    const deviceFootprints: { [key: string]: number } = {
+        camera: 30 / (5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        houseVideoGame: 73.7 / (6.5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        personalVideoGame: 30.8 / (6.5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        bluetoothSpeaker: 8.98 / (5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        vocalSpeaker: 30.7 / (5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        homeCinema: 133 / (8 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        connectedWatch: 9.72 / (4 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        computer: 544 / (6 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        personalComputer: 156 / (3 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        pad: 63 / (3 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        phone: 57 / (2.5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        tv: 371 / (8 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+        videoProjector: 94 / (5 * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]),
+    };
     for (const device in devices) {
-        switch (device) {
-            case 'camera':
-                res += (devices[device] * 30) / (5 * coefPreserv);
-                break;
-            case 'houseVideoGame':
-                res += (devices[device] * 73.7) / (6.5 * coefPreserv);
-                break;  
-            case 'personalVideoGame':
-                res += (devices[device] * 30.8) / (6.5 * coefPreserv);
-                break;
-            case 'bluetoothSpeaker':
-                res += (devices[device] * 8.98) / (5 * coefPreserv);
-                break;
-            case 'vocalSpeaker':
-                res += (devices[device] * 30.7) / (5 * coefPreserv);
-                break;
-            case 'homeCinema':
-                res += (devices[device] * 133) / (8 * coefPreserv);
-                break;
-            case 'connectedWatch':
-                res += (devices[device] * 9.72) / (4 * coefPreserv);
-                break;
-            case 'computer':
-                res += (devices[device] * 544) / (6 * coefPreserv);
-                break;
-            case 'personalComputer':
-                res += (devices[device] * 156) / (3 * coefPreserv);
-                break; 
-            case 'pad':
-                res += (devices[device] * 63) / (3 * coefPreserv);
-                break;   
-            case 'phone':
-                res += (devices[device] * 57) / (2.5 * coefPreserv);
-                break;   
-            case 'tv':
-                res += (devices[device] * 371) / (8 * coefPreserv);
-                break; 
-            case 'videoProjector':
-                res += (devices[device] * 94) / (5 * coefPreserv);
-                break;     
-            default:
-                break;
-        }
+        res += devices[device as keyof typeof devices] * deviceFootprints[device];
     }
     return res.toFixed(2);
 };

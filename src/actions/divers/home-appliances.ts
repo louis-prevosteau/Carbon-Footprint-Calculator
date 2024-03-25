@@ -1,73 +1,40 @@
-export const getHomeAppliancesFootprint = (
-    homeAppliances: HomeAppliances,
-    people: number,
-    preservation: string
-) => {
-    let res = 0;
-    let coefPreserv = 0;
-    switch (preservation) {
-        case 'new':
-            coefPreserv = 1 / 2;
+import { HOME_APPLIANCE_AGE_1, HOME_APPLIANCE_AGE_2, HOME_APPLIANCE_AGE_3, HOME_APPLIANCE_AGE_4, PRESERV_FACTOR } from "utils/constants";
+
+const getHomeApplianceFootprint = (appliance: string, quantity: number, coefPreserv: number) => {
+    let factor = 0;
+    switch (appliance) {
+        case 'vacuumCleaner':
+        case 'hood':
+        case 'cookingRobot':
+            factor = HOME_APPLIANCE_AGE_1;
             break;
-        case 'minimum':
-            coefPreserv = 2 /3;
+        case 'kettle':
+        case 'coffeeMaker':
+        case 'dishwasher':
+        case 'dryer':
+        case 'microwave':
+        case 'hotplates':
+            factor = HOME_APPLIANCE_AGE_2;
             break;
-        case 'medium':
-            coefPreserv = 1;
+        case 'freezer':
+        case 'fridge':
+        case 'combinedFridge':
+        case 'washingMachine':
+            factor = HOME_APPLIANCE_AGE_3;
             break;
-        case 'maximum':
-            coefPreserv = 4 / 3;
+        case 'oven':
+            factor = HOME_APPLIANCE_AGE_4;
             break;
         default:
             break;
     }
+    return (factor * quantity / (appliance === 'vacuumCleaner' ? 1 : coefPreserv));
+}
+
+export const getHomeAppliancesFootprint = (homeAppliances: HomeAppliances, people: number, preservation: string) => {
+    let res = 0;
     for (const appliance in homeAppliances) {
-        switch (appliance) {
-            case 'vacuumCleaner':
-                res += (52.4 / (8 * coefPreserv)) * homeAppliances[appliance];
-                break;    
-            case 'kettle':
-                res += (9.9 / (6 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'coffeeMaker':
-                res += (31.9 / (6 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'freezer':
-                res += (415 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'oven':
-                res += (217 / (12 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'hood':
-                res += (60.4 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'fridge':
-                res += (87.6 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'combinedFridge':
-                res += (257 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'washingMachine':
-                res += (342 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'dishwasher':
-                res += (271 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'dryer':
-                res += (266 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'cookingRobot':
-                res += (41.3 / (8 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'microwave':
-                res += (98.4 / (12 * coefPreserv)) * homeAppliances[appliance];
-                break;
-            case 'hotplates':
-                res += (65.3 / (10 * coefPreserv)) * homeAppliances[appliance];
-                break;    
-            default:
-                break;
-        }
+        res += getHomeApplianceFootprint(appliance, homeAppliances[appliance as keyof typeof homeAppliances], PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]);
     }
     return (res / people).toFixed(2);
 };
