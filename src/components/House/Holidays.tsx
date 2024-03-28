@@ -1,10 +1,9 @@
 import { Remove, Add } from '@mui/icons-material';
-import { Box, Checkbox, FormControlLabel, Grid, IconButton, Input, Paper, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Input, Paper, Typography } from '@mui/material';
 import { green } from '@mui/material/colors';
 import { getHolidaysFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import SecondaryResidence from './SecondaryResidence';
 
 const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToHouse: any }) => {
 
@@ -18,15 +17,13 @@ const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToH
                 familly: 0,
                 homeExchange: 0,
             },
-            secondaryResidence: false,
-            secondaryResFP: 0
         }
     );
     const { t } = useTranslation();
 
     useEffect(() => {
-        const footprint = getHolidaysFootprint(state.params, people) + state.secondaryResFP;
-        handleDataToHouse('holidays', footprint)
+        const footprint = getHolidaysFootprint(state.params, people);
+        handleDataToHouse('holidays', footprint);
     }, [
         people,
         state.params.camping,
@@ -34,8 +31,7 @@ const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToH
         state.params.homeExchange,
         state.params.homeRental,
         state.params.hotel,
-        state.params.youthHotel,
-        state.secondaryResFP
+        state.params.youthHotel
     ]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
@@ -43,10 +39,6 @@ const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToH
             const newState = { ...prevState, params: { ...prevState.params, [paramName]: paramValue as never } };
             return newState;
         });
-    };
-
-    const setSecondaryResFP = (footprint: number) => {
-        setState({ ...state, secondaryResFP: footprint });
     };
 
     return (
@@ -82,22 +74,6 @@ const Holidays = ({ people, handleDataToHouse }: { people: number, handleDataToH
                         </Grid>
                     ))}
                 </Grid>
-                <Paper elevation={15} sx={{ padding: '20px', backgroundColor: green['A100'], borderRadius: '10px' }}>
-                    <FormControlLabel
-                        control={<Checkbox
-                            checked={state.secondaryResidence}
-                            onChange={() => setState({ ...state, secondaryResidence: !state.secondaryResidence })}
-                            sx={{
-                                color: green[800],
-                                '&.Mui-checked': {
-                                    color: green[600],
-                                },
-                            }}
-                        />}
-                        label={t('house.holidays.options.secondaryResidence')}
-                    />
-                </Paper>
-                {state.secondaryResidence && (<SecondaryResidence people={people} handleDataToHolidays={setSecondaryResFP} />)}
             </Box>
         </Paper>
     );

@@ -1,323 +1,345 @@
 {
-    "title": "Mon Empreinte Carbone",
-    "common": {
-        "frequencies": {
-            "never": "Jamais",
-            "sometimes": "Parfois",
-            "often": "Souvent",
-            "always": "Toujours"
-        },
-        "milks": {
-            "cow": "Lait de vache",
-            "soy": "Lait de soja",
-            "oat": "Lait d'avoine"
-        },
-        "yes": "Oui",
-        "no": "Non"
+  "title": "Mon Empreinte Carbone",
+  "common": {
+    "frequencies": {
+      "never": "Jamais",
+      "sometimes": "Parfois",
+      "often": "Souvent",
+      "always": "Toujours"
     },
-    "ok": "Ok",
-    "adornments": {
-        "km": "km / an",
-        "kg": "kg / an",
-        "conso100": "l/100km",
-        "hours": "h / an",
-        "hoursPerWeek": "h / semaine",
-        "literPerWeek": "l / semaine",
-        "liter": "l / an",
-        "squareMetter": "m²",
-        "age": "an(s)",
-        "kWh": "kWh",
-        "perCent": "%"
+    "milks": {
+      "cow": "Lait de vache",
+      "soy": "Lait de soja",
+      "oat": "Lait d'avoine"
     },
-    "chart": {
-        "details": "Répartition de mon empreinte carbone",
-        "global": "Mon Bilan",
-        "labels": {
-            "transports": "Transports",
-            "food": "Alimentation",
-            "house": "Logement",
-            "divers": "Divers",
-            "publicServices": "Services Publiques"
-        },
-        "footprintAdornment": "Empreinte (en kg / an)",
-        "totalFootprint": "Empreinte Totale",
-        "target": "Objectif de 2 tonnes de CO2eq / personne / an pour limiter le réchaffement climatique à 2°C"
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "ok": "Ok",
+  "adornments": {
+    "km": "km / an",
+    "kg": "kg / an",
+    "conso100": "l/100km",
+    "hours": "h / an",
+    "hoursPerWeek": "h / semaine",
+    "literPerWeek": "l / semaine",
+    "liter": "l / an",
+    "squareMetter": "m²",
+    "age": "an(s)",
+    "kWh": "kWh",
+    "perCent": "%"
+  },
+  "chart": {
+    "details": "Répartition de mon empreinte carbone",
+    "global": "Mon Bilan",
+    "labels": {
+      "transports": "Transports",
+      "food": "Alimentation",
+      "house": "Logement",
+      "divers": "Divers",
+      "publicServices": "Services Publiques"
     },
-    "transports": {
-        "title": "Transports",
-        "car": {
-            "title": "Voiture",
-            "questions": {
-                "distance": "Quelle distance parcourez-vous en voiture dans une année ?",
-                "sameCar": "Utilisez-vous la même voiture pour vous déplacer ?",
-                "type": "Quel est le gabarit de votre voiture ?",
-                "motor": "Quelle est la motorisation de votre voiture ?",
-                "recent": "Votre voiture a-t-elle moins de 10 ans ?",
-                "people": "Quel est le nombre moyen de voyageurs dans la voiture ?",
-                "fuel": "Quel type de carburant votre voiture consomme-t-elle ?",
-                "conso": "Quelle est la consommation moyenne de votre voiture ?",
-                "caravan": "Possédez-vous une caravane ?"
-            },
-            "motors": {
-                "thermic": "Thermique",
-                "hybrid": "Hybride",
-                "electric": "Electrique"
-            },
-            "types": {
-                "small": "Citadine",
-                "medium": "Compacte",
-                "vul": "Utilitaire",
-                "berline": "Berline",
-                "suv": "SUV"
-            },
-            "fuels": {
-                "essence": "Essence (E5, E10)",
-                "bio": "Biocarburants",
-                "gazole": "Gazole"
-            }
-        },
-        "caravan": {
-            "questions": {
-                "distance": "Quelle distance parcourez-vous à l'année en caravane ?"
-            }
-        },
-        "campingCar": {
-            "title": "Camping Car",
-            "questions": {
-                "distance": "Quelle distance parcourez-vous à l'année en camping car ?",
-                "conso": "Quelle est la consommation moyenne de votre camping car ?"
-            }
-        },
-        "plane": {
-            "title": "Avion",
-            "questions": {
-                "shortFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols de moins de 2h (court-courrier) ?",
-                "mediumFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols entre 2 et 6h (moyen-courrier) ?",
-                "longFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols de plus de 6h (long-courrier) ?"
-            }
-        },
-        "bus": {
-            "title": "Bus",
-            "questions": {
-                "hours": "Combien d'heures passez-vous dans un bus par semaine ?"
-            }
-        },
-        "train": {
-            "title": "Train",
-            "questions": {
-                "distance": "Quelle distance parcourez-vous en train dans une année ?"
-            }
-        },
-        "metro": {
-            "title": "Métro, Tram, RER",
-            "questions": {
-                "hours": "Combien d'heures passez-vous en métro, tram, RER par semaine ?"
-            }
-        },
-        "ferry": {
-            "title": "Ferry",
-            "questions": {
-                "hours": "Combien d'heures par an voyagez-vous en ferry ou croisière ?"
-            }
-        },
-        "moto": {
-            "title": "Deux Roues",
-            "questions": {
-                "distance": "Quelle distance parcourez-vous en deux roues (moto, scooter) dans une année ?",
-                "type": "Quel est le gabarit de votre deux roues ?"
-            },
-            "types": {
-                "thermic": "Scooter thermique",
-                "electric": "Scooter électrique",
-                "inf250": "Moto de moins de 250 cm3",
-                "sup250": "Moto de plus de 250 cm3"
-            }
-        },
-        "bike": {
-            "title": "Mobilité douce",
-            "mainQuestion": "Quels sont vos modes de déplacements \"efficaces\" ?",
-            "options": {
-                "bike": "Vélo",
-                "electricBike": "Vélo à Assistance Electrique",
-                "other": "Petit véhicule électrique"
-            },
-            "questions": {
-                "eBikeDistance": "Combien de kilomètres faites-vous à l'année avec votre Vélo à Assistance Électrique (VAE) ?",
-                "otherDistance": "Combien de kilomètres faites-vous à l'année avec votre trottinette électrique, gyropode, monocycle électrique, hoverboard...?"
-            }
-        }
+    "footprintAdornment": "Empreinte (en kg / an)",
+    "totalFootprint": "Empreinte Totale",
+    "target": "Objectif de 2 tonnes de CO2eq / personne / an pour limiter le réchaffement climatique à 2°C"
+  },
+  "transports": {
+    "title": "Transports",
+    "car": {
+      "title": "Voiture",
+      "questions": {
+        "distance": "Quelle distance parcourez-vous en voiture dans une année ?",
+        "sameCar": "Utilisez-vous la même voiture pour vous déplacer ?",
+        "type": "Quel est le gabarit de votre voiture ?",
+        "motor": "Quelle est la motorisation de votre voiture ?",
+        "recent": "Votre voiture a-t-elle moins de 10 ans ?",
+        "people": "Quel est le nombre moyen de voyageurs dans la voiture ?",
+        "fuel": "Quel type de carburant votre voiture consomme-t-elle ?",
+        "conso": "Quelle est la consommation moyenne de votre voiture ?",
+        "caravan": "Possédez-vous une caravane ?"
+      },
+      "motors": {
+        "thermic": "Thermique",
+        "hybrid": "Hybride",
+        "electric": "Electrique"
+      },
+      "types": {
+        "small": "Citadine",
+        "medium": "Compacte",
+        "vul": "Utilitaire",
+        "berline": "Berline",
+        "suv": "SUV"
+      },
+      "fuels": {
+        "essence": "Essence (E5, E10)",
+        "bio": "Biocarburants",
+        "gazole": "Gazole"
+      }
     },
-    "food": {
-        "title": "Alimentation",
-        "trash": {
-            "title": "Déchets",
-            "questions": {
-                "level": "Comment estimeriez-vous la quantité de déchets que vous jetez ?"
-            },
-            "levelOptions": {
-                "base": "Je jette sans faire attention",
-                "reduction": "Je limite mes déchets",
-                "zero": "Je suis zéro-déchet"
-            },
-            "tips": {
-                "antiWaste": "Anti-gaspillage alimentaire",
-                "compost": "Compostage",
-                "stopPub": "Stop Pub",
-                "bulk": "Achats en vrac"
-            }
-        },
-        "lunch": {
-            "title": "Repas",
-            "question": "Comment se composent vos repas sur une semaine type ?",
-            "lunches": {
-                "vegan": "Végétalien",
-                "vegetarian": "Végétarien",
-                "meat1": "Poulet, Porc, Fromage",
-                "meat2": "Boeuf, Veau, Agneau",
-                "fish1": "Saumon, Sardine, Maquereau",
-                "fish2": "Poisson blanc"
-            }
-        },
-        "breakfast": {
-            "title": "Petit Déjeuner",
-            "question": "Quel petit déjeuner vous correspond le plus ?",
-            "types": {
-                "british": "Britanique",
-                "continental": "Continental",
-                "milk": "Lait et Céréales",
-                "vegan": "Fruits"
-            }
-        },
-        "local": {
-            "title": "Localité",
-            "question": "Consommez-vous des produits locaux ?"
-        },
-        "season": {
-            "title": "Saisonalité",
-            "question": "Consommez-vous des produits de saison ?"
-        },
-        "alcool": {
-            "title": "Alcool",
-            "questions": {
-                "conso": "Quelle est votre consommation d'alcool par semaine ?"
-            }
-        },
-        "hotDrinks": {
-            "title": "Boissons Chaudes",
-            "questions": {
-                "drink": "Quelle est votre consommation de boissons chaudes pour une semaine type (nombre de tasses par semaine) ?"
-            },
-            "drinks": {
-                "coffee": "Café",
-                "tea": "Thé",
-                "chocolate": "Chocolat chaud",
-                "chicory": "Chicorée"
-            }
-        },
-        "waterBottle": {
-            "title": "Eau en Bouteille",
-            "question": "Buvez-vous votre eau en bouteille ?"
-        },
-        "sodas": {
-            "title": "Sodas",
-            "questions": {
-                "conso": "Quelle est votre consommation de sodas par semaine ?"
-            } 
-        }
+    "caravan": {
+      "questions": {
+        "distance": "Quelle distance parcourez-vous à l'année en caravane ?"
+      }
     },
-    "house": {
-        "title": "Logement",
-        "build": "Construction",
-        "questions": {
-            "people": "Combien y a-t-il de personnes dans votre logement ?",
-            "surface": "Quelle est la surface de votre logement ?",
-            "age": "Quel est l'âge de votre logement ?",
-            "apartment": "Votre logement est-il un appartement ?"
-        },
-        "electricity": {
-            "title": "Electricité",
-            "questions": {
-                "conso": "Quelle est votre consommation annuelle d'électricité ?"
-            }
-        },
-        "wood": {
-            "title": "Bois ou granulés",
-            "types": {
-                "log": "Bûches",
-                "pellets": "Granulés"
-            },
-            "questions": {
-                "type": "Quel type de bois utilisez-vous ?",
-                "consoWood": "Quelle la consommation annuelle de bois en bûches de votre foyer ?",
-                "consoGranul": "Quelle est la consommation annuelle de bois en granulés de votre foyer ?"
-            }
-        },
-        "gaz": {
-            "title": "Réseau de gaz",
-            "questions": {
-                "conso": "Quelle est la consommation annuelle de gaz de votre foyer ?",
-                "biogaz": "Avez-vous souscrit à un contrat gaz incluant du biogaz (ou biométhane) ?",
-                "part": "Quelle est la part de biogaz garantie par votre contrat de gaz ?"
-            }
-        },
-        "gazBottle": {
-            "title": "Gaz en bouteille",
-            "questions": {
-                "conso": "Quelle est la consommation annuelle de gaz en bouteille de votre foyer ?"
-            }
-        },
-        "propane": {
-            "title": "Propane",
-            "questions": {
-                "conso": "Quelle est la consommation annuelle de gaz propane en citerne de votre foyer ?"
-            }
-        },
-        "heatNetwork": {
-            "title": "Réseau de chaleur",
-            "questions": {
-                "conso": "Quelle est votre consommation annuelle d'énergie via le réseau de chaleur raccordé à votre foyer ?"
-            }
-        },
-        "fuel": {
-            "title": "Fioul domestique",
-            "questions": {
-                "conso": "Quelle est votre consommation annuelle de fioul domestique ?"
-            }
-        },
-        "airConditioning": {
-            "title": "Climatisation",
-            "questions": {
-                "clim": "Combien de climatiseurs possédez-vous pour refroidir votre logement ?"
-            }
-        },
-        "heat": {
-            "title": "Chauffage",
-            "options": {
-                "electricity": "Electricité",
-                "heatPump": "Pompe à Chaleur",
-                "wood": "Bois ou granulés",
-                "gaz": "Réseau de gaz",
-                "gazBottle": "Bouteille de gaz",
-                "heatNetwork": "Réseau de chaleur",
-                "propane": "Propane en citerne",
-                "fuel": "Fioul domestique"
-            }
-        },
-        "holidays": {
-            "title": "Vacances",
-            "options": {
-                "hotel": "Hôtel (nombre de nuits / an)",
-                "camping": "Camping (nombre de nuits / an)",
-                "youthHotel": "Auberge de jeunesse (nombre de nuits / an)",
-                "homeRental": "Location meublés (nombre de nuits / an)",
-                "familly": "Famille (nombre de nuits / an)",
-                "homeExchange": "Echange de maisons (nombre de nuits / an)",
-                "secondaryResidence": "Je possède une résidence secondaire"
-            }
-        }
+    "campingCar": {
+      "title": "Camping Car",
+      "questions": {
+        "distance": "Quelle distance parcourez-vous à l'année en camping car ?",
+        "conso": "Quelle est la consommation moyenne de votre camping car ?"
+      }
     },
-    "publicServices": {
-        "title": "Services Publiques",
-        "question": "Nous attribuons l'empreinte des services publics (éducation, santé...) et marchands (télécom, assurance...) à chaque citoyen de façon égale."
+    "plane": {
+      "title": "Avion",
+      "questions": {
+        "shortFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols de moins de 2h (court-courrier) ?",
+        "mediumFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols entre 2 et 6h (moyen-courrier) ?",
+        "longFlightTime": "Sur une année, combien d'heures voyagez-vous sur des vols de plus de 6h (long-courrier) ?"
+      }
+    },
+    "bus": {
+      "title": "Bus",
+      "questions": {
+        "hours": "Combien d'heures passez-vous dans un bus par semaine ?"
+      }
+    },
+    "train": {
+      "title": "Train",
+      "questions": {
+        "distance": "Quelle distance parcourez-vous en train dans une année ?"
+      }
+    },
+    "metro": {
+      "title": "Métro, Tram, RER",
+      "questions": {
+        "hours": "Combien d'heures passez-vous en métro, tram, RER par semaine ?"
+      }
+    },
+    "ferry": {
+      "title": "Ferry",
+      "questions": {
+        "hours": "Combien d'heures par an voyagez-vous en ferry ou croisière ?"
+      }
+    },
+    "moto": {
+      "title": "Deux Roues",
+      "questions": {
+        "distance": "Quelle distance parcourez-vous en deux roues (moto, scooter) dans une année ?",
+        "type": "Quel est le gabarit de votre deux roues ?"
+      },
+      "types": {
+        "thermic": "Scooter thermique",
+        "electric": "Scooter électrique",
+        "inf250": "Moto de moins de 250 cm3",
+        "sup250": "Moto de plus de 250 cm3"
+      }
+    },
+    "bike": {
+      "title": "Mobilité douce",
+      "mainQuestion": "Quels sont vos modes de déplacements \"efficaces\" ?",
+      "options": {
+        "bike": "Vélo",
+        "electricBike": "Vélo à Assistance Electrique",
+        "other": "Petit véhicule électrique"
+      },
+      "questions": {
+        "eBikeDistance": "Combien de kilomètres faites-vous à l'année avec votre Vélo à Assistance Électrique (VAE) ?",
+        "otherDistance": "Combien de kilomètres faites-vous à l'année avec votre trottinette électrique, gyropode, monocycle électrique, hoverboard...?"
+      }
     }
+  },
+  "food": {
+    "title": "Alimentation",
+    "trash": {
+      "title": "Déchets",
+      "questions": {
+        "level": "Comment estimeriez-vous la quantité de déchets que vous jetez ?"
+      },
+      "levelOptions": {
+        "base": "Je jette sans faire attention",
+        "reduction": "Je limite mes déchets",
+        "zero": "Je suis zéro-déchet"
+      },
+      "tips": {
+        "antiWaste": "Anti-gaspillage alimentaire",
+        "compost": "Compostage",
+        "stopPub": "Stop Pub",
+        "bulk": "Achats en vrac"
+      }
+    },
+    "lunch": {
+      "title": "Repas",
+      "question": "Comment se composent vos repas sur une semaine type ?",
+      "lunches": {
+        "vegan": "Végétalien",
+        "vegetarian": "Végétarien",
+        "meat1": "Poulet, Porc, Fromage",
+        "meat2": "Boeuf, Veau, Agneau",
+        "fish1": "Saumon, Sardine, Maquereau",
+        "fish2": "Poisson blanc"
+      }
+    },
+    "breakfast": {
+      "title": "Petit Déjeuner",
+      "question": "Quel petit déjeuner vous correspond le plus ?",
+      "types": {
+        "british": "Britanique",
+        "continental": "Continental",
+        "milk": "Lait et Céréales",
+        "vegan": "Fruits"
+      }
+    },
+    "local": {
+      "title": "Localité",
+      "question": "Consommez-vous des produits locaux ?"
+    },
+    "season": {
+      "title": "Saisonalité",
+      "question": "Consommez-vous des produits de saison ?"
+    },
+    "alcool": {
+      "title": "Alcool",
+      "questions": {
+        "conso": "Quelle est votre consommation d'alcool par semaine ?"
+      }
+    },
+    "hotDrinks": {
+      "title": "Boissons Chaudes",
+      "questions": {
+        "drink": "Quelle est votre consommation de boissons chaudes pour une semaine type (nombre de tasses par semaine) ?"
+      },
+      "drinks": {
+        "coffee": "Café",
+        "tea": "Thé",
+        "chocolate": "Chocolat chaud",
+        "chicory": "Chicorée"
+      }
+    },
+    "waterBottle": {
+      "title": "Eau en Bouteille",
+      "question": "Buvez-vous votre eau en bouteille ?"
+    },
+    "sodas": {
+      "title": "Sodas",
+      "questions": {
+        "conso": "Quelle est votre consommation de sodas par semaine ?"
+      }
+    }
+  },
+  "house": {
+    "title": "Logement",
+    "build": "Construction",
+    "questions": {
+      "people": "Combien y a-t-il de personnes dans votre logement ?",
+      "surface": "Quelle est la surface de votre logement ?",
+      "age": "Quel est l'âge de votre logement ?",
+      "apartment": "Votre logement est-il un appartement ?"
+    },
+    "electricity": {
+      "title": "Electricité",
+      "questions": {
+        "conso": "Quelle est votre consommation annuelle d'électricité ?"
+      }
+    },
+    "wood": {
+      "title": "Bois ou granulés",
+      "types": {
+        "log": "Bûches",
+        "pellets": "Granulés"
+      },
+      "questions": {
+        "type": "Quel type de bois utilisez-vous ?",
+        "consoWood": "Quelle la consommation annuelle de bois en bûches de votre foyer ?",
+        "consoGranul": "Quelle est la consommation annuelle de bois en granulés de votre foyer ?"
+      }
+    },
+    "gaz": {
+      "title": "Réseau de gaz",
+      "questions": {
+        "conso": "Quelle est la consommation annuelle de gaz de votre foyer ?",
+        "biogaz": "Avez-vous souscrit à un contrat gaz incluant du biogaz (ou biométhane) ?",
+        "part": "Quelle est la part de biogaz garantie par votre contrat de gaz ?"
+      }
+    },
+    "gazBottle": {
+      "title": "Gaz en bouteille",
+      "questions": {
+        "conso": "Quelle est la consommation annuelle de gaz en bouteille de votre foyer ?"
+      }
+    },
+    "propane": {
+      "title": "Propane",
+      "questions": {
+        "conso": "Quelle est la consommation annuelle de gaz propane en citerne de votre foyer ?"
+      }
+    },
+    "heatNetwork": {
+      "title": "Réseau de chaleur",
+      "questions": {
+        "conso": "Quelle est votre consommation annuelle d'énergie via le réseau de chaleur raccordé à votre foyer ?"
+      }
+    },
+    "fuel": {
+      "title": "Fioul domestique",
+      "questions": {
+        "conso": "Quelle est votre consommation annuelle de fioul domestique ?"
+      }
+    },
+    "airConditioning": {
+      "title": "Climatisation",
+      "questions": {
+        "clim": "Combien de climatiseurs possédez-vous pour refroidir votre logement ?"
+      }
+    },
+    "heat": {
+      "title": "Chauffage",
+      "options": {
+        "electricity": "Electricité",
+        "heatPump": "Pompe à Chaleur",
+        "wood": "Bois ou granulés",
+        "gaz": "Réseau de gaz",
+        "gazBottle": "Bouteille de gaz",
+        "heatNetwork": "Réseau de chaleur",
+        "propane": "Propane en citerne",
+        "fuel": "Fioul domestique"
+      }
+    },
+    "holidays": {
+      "title": "Vacances",
+      "options": {
+        "hotel": "Hôtel (nombre de nuits / an)",
+        "camping": "Camping (nombre de nuits / an)",
+        "youthHotel": "Auberge de jeunesse (nombre de nuits / an)",
+        "homeRental": "Location meublés (nombre de nuits / an)",
+        "familly": "Famille (nombre de nuits / an)",
+        "homeExchange": "Echange de maisons (nombre de nuits / an)",
+        "secondaryResidence": "Je possède une résidence secondaire"
+      },
+      "secondaryResidence": {
+        "title": "Résidance secondaire",
+        "questions": {
+          "surface": "Quelle est la surface de votre résidance secondaire ?",
+          "duration": "Combien de temps (nuitées) passez-vous dans votre résidence secondaire chaque année ?",
+          "location": "Où se situe votre résidance secondaire ?",
+          "season": "À quelle(s) saison(s) vous rendez-vous majoritairement dans votre résidence secondaire ?"
+        },
+        "locations": {
+          "mediterranean": "Littoral Sud-Est",
+          "atlantic": "Littoral Nord-Ouest",
+          "mountain": "Montagne",
+          "city": "Ville",
+          "country": "Campagne"
+        },
+        "seasons": {
+          "summer": "Plutôt l'été",
+          "summer+": "Surtout l'été",
+          "winter": "Plutôt l'hiver",
+          "winter+": "Surtout l'hiver"
+        }
+      }
+    }
+  },
+  "publicServices": {
+    "title": "Services Publiques",
+    "question": "Nous attribuons l'empreinte des services publics (éducation, santé...) et marchands (télécom, assurance...) à chaque citoyen de façon égale."
+  }
 }

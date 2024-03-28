@@ -1,4 +1,4 @@
-import { Box, FormControlLabel, FormGroup, Grid, Input, InputAdornment, Paper, Radio, RadioGroup, Switch, Typography } from '@mui/material';
+import { Box, Checkbox, FormControlLabel, FormGroup, Grid, Input, InputAdornment, Paper, Radio, RadioGroup, Switch, Typography } from '@mui/material';
 import { green, lightGreen } from '@mui/material/colors';
 import { getBuildFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Heat from './Heat';
 import AirConditioning from './AirConditioning';
 import Holydays from './Holidays';
+import SecondaryResidence from './SecondaryResidence';
 
 const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -15,13 +16,15 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
                 people: 0,
                 surface: 0,
                 apartment: false,
-                age: 0
+                age: 0,
+                secondaryResidence: false
             },
             sub: {
                 airConditioning: 0,
                 build: 0,
                 heat: 0,
                 holidays: 0,
+                secondaryResidence: 0,
                 outside: 0,
                 pool: 0
             }
@@ -30,13 +33,14 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const footprint = Object.values(state.sub).reduce((a, b) => a + b, 0);
+        const footprint = Number(Object.values(state.sub).reduce((a, b) => a + b, 0));
         handleDataToChart('house', footprint);
     }, [
         state.sub.airConditioning,
         state.sub.build,
         state.sub.heat,
         state.sub.holidays,
+        state.sub.secondaryResidence,
         state.sub.outside,
         state.sub.pool        
     ]
@@ -156,7 +160,30 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
                     <Holydays people={state.params.people} handleDataToHouse={addFootprint} />
                 </Grid>
                 <Grid item xs={12} sm={3}>
-                    
+                    <Grid container spacing={5} mt={2}>
+                        <Grid item>
+                            <Paper elevation={15} sx={{ padding: '20px', backgroundColor: green[200], borderRadius: '10px' }}>
+                                <FormControlLabel
+                                    control={<Checkbox
+                                        checked={state.params.secondaryResidence}
+                                        onChange={() => setState({ ...state, params: { ...state.params, secondaryResidence: !state.params.secondaryResidence } })}
+                                        sx={{
+                                            color: green[800],
+                                            '&.Mui-checked': {
+                                                color: green[600],
+                                            },
+                                        }}
+                                    />}
+                                    label={t('house.holidays.options.secondaryResidence')}
+                                />
+                            </Paper>
+                        </Grid>
+                        {state.params.secondaryResidence && (
+                            <Grid item>
+                                <SecondaryResidence people={state.params.people} handleDataToHouse={addFootprint} />
+                            </Grid>
+                        )}
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} sm={3}>
                     

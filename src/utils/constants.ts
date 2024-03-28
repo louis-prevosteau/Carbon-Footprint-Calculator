@@ -7,27 +7,8 @@ export const CAR_MOTORS = ['thermic', 'hybrid', 'electric'];
 export const CAR_FUELS = ['essence', 'bio', 'gazole', 'gpl'];
 export const MOTO_TYPES = ['thermic', 'electric', 'inf250', 'sup250'];
 export const WOOD_TYPES = ['log', 'pellets'];
-
-export const SEASON_FACTORS: { [key: string]: { [key: string]: number } } = {
-    mediterranean: {
-        'summer': 0,
-        'summer+': 0.13,
-        'winter': 1.41,
-        'winter+': 1.62,
-    },
-    mountain: {
-        'summer': 0.06,
-        'summer+': 0.76,
-        'winter': 2.68,
-        'winter+': 2.15,
-    },
-    default: {
-        'summer': 0.06,
-        'summer+': 0.46,
-        'winter': 2.26,
-        'winter+': 1.71,
-    },
-};
+export const LOCATIONS = ['mediterranean', 'atlantic', 'mountain', 'city', 'country'];
+export const SEASONS = ['summer', 'summer+', 'winter', 'winter+'];
 
 export const CLOTHES_FACTORS = {
     shoes: 16.47,
