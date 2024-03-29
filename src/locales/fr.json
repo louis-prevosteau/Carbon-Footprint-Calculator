@@ -336,6 +336,18 @@
           "winter+": "Surtout l'hiver"
         }
       }
+    },
+    "outside": {
+      "title": "Extérieur",
+      "question": "Que possédez-vous dans votre extérieur (jardin, balcon) ?",
+      "options": {
+        "gardenLoungeWood": "Salon de jardin en bois",
+        "gardenLoungeIron": "Salon de jardin en métal",
+        "mowerElec": "Tondeuse électrique ou robot",
+        "mower": "Tondeuse thermique",
+        "barbecueElec": "Barbecue électrique",
+        "barbecue": "Barbecue au charbon"
+      }
     }
   },
   "publicServices": {

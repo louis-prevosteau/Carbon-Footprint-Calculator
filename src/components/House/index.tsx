@@ -7,6 +7,7 @@ import Heat from './Heat';
 import AirConditioning from './AirConditioning';
 import Holydays from './Holidays';
 import SecondaryResidence from './SecondaryResidence';
+import Outside from './Outside';
 
 const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
 
@@ -159,8 +160,8 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
                 <Grid item lg={9} xs={12} sm={3}>
                     <Holydays people={state.params.people} handleDataToHouse={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Grid container spacing={5} mt={2}>
+                <Grid container item xs={12} sm={3}>
+                    <Grid container item xs={12} spacing={2} direction="row" alignItems="center">
                         <Grid item>
                             <Paper elevation={15} sx={{ padding: '20px', backgroundColor: green[200], borderRadius: '10px' }}>
                                 <FormControlLabel
@@ -185,9 +186,11 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
                         )}
                     </Grid>
                 </Grid>
-                <Grid item xs={12} sm={3}>
-                    
-                </Grid>
+                {!state.params.apartment && (
+                    <Grid item lg={9} xs={12} sm={3}>
+                        <Outside people={state.params.people} handleDataToHouse={addFootprint} />
+                    </Grid>
+                )}
             </Grid>
         </Paper>
     );
