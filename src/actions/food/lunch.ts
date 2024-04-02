@@ -66,7 +66,7 @@ const getLocalPart = (lunches: WeekLunches, breakfastFP: number): number => {
     let res = Object.keys(lunches).reduce((acc, key) => {
         return acc + (lunches[key as keyof WeekLunches] * (localFactors[key as keyof typeof localFactors] || 0));
     }, 0);
-    return res * 52 + breakfastFP * 0.08;
+    return (res + (breakfastFP / 365) * 7 * 0.08) * 52;
 };
 
 export interface WeekLunches {

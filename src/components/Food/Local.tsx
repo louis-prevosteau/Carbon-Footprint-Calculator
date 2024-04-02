@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LEVELS } from 'utils/constants';
 
-const Local = ({ handleDataToFood, lunches, breakfastFP }: { handleDataToFood: any, lunches: Object, breakfastFP: number }) => {
+const Local = ({ handleDataToFood, lunches, breakfastFP }: { handleDataToFood: any, lunches: WeekLunches, breakfastFP: number }) => {
 
     const [state, setState] = useState(
         {

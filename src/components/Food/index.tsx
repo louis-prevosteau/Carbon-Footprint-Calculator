@@ -57,7 +57,7 @@ const Food = ({ handleDataToChart }: { handleDataToChart: any }) => {
     
     const updateLunchParams = (params: any) => {
         setState(prevState => {
-            const newState = { ...prevState, params };
+            const newState = { ...prevState, lunches: params };
             return newState;
         });
     };

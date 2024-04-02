@@ -35,7 +35,7 @@ const milkFootprint = (milk: string): number => {
 };
 
 export const getWaterBottleFootprint = (conso: boolean): number => {
-    return conso ? 0.27 * 365 * 1.5 : 0.27 * 135;
+    return conso ? 0.27 * 365 * 1.5 : 0;
 }
 
 export const getSodasFootprint = (conso: number): number => {
