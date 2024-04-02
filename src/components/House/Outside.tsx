@@ -49,7 +49,7 @@ const Outside = ({ people, handleDataToHouse }: { people: number, handleDataToHo
                         <Grid item>
                             <Typography variant='body1'>{t('house.outside.question')}</Typography>
                         </Grid>
-                        <Grid container item spacing={1}>
+                        <Grid container item spacing={{lg: 8}}>
                             {Object.keys(state.params).map((param) => (
                                 <Grid item key={param}>
                                     <Paper elevation={1} sx={{ padding: '20px', height: '45%', width: '170px', backgroundColor: green['A100'], borderRadius: '8px' }}>

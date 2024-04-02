@@ -348,6 +348,12 @@
         "barbecueElec": "Barbecue électrique",
         "barbecue": "Barbecue au charbon"
       }
+    },
+    "havePool": "Je possède une piscine",
+    "pool": {
+      "questions": {
+        "surface": "Quelle est la surface de votre piscine ?"
+      }
     }
   },
   "publicServices": {

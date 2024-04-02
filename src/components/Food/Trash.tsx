@@ -47,6 +47,12 @@ const Trash = ({ handleDataToFood }: { handleDataToFood: any }) => {
                   <Checkbox
                     checked={state.params[key as keyof typeof state.params] as boolean}
                     onChange={() => updateParam(key as keyof typeof state.params, !state.params[key as keyof typeof state.params])}
+                    sx={{
+                        color: amber[300],
+                        '&.Mui-checked': {
+                            color: amber[700],
+                        },
+                    }}
                   />
                 }
                 label={t(`food.trash.tips.${key}`)}

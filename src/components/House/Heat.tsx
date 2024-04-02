@@ -87,10 +87,14 @@ const Heat = ({ people, handleDataToHouse }: { people: number, handleDataToHouse
                             </Paper>
                         </Grid>
                     ))}
+                    {(state.options.electricity || state.options.heatPump) && (
+                        <Grid item>
+                            <Electricity people={people} handleDataToHeat={addFootprint} />
+                        </Grid>
+                    )}
                     {Object.entries(state.options).map(([option, checked]) => (
                         checked && (
                             <Grid item key={option}>
-                                {(option === 'electricity' || option === 'heatPump') && <Electricity people={people} handleDataToHeat={addFootprint} />}
                                 {option === 'wood' && <Wood people={people} handleDataToHeat={addFootprint} />}
                                 {option === 'gaz' && <Gaz people={people} handleDataToHeat={addFootprint} />}
                                 {option === 'gazBottle' && <GazBottle people={people} handleDataToHeat={addFootprint} />}

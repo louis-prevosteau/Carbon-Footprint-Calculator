@@ -58,31 +58,31 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
         <Paper elevation={3} sx={{ border: '20px solid', borderColor: cyan[800], padding: '20px' }}>
             <Typography variant='h4' sx={{ textAlign: 'center', pb: 5, color: blue['A200'], fontWeight: 'bold' }}>{t('transports.title')}</Typography>
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Car handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <CampingCar handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Plane handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Moto handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Bus handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Metro handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Train handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Bike handleDataToTransport={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Ferry handleDataToTransport={addFootprint} />
                 </Grid>
             </Grid>

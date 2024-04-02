@@ -38,74 +38,72 @@ const SecondaryResidence = ({ people, handleDataToHouse }: { people: number, han
     };
     
     return (
-        <Paper elevation={15} sx={{ padding: '20px', backgroundColor: green[200], borderRadius: '10px' }}>
+        <Box>
             <Typography variant='h5'>{t('house.holidays.secondaryResidence.title')}</Typography>
-            <Box>
-                <Grid container direction='column' spacing={2}>
-                    <Grid container spacing={5} item xs={12} md={6}>
-                        <Grid container item alignItems='center' spacing={2}>
-                            <Grid item>
-                                <Typography>{t('house.holidays.secondaryResidence.questions.surface')}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Input
-                                    type='number'
-                                    value={state.params.surface}
-                                    onChange={(e) => updateParam('surface', e.target.value)}
-                                    endAdornment={
-                                        <InputAdornment position='end'>
-                                            {t('adornments.squareMetter')}
-                                        </InputAdornment>
-                                    }
-                                />
-                            </Grid>
+            <Grid container direction='column' spacing={2}>
+                <Grid container spacing={5} item xs={12} md={6}>
+                    <Grid container item alignItems='center' spacing={2}>
+                        <Grid item>
+                            <Typography>{t('house.holidays.secondaryResidence.questions.surface')}</Typography>
                         </Grid>
-                        <Grid container item alignItems='center' spacing={2}>
-                            <Grid item>
-                                <Typography>{t('house.holidays.secondaryResidence.questions.duration')}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Input
-                                    type='number'
-                                    value={state.params.duration}
-                                    onChange={(e) => updateParam('duration', e.target.value)}
-                                />
-                            </Grid>
+                        <Grid item>
+                            <Input
+                                type='number'
+                                value={state.params.surface}
+                                onChange={(e) => updateParam('surface', e.target.value)}
+                                endAdornment={
+                                    <InputAdornment position='end'>
+                                        {t('adornments.squareMetter')}
+                                    </InputAdornment>
+                                }
+                            />
                         </Grid>
-                        <Grid container item alignItems='center' spacing={2}>
-                            <Grid item>
-                                <Typography>{t('house.holidays.secondaryResidence.questions.location')}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Select
-                                    value={state.params.location}
-                                    onChange={(e) => updateParam('location', e.target.value)}
-                                >
-                                    {LOCATIONS.map((location) => (
-                                        <MenuItem key={location} value={location} >{t(`house.holidays.secondaryResidence.locations.${location}`)}</MenuItem>
-                                    ))}
-                                </Select>
-                            </Grid>
+                    </Grid>
+                    <Grid container item alignItems='center' spacing={2}>
+                        <Grid item>
+                            <Typography>{t('house.holidays.secondaryResidence.questions.duration')}</Typography>
                         </Grid>
-                        <Grid container item alignItems='center' spacing={2}>
-                            <Grid item>
-                                <Typography>{t('house.holidays.secondaryResidence.questions.season')}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Select
-                                    value={state.params.season}
-                                    onChange={(e) => updateParam('season', e.target.value)}
-                                >
-                                    {SEASONS.map((season) => (
-                                        <MenuItem key={season} value={season} >{t(`house.holidays.secondaryResidence.seasons.${season}`)}</MenuItem>
-                                    ))}
-                                </Select>
-                            </Grid>
+                        <Grid item>
+                            <Input
+                                type='number'
+                                value={state.params.duration}
+                                onChange={(e) => updateParam('duration', e.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid container item alignItems='center' spacing={2}>
+                        <Grid item>
+                            <Typography>{t('house.holidays.secondaryResidence.questions.location')}</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Select
+                                value={state.params.location}
+                                onChange={(e) => updateParam('location', e.target.value)}
+                            >
+                                {LOCATIONS.map((location) => (
+                                    <MenuItem key={location} value={location} >{t(`house.holidays.secondaryResidence.locations.${location}`)}</MenuItem>
+                                ))}
+                            </Select>
+                        </Grid>
+                    </Grid>
+                    <Grid container item alignItems='center' spacing={2}>
+                        <Grid item>
+                            <Typography>{t('house.holidays.secondaryResidence.questions.season')}</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Select
+                                value={state.params.season}
+                                onChange={(e) => updateParam('season', e.target.value)}
+                            >
+                                {SEASONS.map((season) => (
+                                    <MenuItem key={season} value={season} >{t(`house.holidays.secondaryResidence.seasons.${season}`)}</MenuItem>
+                                ))}
+                            </Select>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Box>
-        </Paper>
+            </Grid>
+        </Box>
     );
 };
 
