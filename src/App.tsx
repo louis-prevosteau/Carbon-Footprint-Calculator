@@ -14,6 +14,9 @@ const App = () => {
 
   const [ state, setState] = useState(
     {
+      params: {
+        people: 0
+      },
       sub: {
         transports: 0,
         food: 0,
@@ -37,6 +40,11 @@ const App = () => {
         footprint: Number(Object.values(state.sub).reduce((a, b) => a + b, 0))
     });
   };
+
+  const setPeople = (people: number) => {
+    setState({ ...state, params: {...state.params, people } });
+  };
+
   return (
     <div>
       <Typography variant='h2' textAlign='center' fontWeight='medium' color={indigo[900]}>{t('title')}</Typography>
@@ -44,8 +52,8 @@ const App = () => {
         <DetailsChart data={Object.values(state.sub)}/>
         <GlobalChart footprint={Object.values(state.sub).reduce((a, b) => a + b, 0)} />
       </Grid>
-      <House handleDataToChart={addFootprint} />
-      <Transports handleDataToChart={addFootprint}/>
+      <House setPeople={setPeople} handleDataToChart={addFootprint} />
+      <Transports people={state.params.people} handleDataToChart={addFootprint}/>
       <Food handleDataToChart={addFootprint} />
       <PublicServices handleDataToChart={addFootprint}/>
     </div>

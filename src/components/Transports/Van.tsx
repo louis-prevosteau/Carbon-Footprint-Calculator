@@ -1,10 +1,11 @@
 import { Paper, Typography, Box, Grid, Input, InputAdornment } from '@mui/material';
 import { lightBlue } from '@mui/material/colors';
-import { getCampingCarFootprint } from 'actions/transports';
+import { getVanFootprint } from 'actions/transports';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CampingCar = ({ people, handleDataToTransport }: { people: number, handleDataToTransport: any }) => {
+const Van = ({ people, handleDataToTransport }: { people: number, handleDataToTransport: any }) => {
+
     const [state, setState] = useState({
         params: {
             distance: 0,
@@ -14,12 +15,8 @@ const CampingCar = ({ people, handleDataToTransport }: { people: number, handleD
     const { t } = useTranslation();
 
     useEffect(() => {
-        const footprint = getCampingCarFootprint(
-            state.params.distance, 
-            state.params.conso,
-            people    
-        );
-        handleDataToTransport('campingCar', footprint);
+        const footprint = getVanFootprint(state.params.distance, state.params.conso, people);
+        handleDataToTransport('van', footprint);
     }, [state.params.distance, state.params.conso, people]);
 
     const updateParam = (paramName: keyof typeof state.params, paramValue: any) => {
@@ -28,15 +25,15 @@ const CampingCar = ({ people, handleDataToTransport }: { people: number, handleD
             return newState;
         });
     };
-
+    
     return (
         <Paper elevation={3} sx={{ padding: '20px', backgroundColor: lightBlue[500], borderRadius: '10px' }}>
-            <Typography variant='h5'>{t('transports.campingCar.title')}</Typography>
+            <Typography variant='h5'>{t('transports.van.title')}</Typography>
             <Box>
                 <Grid container>
                     <Grid container item alignItems='center' spacing={2}>
                         <Grid item>
-                            <Typography variant='body1'>{t('transports.campingCar.questions.distance')}</Typography>
+                            <Typography variant='body1'>{t('transports.van.questions.distance')}</Typography>
                         </Grid>
                         <Grid item>
                             <Input
@@ -53,7 +50,7 @@ const CampingCar = ({ people, handleDataToTransport }: { people: number, handleD
                     </Grid>
                     <Grid container item alignItems='center' spacing={2}>
                         <Grid item>
-                            <Typography variant='body1'>{t('transports.campingCar.questions.conso')}</Typography>
+                            <Typography variant='body1'>{t('transports.van.questions.conso')}</Typography>
                         </Grid>
                         <Grid item>
                             <Input
@@ -74,4 +71,4 @@ const CampingCar = ({ people, handleDataToTransport }: { people: number, handleD
     );
 };
 
-export default CampingCar;
+export default Van;

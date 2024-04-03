@@ -10,7 +10,7 @@ import SecondaryResidence from './SecondaryResidence';
 import Outside from './Outside';
 import Pool from './Pool';
 
-const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
+const House = ({ setPeople, handleDataToChart }: { setPeople: any, handleDataToChart: any }) => {
 
     const [state, setState] = useState(
         {
@@ -52,6 +52,7 @@ const House = ({ handleDataToChart }: { handleDataToChart: any }) => {
     useEffect(() => {
         const footprint = getBuildFootprint(state.params.people, state.params.age, state.params.surface, state.params.apartment);
         setState({ ...state, sub: { ...state.sub, build: footprint } });
+        setPeople(state.params.people);
     }, [state.params.age, state.params.people, state.params.surface, state.params.apartment]);
 
     const addFootprint = (paramName: keyof typeof state.sub, footprint: number) => {

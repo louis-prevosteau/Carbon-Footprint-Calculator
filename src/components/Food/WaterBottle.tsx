@@ -9,7 +9,7 @@ const WaterBottle = ({ handleDataToFood }: { handleDataToFood: any }) => {
     const [state, setState] = useState(
         {
             params: {
-                conso: true
+                conso: false
             }
         }
     );

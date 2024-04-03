@@ -88,6 +88,13 @@
         "conso": "Quelle est la consommation moyenne de votre camping car ?"
       }
     },
+    "van": {
+      "title": "Van",
+      "questions": {
+        "distance": "Quelle distance parcourez-vous à l'année en van ?",
+        "conso": "Quelle est la consommation moyenne de votre van ?"
+      }
+    },
     "plane": {
       "title": "Avion",
       "questions": {

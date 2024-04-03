@@ -16,9 +16,12 @@ export const getCarFootprint = (
 
 export const getVanFootprint = (
     distance: number,
-    conso: number
+    conso: number,
+    people: number
 ) => {
-    return ((conso / 100) * distance).toFixed(2);
+    const usage = (distance * (conso / 100) * 2.7) / people;
+    const construct = (7600 * (300 / 1500) / 25) / people;;
+    return (usage + construct).toFixed(2);
 };
 
 type EmissionsPerKilometer = {
@@ -26,7 +29,7 @@ type EmissionsPerKilometer = {
 };
 
 export const getCaravanFootprint = (
-    numberOfPeople: number,
+    people: number,
     distance: number,
     motorType: string
 ) => {
@@ -36,17 +39,21 @@ export const getCaravanFootprint = (
         electric: 0.03,
     };
     const surchargeEmissionsPerKm = emissionsPerKilometer[motorType] * 0.25;
-    const totalUsageEmissions = (surchargeEmissionsPerKm * distance) / numberOfPeople;
-    const constructionEmissions = (3800 * 25) / numberOfPeople;
+    const totalUsageEmissions = (surchargeEmissionsPerKm * distance) / people;
+    const constructionEmissions = (3800 * 25) / people;
     const totalFootprint = totalUsageEmissions + constructionEmissions;
     return totalFootprint.toFixed(2);
 };
 
 export const getCampingCarFootprint = (
     distance: number,
-    conso: number
+    conso: number,
+    people: number
 ) => {
-    return ((conso / 100) * distance).toFixed(2);
+    if (conso === 0 && distance === 0) return 0;
+    const usage =(distance * (conso / 100) * 2.7) / people;
+    const construct = (7600 * (300 / 1500) / 25) / people;
+    return (usage + construct).toFixed(2);
 };
 
 const getUsage = (distance: number, motor: string, conso: number, fuel: string, type: string): number => {

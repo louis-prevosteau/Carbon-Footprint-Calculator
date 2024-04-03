@@ -11,8 +11,9 @@ import { Grid, Paper, Typography } from '@mui/material';
 import CampingCar from './CampingCar';
 import { useTranslation } from 'react-i18next';
 import { blue, cyan } from '@mui/material/colors';
+import Van from './Van';
 
-const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
+const Transports = ({ people, handleDataToChart }: { people: number, handleDataToChart: any }) => {
 
     const [state, setState] = useState(
         {
@@ -62,7 +63,10 @@ const Transports = ({ handleDataToChart }: { handleDataToChart: any }) => {
                     <Car handleDataToTransport={addFootprint} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <CampingCar handleDataToTransport={addFootprint} />
+                    <CampingCar people={people} handleDataToTransport={addFootprint} />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <Van people={people} handleDataToTransport={addFootprint} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Plane handleDataToTransport={addFootprint} />
