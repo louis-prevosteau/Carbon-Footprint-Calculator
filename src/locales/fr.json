@@ -12,6 +12,12 @@
       "soy": "Lait de soja",
       "oat": "Lait d'avoine"
     },
+    "preservation": {
+      "new": "Achat neuf",
+      "minimum": "Peu d'éffort",
+      "medium": "Effort moyen",
+      "maximum": "Effort maximum"
+    },
     "yes": "Oui",
     "no": "Non"
   },
@@ -360,6 +366,43 @@
     "pool": {
       "questions": {
         "surface": "Quelle est la surface de votre piscine ?"
+      }
+    }
+  },
+  "divers": {
+    "title": "Divers",
+    "clothes": {
+      "title": "Textile",
+      "question": "Quels vêtements achetez-vous neufs en général dans une année ?",
+      "options": {
+        "shoes": "Chaussures",
+        "tshirt": "T-Shirt",
+        "dress": "Robe",
+        "shirt": "Chemise",
+        "sweat": "Sweat",
+        "short": "Short",
+        "woolenSweat": "Pull",
+        "coat": "Manteau",
+        "pant": "Pantalon",
+        "otherLittle": "Petits articles",
+        "otherBig": "Gros articles"
+      }
+    },
+    "furnitures": {
+      "title": "Ameublement",
+      "questions": {
+        "preservation": "Quel effort faites-vous pour garder vos meubles le plus longtemps possible ?",
+        "furnitures": "Quels meubles de moins de 10 ans possédez-vous ?"
+      },
+      "options": {
+        "chair": "Chaise, tabouret",
+        "table": "Table, bureau",
+        "bed": "Lit (sommier, cadre)",
+        "couch": "Canapé",
+        "mattress": "Matelas",
+        "cupboard": "Armoire, dressing",
+        "littleFurniture": "Petit meuble",
+        "bigFurniture": "Gros meuble"
       }
     }
   },

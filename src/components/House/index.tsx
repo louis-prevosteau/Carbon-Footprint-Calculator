@@ -1,4 +1,4 @@
-import { Box, Checkbox, FormControlLabel, FormGroup, Grid, Input, InputAdornment, Paper, Radio, RadioGroup, Switch, Typography } from '@mui/material';
+import { Box, Checkbox, FormControlLabel, Grid, Input, InputAdornment, Paper, Radio, RadioGroup, Typography } from '@mui/material';
 import { green, lightGreen } from '@mui/material/colors';
 import { getBuildFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';

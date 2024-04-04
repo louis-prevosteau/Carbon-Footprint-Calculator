@@ -19,6 +19,7 @@ export const getVanFootprint = (
     conso: number,
     people: number
 ) => {
+    if (conso === 0 && distance === 0) return 0;
     const usage = (distance * (conso / 100) * 2.7) / people;
     const construct = (7600 * (300 / 1500) / 25) / people;;
     return (usage + construct).toFixed(2);

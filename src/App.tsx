@@ -9,6 +9,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { indigo } from '@mui/material/colors';
 import GlobalChart from 'components/GlobalChart';
+import Divers from 'components/Divers';
 
 const App = () => {
 
@@ -55,6 +56,7 @@ const App = () => {
       <House setPeople={setPeople} handleDataToChart={addFootprint} />
       <Transports people={state.params.people} handleDataToChart={addFootprint}/>
       <Food handleDataToChart={addFootprint} />
+      <Divers people={state.params.people} handleDataToChart={addFootprint} />
       <PublicServices handleDataToChart={addFootprint}/>
     </div>
   );
