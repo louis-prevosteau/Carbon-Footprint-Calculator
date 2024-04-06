@@ -1,35 +1,10 @@
-import { HOME_APPLIANCE_AGE_1, HOME_APPLIANCE_AGE_2, HOME_APPLIANCE_AGE_3, HOME_APPLIANCE_AGE_4, HOME_APPLIANCE_FOOTPRINTS, PRESERV_FACTOR } from "utils/constants";
-
-const getAge = (appliance: string): number => {
-    switch (appliance) {
-        case 'kettle':
-        case 'coffeeMaker':
-            return HOME_APPLIANCE_AGE_1;
-        case 'vacuumCleaner':
-        case 'cookingRobot':
-            return HOME_APPLIANCE_AGE_2;
-        case 'freezer':
-        case 'fridge':
-        case 'hood':
-        case 'combinedFridge':
-        case 'washingMachine':
-        case 'dishwasher':
-        case 'hotplates':
-        case 'dryer':
-            return HOME_APPLIANCE_AGE_3;
-        case 'oven':
-        case 'microwave':
-            return HOME_APPLIANCE_AGE_4;
-        default:
-            return 0;
-    }
-}
+import { HOME_APPLIANCES, PRESERV_FACTOR } from "utils/constants";
 
 export const getHomeAppliancesFootprint = (homeAppliances: HomeAppliances, people: number, preservation: string) => {
     if (preservation === '') return 0;
     let res = 0;
     for (const appliance in homeAppliances) {
-        res += homeAppliances[appliance as keyof typeof homeAppliances] * (HOME_APPLIANCE_FOOTPRINTS[appliance as keyof typeof HOME_APPLIANCE_FOOTPRINTS] / (getAge(appliance) * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]));
+        res += homeAppliances[appliance as keyof typeof homeAppliances] * (HOME_APPLIANCES[appliance as keyof typeof HOME_APPLIANCES].footprint / (HOME_APPLIANCES[appliance as keyof typeof HOME_APPLIANCES].age * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]));
     }
     return (res / people).toFixed(2);
 };

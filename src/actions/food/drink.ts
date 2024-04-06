@@ -1,3 +1,5 @@
+import { HOT_DRINKS_MILK_FOOTPRINTS } from "utils/constants";
+
 export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
     let res = 0;
     for (const drink in drinks) {
@@ -22,16 +24,7 @@ export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
 };
 
 const milkFootprint = (milk: string): number => {
-    switch (milk) {
-        case 'cow':
-            return 1.32;
-        case 'soy':
-            return 0.44;
-        case 'oat':
-            return 0.54
-        default:
-            return 0;
-    }
+    return HOT_DRINKS_MILK_FOOTPRINTS[milk as keyof typeof HOT_DRINKS_MILK_FOOTPRINTS]
 };
 
 export const getWaterBottleFootprint = (conso: boolean): number => {

@@ -1,3 +1,5 @@
+import { EMISION_PER_KILOMETER, FUEL_FP_PER_LITER } from "utils/constants";
+
 export const getCarFootprint = (
     distance: number,
     sameCar: boolean,
@@ -25,21 +27,12 @@ export const getVanFootprint = (
     return (usage + construct).toFixed(2);
 };
 
-type EmissionsPerKilometer = {
-    [key: string]: number;
-};
-
 export const getCaravanFootprint = (
     people: number,
     distance: number,
     motorType: string
 ) => {
-    const emissionsPerKilometer: EmissionsPerKilometer = {
-        thermic: 0.13,
-        hybrid: 0.11,
-        electric: 0.03,
-    };
-    const surchargeEmissionsPerKm = emissionsPerKilometer[motorType] * 0.25;
+    const surchargeEmissionsPerKm = EMISION_PER_KILOMETER[motorType as keyof typeof EMISION_PER_KILOMETER] * 0.25;
     const totalUsageEmissions = (surchargeEmissionsPerKm * distance) / people;
     const constructionEmissions = (3800 * 25) / people;
     const totalFootprint = totalUsageEmissions + constructionEmissions;
@@ -63,22 +56,12 @@ const getUsage = (distance: number, motor: string, conso: number, fuel: string, 
     const clim = (1374000000 / 44677000) / distance;
     if (motor === 'thermic') {
         const consoKm = conso / 100;
-        let fpPerLitre = 0;
-        if (fuel === 'gazole') fpPerLitre = (3.1 + 3.04) / 2;
-        else if (fuel === 'essence') fpPerLitre = 2.7;
-        else if (fuel === 'bio') fpPerLitre = 1.11;
-        else if (fuel === 'gpl') fpPerLitre = 1.86;
-        kmFp = consoKm * fpPerLitre;
+        kmFp = consoKm * FUEL_FP_PER_LITER[fuel as keyof typeof FUEL_FP_PER_LITER];
         entPond = (((6036 * 1000000) * 0.07) / 44677000) / distance;
     }
     else if (motor === 'hybrid') {
         const consoKm = conso / 100;
-        let fpPerLitre = 0;
-        if (fuel === 'gazole') fpPerLitre = (3.1 + 3.04) / 2;
-        else if (fuel === 'essence') fpPerLitre = 2.7;
-        else if (fuel === 'bio') fpPerLitre = 1.11;
-        else if (fuel === 'gpl') fpPerLitre = 1.86;
-        kmFp = consoKm * fpPerLitre * 0.85;
+        kmFp = consoKm * FUEL_FP_PER_LITER[fuel as keyof typeof FUEL_FP_PER_LITER] * 0.85;
         entPond = ((((6036 * 1000000) * 0.07) / 44677000) / distance) * 0.9;
     }
     else if (motor === 'electric') {

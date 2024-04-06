@@ -1,14 +1,8 @@
+import { LUNCHES } from "utils/constants";
+
 export const getLunchFootprint = (lunches: WeekLunches): string => {
-    const footprintFactors = {
-        vegan: 0.785,
-        vegetarian: 1.115,
-        meat1: 2.1,
-        meat2: 5.51,
-        fish1: 1.63,
-        fish2: 2.37,
-    };
     let res = Object.keys(lunches).reduce((acc, key) => {
-        return acc + (lunches[key as keyof WeekLunches] * (footprintFactors[key as keyof typeof footprintFactors] || 0));
+        return acc + (lunches[key as keyof WeekLunches] * (LUNCHES[key as keyof typeof LUNCHES].footprint || 0));
     }, 0);
     return (res * 52).toFixed(2);
 };
@@ -55,16 +49,8 @@ export const getLocalBonus = (level: string, lunches: WeekLunches, breakfastFB: 
 };
 
 const getLocalPart = (lunches: WeekLunches, breakfastFP: number): number => {
-    const localFactors = {
-        vegan: 0.785 * 0.12,
-        vegetarian: 1.115 * 0.08,
-        meat1: 2.1 * 0.03,
-        meat2: 5.51 * 0.01,
-        fish1: 1.63 * 0.05,
-        fish2: 2.37 * 0.06,
-    };
     let res = Object.keys(lunches).reduce((acc, key) => {
-        return acc + (lunches[key as keyof WeekLunches] * (localFactors[key as keyof typeof localFactors] || 0));
+        return acc + (lunches[key as keyof WeekLunches] * (LUNCHES[key as keyof typeof LUNCHES].footprint * LUNCHES[key as keyof typeof LUNCHES].localPart || 0));
     }, 0);
     return (res + (breakfastFP / 365) * 7 * 0.08) * 52;
 };

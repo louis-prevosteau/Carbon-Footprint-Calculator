@@ -9,7 +9,48 @@ export const MOTO_TYPES = ['thermic', 'electric', 'inf250', 'sup250'];
 export const WOOD_TYPES = ['log', 'pellets'];
 export const LOCATIONS = ['mediterranean', 'atlantic', 'mountain', 'city', 'country'];
 export const SEASONS = ['summer', 'summer+', 'winter', 'winter+'];
-
+export const FUEL_FP_PER_LITER = {
+    gazole: (3.1 + 3.04) / 2,
+    essence: 2.7,
+    bio: 1.11,
+    gpl: 1.86
+}
+export const EMISION_PER_KILOMETER = {
+    thermic: 0.13,
+    hybrid: 0.11,
+    electric: 0.03,
+};
+export const LUNCHES = {
+    vegan: {
+        footprint: 0.785,
+        localPart: 0.12
+    },
+    vegetarian: {
+        footprint: 1.115,
+        localPart: 0.08
+    },
+    meat1: {
+        footprint: 2.1,
+        localPart: 0.03
+    },
+    meat2: {
+        footprint: 5.51,
+        localPart: 0.01
+    },
+    fish1: {
+        footprint: 1.63,
+        localPart: 0.05
+    },
+    fish2: {
+        footprint: 2.37,
+        localPart: 0.06
+    },
+};
+export const HOT_DRINKS_MILK_FOOTPRINTS = {
+    cow: 1.32,
+    soy:0.44,
+    oat: 0.54
+};
 export const CLOTHES_FOOTPRINTS = {
     shoes: 16.47,
     tshirt: 5.35,
@@ -61,26 +102,118 @@ export const FURNITURE_FOOTPRINTS = {
     bigFurniture: 45.82,
 };
 export const FURNITURE_AGE = 10;
-export const HOME_APPLIANCE_FOOTPRINTS = {
-    vacuumCleaner: 52.4,
-    kettle: 9.9,
-    coffeeMaker: 31.9,
-    freezer: 415,
-    oven: 217,
-    hood: 60.4,
-    fridge: 128.5,
-    combinedFridge: 257,
-    washingMachine: 342,
-    dishwasher: 271,
-    dryer: 266,
-    cookingRobot: 41.3,
-    microwave: 98.4,
-    hotplates: 65.3
+export const HOME_APPLIANCES = {
+    vacuumCleaner: {
+        footprint: 52.4,
+        age: 8
+    },
+    kettle: {
+        footprint: 9.9,
+        age: 6
+    },
+    coffeeMaker: {
+        footprint: 31.9,
+        age: 6
+    },
+    freezer: {
+        footprint: 415,
+        age: 10
+    },
+    oven: {
+        footprint: 217,
+        age: 12
+    },
+    hood: {
+        footprint: 60.4,
+        age: 10
+    },
+    fridge: {
+        footprint: 128.5,
+        age: 10
+    },
+    combinedFridge: {
+        footprint: 257,
+        age: 10
+    },
+    washingMachine: {
+        footprint: 342,
+        age: 10
+    },
+    dishwasher: {
+        footprint: 271,
+        age: 10
+    },
+    dryer: {
+        footprint: 266,
+        age: 10
+    },
+    cookingRobot: {
+        footprint: 41.3,
+        age: 8
+    },
+    microwave: {
+        footprint: 98.4,
+        age: 12
+    },
+    hotplates: {
+        footprint: 65.3,
+        age: 10
+    }
 };
-export const HOME_APPLIANCE_AGE_1 = 6;
-export const HOME_APPLIANCE_AGE_2 = 8;
-export const HOME_APPLIANCE_AGE_3 = 10;
-export const HOME_APPLIANCE_AGE_4 = 12;
+export const TECH_DEVICES = {
+    camera: {
+        footprint: 30,
+        age: 5
+    },
+    houseVideoGame: {
+        footprint: 73.7,
+        age: 6.5
+    },
+    personalVideoGame: {
+        footprint: 30.8,
+        age: 6.5
+    },
+    bluetoothSpeaker: {
+        footprint: 8.98,
+        age: 5
+    },
+    vocalSpeaker: {
+        footprint: 30.7,
+        age: 5
+    },
+    homeCinema: {
+        footprint: 133,
+        age: 8
+    },
+    connectedWatch: {
+        footprint: 9.72,
+        age: 4
+    },
+    computer: {
+        footprint: 544,
+        age: 6
+    },
+    personalComputer: {
+        footprint: 156,
+        age: 3
+    },
+    pad: {
+        footprint: 63,
+        age: 3
+    },
+    phone: {
+        footprint: 57,
+        age: 2.5
+    },
+    tv: {
+        footprint: 371,
+        age: 8
+    },
+    videoProjector: {
+        footprint: 94,
+        age: 5
+    }
+};
 export const NEW_MANUFACT_LEVELS = {
     minimum: 0.65,
     medium: 1,
@@ -98,4 +231,5 @@ export const OUTSIDE_MATERIAL_FOOTPRINTS: Record<string, number> = {
     gardenLoungeWood: 6.92,
     gardenLoungeIron: 24.9,
     mower: 45.2,
-    mowerElec: 8.96,};
+    mowerElec: 8.96
+};
