@@ -10,7 +10,7 @@ export const WOOD_TYPES = ['log', 'pellets'];
 export const LOCATIONS = ['mediterranean', 'atlantic', 'mountain', 'city', 'country'];
 export const SEASONS = ['summer', 'summer+', 'winter', 'winter+'];
 
-export const CLOTHES_FACTORS = {
+export const CLOTHES_FOOTPRINTS = {
     shoes: 16.47,
     tshirt: 5.35,
     dress: 48.4,
@@ -61,8 +61,24 @@ export const FURNITURE_FOOTPRINTS = {
     bigFurniture: 45.82,
 };
 export const FURNITURE_AGE = 10;
-export const HOME_APPLIANCE_AGE_1 = 8;
-export const HOME_APPLIANCE_AGE_2 = 6;
+export const HOME_APPLIANCE_FOOTPRINTS = {
+    vacuumCleaner: 52.4,
+    kettle: 9.9,
+    coffeeMaker: 31.9,
+    freezer: 415,
+    oven: 217,
+    hood: 60.4,
+    fridge: 128.5,
+    combinedFridge: 257,
+    washingMachine: 342,
+    dishwasher: 271,
+    dryer: 266,
+    cookingRobot: 41.3,
+    microwave: 98.4,
+    hotplates: 65.3
+};
+export const HOME_APPLIANCE_AGE_1 = 6;
+export const HOME_APPLIANCE_AGE_2 = 8;
 export const HOME_APPLIANCE_AGE_3 = 10;
 export const HOME_APPLIANCE_AGE_4 = 12;
 export const NEW_MANUFACT_LEVELS = {

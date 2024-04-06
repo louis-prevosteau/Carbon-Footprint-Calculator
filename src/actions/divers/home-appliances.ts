@@ -1,40 +1,35 @@
-import { HOME_APPLIANCE_AGE_1, HOME_APPLIANCE_AGE_2, HOME_APPLIANCE_AGE_3, HOME_APPLIANCE_AGE_4, PRESERV_FACTOR } from "utils/constants";
+import { HOME_APPLIANCE_AGE_1, HOME_APPLIANCE_AGE_2, HOME_APPLIANCE_AGE_3, HOME_APPLIANCE_AGE_4, HOME_APPLIANCE_FOOTPRINTS, PRESERV_FACTOR } from "utils/constants";
 
-const getHomeApplianceFootprint = (appliance: string, quantity: number, coefPreserv: number) => {
-    let factor = 0;
+const getAge = (appliance: string): number => {
     switch (appliance) {
-        case 'vacuumCleaner':
-        case 'hood':
-        case 'cookingRobot':
-            factor = HOME_APPLIANCE_AGE_1;
-            break;
         case 'kettle':
         case 'coffeeMaker':
-        case 'dishwasher':
-        case 'dryer':
-        case 'microwave':
-        case 'hotplates':
-            factor = HOME_APPLIANCE_AGE_2;
-            break;
+            return HOME_APPLIANCE_AGE_1;
+        case 'vacuumCleaner':
+        case 'cookingRobot':
+            return HOME_APPLIANCE_AGE_2;
         case 'freezer':
         case 'fridge':
+        case 'hood':
         case 'combinedFridge':
         case 'washingMachine':
-            factor = HOME_APPLIANCE_AGE_3;
-            break;
+        case 'dishwasher':
+        case 'hotplates':
+        case 'dryer':
+            return HOME_APPLIANCE_AGE_3;
         case 'oven':
-            factor = HOME_APPLIANCE_AGE_4;
-            break;
+        case 'microwave':
+            return HOME_APPLIANCE_AGE_4;
         default:
-            break;
+            return 0;
     }
-    return (factor * quantity / (appliance === 'vacuumCleaner' ? 1 : coefPreserv));
 }
 
 export const getHomeAppliancesFootprint = (homeAppliances: HomeAppliances, people: number, preservation: string) => {
+    if (preservation === '') return 0;
     let res = 0;
     for (const appliance in homeAppliances) {
-        res += getHomeApplianceFootprint(appliance, homeAppliances[appliance as keyof typeof homeAppliances], PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]);
+        res += homeAppliances[appliance as keyof typeof homeAppliances] * (HOME_APPLIANCE_FOOTPRINTS[appliance as keyof typeof HOME_APPLIANCE_FOOTPRINTS] / (getAge(appliance) * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]));
     }
     return (res / people).toFixed(2);
 };

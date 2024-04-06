@@ -404,6 +404,29 @@
         "littleFurniture": "Petit meuble",
         "bigFurniture": "Gros meuble"
       }
+    },
+    "homeAppliances": {
+      "title" : "Electroménager",
+      "questions": {
+        "preservation": "Quel effort faites-vous pour garder vos appareils électroménagers le plus longtemps possible ?",
+        "homeAppliances": "Quels appareils électroménagers de moins de 10 ans possédez-vous ?"
+      },
+      "options": {
+        "vacuumCleaner": "Aspirateur",
+        "kettle": "Bouilloire",
+        "coffeeMaker": "Cafetière",
+        "freezer": "Congélateur",
+        "oven": "Four",
+        "hood": "Hotte",
+        "fridge": "Réfrigérateur",
+        "combinedFridge": "Réfrigérateur combiné",
+        "washingMachine": "Lave-linge",
+        "dishwasher": "Lave-vaisselle",
+        "dryer": "Sèche-linge",
+        "cookingRobot": "Robot de cuisine",
+        "microwave": "Micro-onde",
+        "hotplates": "Plaques de cuisson"
+      }
     }
   },
   "publicServices": {

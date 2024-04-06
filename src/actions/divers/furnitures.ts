@@ -5,6 +5,7 @@ export const getFurnituresFootprint = (
     people: number,
     preservation: string,
 ) => {
+    if (preservation === '') return 0;
     let res = 0;
     for (const furniture in furnitures) {
         res += furnitures[furniture as keyof typeof furnitures] * (FURNITURE_FOOTPRINTS[furniture as keyof typeof FURNITURE_FOOTPRINTS] / (FURNITURE_AGE * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]));
