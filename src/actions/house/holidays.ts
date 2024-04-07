@@ -1,88 +1,23 @@
+import { HOLIDAYS_FOOTPRINTS, SEASON_FACTORS } from "utils/constants";
+
 export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, people: number) => {
     let res = 0;
     for (const residence in holidaysResidences) {
-        switch (residence) {
-            case 'hotel':
-                if (people > 8) res += (3 * holidaysResidences[residence]) * 6.93;
-                else if (people > 4 && people <= 8) res += (2 * holidaysResidences[residence]) * 6.93;
-                else res += holidaysResidences[residence] * 6.93;
-                break;    
-            case 'camping':
-                res += holidaysResidences[residence] * 1.4;
-                break;
-            case 'youthHotel':
-                res += holidaysResidences[residence] * 1.16;
-                break;
-            case 'homeRental':
-                res += holidaysResidences[residence] * 5.8;
-                break;
-            case 'familly':
-                res += holidaysResidences[residence] * 0;
-                break;
-            case 'homeExchange':
-                res += holidaysResidences[residence] * 3.52;
-                break;  
-            default:
-                break;
-        }
+        if (residence === 'hotel') {
+            let nights = 0;
+            if (people > 8) nights = holidaysResidences[residence] * 3;
+            else if (people > 4 && people <= 8) nights = holidaysResidences[residence] * 2;
+            else nights = holidaysResidences[residence];
+            res += nights * HOLIDAYS_FOOTPRINTS[residence as keyof typeof HOLIDAYS_FOOTPRINTS]
+        } else res += holidaysResidences[residence as keyof typeof holidaysResidences] * HOLIDAYS_FOOTPRINTS[residence as keyof typeof HOLIDAYS_FOOTPRINTS];
     }
     return (res / people).toFixed(2);
 };
 
 const getSeasonFactor = (location: string, season: string): number => {
-    let seasonFactor = 0;
-    if (location === 'mediterranean')
-        switch (season) {
-            case 'summer':
-                seasonFactor = 0;
-                break;    
-            case 'summer+':
-                seasonFactor = 0.13;
-                break;
-            case 'winter':
-                seasonFactor = 1.41;
-                break;
-            case 'winter+':
-                seasonFactor = 1.62;
-                break;    
-            default:
-                break;
-        }    
-    else if (location === 'mountain')
-        switch (season) {
-            case 'summer':
-                seasonFactor = 0.06;
-                break;    
-            case 'summer+':
-                seasonFactor = 0.76;
-                break;
-            case 'winter':
-                seasonFactor = 2.68;
-                break;
-            case 'winter+':
-                seasonFactor = 2.15;
-                break;    
-            default:
-                break;
-        }
-    else
-        switch (season) {
-            case 'summer':
-                seasonFactor = 0.06;
-                break;    
-            case 'summer+':
-                seasonFactor = 0.46;
-                break;
-            case 'winter':
-                seasonFactor = 2.26;
-                break;
-            case 'winter+':
-                seasonFactor = 1.71;
-                break;    
-            default:
-                break;
-        }
-    return seasonFactor;
+    if (location === '' && season === '') return 0;
+    if (location === 'mediterranean' || location === 'mountain') return SEASON_FACTORS[location][season as keyof typeof SEASON_FACTORS[typeof location]];
+    else return SEASON_FACTORS['default'][season as keyof typeof SEASON_FACTORS['default']];
 };
 
 export const getSecondaryResidenceFootprint = (people: number, surface: number, duration: number, location: string, season: string) => {

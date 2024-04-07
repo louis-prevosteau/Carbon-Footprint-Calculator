@@ -5,7 +5,12 @@ export const TRASH_LEVELS = ['base', 'reduction', 'zero'];
 export const CAR_TYPES = ['small', 'medium', 'berline', 'vul', 'suv'];
 export const CAR_MOTORS = ['thermic', 'hybrid', 'electric'];
 export const CAR_FUELS = ['essence', 'bio', 'gazole', 'gpl'];
-export const MOTO_TYPES = ['thermic', 'electric', 'inf250', 'sup250'];
+export const MOTO_TYPES_FOOTPRINTS = {
+    thermic: 0.08,
+    electric: 0.03,
+    inf250: 0.08,
+    sup250: 0.19
+};
 export const WOOD_TYPES = ['log', 'pellets'];
 export const LOCATIONS = ['mediterranean', 'atlantic', 'mountain', 'city', 'country'];
 export const SEASONS = ['summer', 'summer+', 'winter', 'winter+'];
@@ -46,10 +51,44 @@ export const LUNCHES = {
         localPart: 0.06
     },
 };
+export const HOT_DRINKS_FOOTPRINTS = {
+    coffee: 10.09 * 0.012,
+    tea: (0.04 * (1 - 0.25)) * 0.25,
+    chocolate: (27.06 * 0.02),
+    chicory: 5.43 * 0.03
+};
 export const HOT_DRINKS_MILK_FOOTPRINTS = {
     cow: 1.32,
     soy:0.44,
     oat: 0.54
+};
+export const HOLIDAYS_FOOTPRINTS = {
+    hotel: 6.93,
+    camping: 1.4,
+    youthHotel: 1.16,
+    homeRental: 5.8,
+    familly: 0,
+    homeExchange: 3.52
+};
+export const SEASON_FACTORS = {
+    mediterranean: {
+        'summer': 0,
+        'summer+': 0.13,
+        'winter': 1.41,
+        'winter+': 1.62
+    },
+    mountain: {
+        'summer': 0.06,
+        'summer+': 0.76,
+        'winter': 2.68,
+        'winter+': 2.15
+    },
+    default: {
+        'summer': 0.06,
+        'summer+': 0.46,
+        'winter': 2.26,
+        'winter+': 1.71
+    }
 };
 export const CLOTHES_FOOTPRINTS = {
     shoes: 16.47,
@@ -63,6 +102,11 @@ export const CLOTHES_FOOTPRINTS = {
     pant: 23.2,
     otherLittle: 5,
     otherBig: 40,
+};
+export const CONSOMABLE_CONSO = {
+    small: 1,
+    normal: 2,
+    high: 5
 };
 export const CONSOMABLE_FOOTPRINT_FACTOR = 1.09 * 12;
 export const SPORTS_FOOTPRINTS: Record<string, number> = {

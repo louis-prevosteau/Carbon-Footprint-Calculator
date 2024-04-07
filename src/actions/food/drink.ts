@@ -1,24 +1,10 @@
-import { HOT_DRINKS_MILK_FOOTPRINTS } from "utils/constants";
+import { HOT_DRINKS_FOOTPRINTS, HOT_DRINKS_MILK_FOOTPRINTS } from "utils/constants";
 
 export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
     let res = 0;
     for (const drink in drinks) {
-        switch (drink) {
-            case 'coffee':
-                res += drinks[drink] * 10.09 * 0.012;
-                break;
-            case 'tea':
-                res += drinks[drink] * (0.04 * (1 - 0.25)) * 0.25;
-                break;
-            case 'chocolate':
-                res += drinks[drink] * ((27.06 * 0.02) + (milkFootprint(milk) * 0.2));
-                break;
-            case 'chicory':
-                res += drinks[drink] * 5.43 * 0.03;
-                break;
-            default:
-                break;
-        }
+        if (drink === 'chocolate') res += drinks[drink] * (HOT_DRINKS_FOOTPRINTS[drink as keyof typeof HOT_DRINKS_FOOTPRINTS] + (milkFootprint(milk) * 0.2))
+        else res += drinks[drink as keyof typeof drinks] * HOT_DRINKS_FOOTPRINTS[drink as keyof typeof HOT_DRINKS_FOOTPRINTS];
     }
     return (res * 52).toFixed(2);
 };

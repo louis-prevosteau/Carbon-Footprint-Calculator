@@ -6,9 +6,7 @@ export const getTechDevicesFootprint = (
 ) => {
     if (preservation === '') return 0;
     let res = 0;
-    for (const device in devices) {
-        res += devices[device as keyof typeof devices] * (TECH_DEVICES[device as keyof typeof TECH_DEVICES].footprint / (TECH_DEVICES[device as keyof typeof TECH_DEVICES].age * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]))
-    }
+    for (const device in devices) res += devices[device as keyof typeof devices] * (TECH_DEVICES[device as keyof typeof TECH_DEVICES].footprint / (TECH_DEVICES[device as keyof typeof TECH_DEVICES].age * PRESERV_FACTOR[preservation as keyof typeof PRESERV_FACTOR]));
     return res.toFixed(2);
 };
 
