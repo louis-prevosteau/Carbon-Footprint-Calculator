@@ -427,6 +427,28 @@
         "microwave": "Micro-onde",
         "hotplates": "Plaques de cuisson"
       }
+    },
+    "techDevices": {
+      "title": "Appareils Electroniques",
+      "questions": {
+        "preservation": "Quel effort faites-vous pour garder vos appareils électroniques le plus longtemps possible ?",
+        "techDevices": "Quels appareils numériques de moins de 10 ans possédez-vous ?"
+      },
+      "options": {
+        "camera": "Appareil photo",
+        "houseVideoGame": "Console de salon",
+        "personalVideoGame": "Console portable",
+        "bluetoothSpeaker": "Enceinte bluetooth",
+        "vocalSpeaker": "Enceinte vocale",
+        "homeCinema": "Home cinéma",
+        "connectedWatch": "Montre connectée",
+        "computer": "Ordinateur fixe",
+        "personalComputer": "Ordinater portable",
+        "pad": "Tablette",
+        "phone": "Téléphone",
+        "tv": "TV",
+        "videoProjector": "Vidéoproecteur"
+      }
     }
   },
   "publicServices": {

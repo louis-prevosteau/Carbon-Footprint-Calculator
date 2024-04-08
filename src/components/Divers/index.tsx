@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Clothes from './Clothes';
 import Furnitures from './Furnitures';
 import HomeAppliances from './HomeAppliances';
+import TechDevices from './TechDevices';
 
 const Divers = ({ people, handleDataToChart }: { people: number, handleDataToChart: any }) => {
 
@@ -62,6 +63,9 @@ const Divers = ({ people, handleDataToChart }: { people: number, handleDataToCha
                 </Grid>
                 <Grid item xs={12} lg={6} sm={12}>
                     <HomeAppliances people={people} handleDataToDivers={addFootprint} />
+                </Grid>
+                <Grid item xs={12} lg={6} sm={12}>
+                    <TechDevices handleDataToDivers={addFootprint} />
                 </Grid>
             </Grid>
         </Paper>
