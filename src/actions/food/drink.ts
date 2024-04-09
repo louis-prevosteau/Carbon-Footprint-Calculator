@@ -10,6 +10,7 @@ export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
 };
 
 const milkFootprint = (milk: string): number => {
+    if (milk === '') return 0;
     return HOT_DRINKS_MILK_FOOTPRINTS[milk as keyof typeof HOT_DRINKS_MILK_FOOTPRINTS]
 };
 
