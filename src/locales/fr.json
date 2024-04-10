@@ -449,6 +449,12 @@
         "tv": "TV",
         "videoProjector": "Vidéoproecteur"
       }
+    },
+    "streaming": {
+      "title": "Streaming",
+      "questions": {
+        "duration": "Combien d'heures passez-vous par jour sur internet hors bureau (envoi de mails, surf Web, streaming vidéo, etc.) ?"
+      }
     }
   },
   "publicServices": {
