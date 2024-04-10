@@ -455,6 +455,17 @@
       "questions": {
         "duration": "Combien d'heures passez-vous par jour sur internet hors bureau (envoi de mails, surf Web, streaming vidéo, etc.) ?"
       }
+    },
+    "consomable": {
+      "title": "Produits Consommables",
+      "questions": {
+        "conso": "Comment estimeriez-vous votre consommation par mois de produits d'hygiène (savon, maquillage...) et d'entretien (lessive, produits ménagers...) ?"
+      },
+      "options": {
+        "small": "Faible (1 ou 2 produits)",
+        "normal": "Normale (environ 5 produits)",
+        "high": "Elevée (environ 10 produits)"
+      }
     }
   },
   "publicServices": {
