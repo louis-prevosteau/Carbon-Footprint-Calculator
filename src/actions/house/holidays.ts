@@ -16,8 +16,8 @@ export const getHolidaysFootprint = (holidaysResidences: HolidaysResidences, peo
 
 const getSeasonFactor = (location: string, season: string): number => {
     if (location === '' && season === '') return 0;
-    if (location === 'mediterranean' || location === 'mountain') return SEASON_FACTORS[location][season as keyof typeof SEASON_FACTORS[typeof location]];
-    else return SEASON_FACTORS['default'][season as keyof typeof SEASON_FACTORS['default']];
+    const seasonFactor = SEASON_FACTORS[season as keyof typeof SEASON_FACTORS];
+    return seasonFactor[location as keyof typeof seasonFactor] ?? seasonFactor['default'];
 };
 
 export const getSecondaryResidenceFootprint = (people: number, surface: number, duration: number, location: string, season: string) => {

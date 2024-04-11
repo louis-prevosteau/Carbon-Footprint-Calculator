@@ -26,7 +26,6 @@ export const MOTO_TYPES_FOOTPRINTS = {
 };
 export const WOOD_TYPES = ['log', 'pellets'];
 export const LOCATIONS = ['mediterranean', 'atlantic', 'mountain', 'city', 'country'];
-export const SEASONS = ['summer', 'summer+', 'winter', 'winter+'];
 export const FUEL_FP_PER_LITER = {
     gazole: (3.1 + 3.04) / 2,
     essence: 2.7,
@@ -79,23 +78,25 @@ export const HOLIDAYS_FOOTPRINTS = {
     homeExchange: 3.52
 };
 export const SEASON_FACTORS = {
-    mediterranean: {
-        'summer': 0,
-        'summer+': 0.13,
-        'winter': 1.41,
-        'winter+': 1.62
+    'summer': {
+        mediterranean: 0,
+        mountain: 0.06,
+        default: 0.06
     },
-    mountain: {
-        'summer': 0.06,
-        'summer+': 0.76,
-        'winter': 2.68,
-        'winter+': 2.15
+    'summer+': {
+        mediterranean: 0.13,
+        mountain: 0.76,
+        default: 0.46
     },
-    default: {
-        'summer': 0.06,
-        'summer+': 0.46,
-        'winter': 2.26,
-        'winter+': 1.71
+    'winter': {
+        mediterranean: 1.41,
+        mountain: 2.68,
+        default: 2.26
+    },
+    'winter+': {
+        mediterranean: 1.62,
+        mountain: 2.15,
+        default: 1.71
     }
 };
 export const CLOTHES_FOOTPRINTS = {

@@ -3,7 +3,7 @@ import { green } from '@mui/material/colors';
 import { getSecondaryResidenceFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LOCATIONS, SEASONS } from 'utils/constants';
+import { LOCATIONS, SEASON_FACTORS } from 'utils/constants';
 
 const SecondaryResidence = ({ people, handleDataToHouse }: { people: number, handleDataToHouse: any }) => {
 
@@ -95,7 +95,7 @@ const SecondaryResidence = ({ people, handleDataToHouse }: { people: number, han
                                 value={state.params.season}
                                 onChange={(e) => updateParam('season', e.target.value)}
                             >
-                                {SEASONS.map((season) => (
+                                {Object.keys(SEASON_FACTORS).map((season) => (
                                     <MenuItem key={season} value={season} >{t(`house.holidays.secondaryResidence.seasons.${season}`)}</MenuItem>
                                 ))}
                             </Select>
