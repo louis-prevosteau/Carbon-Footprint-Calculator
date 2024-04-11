@@ -1,4 +1,4 @@
-import { LUNCHES } from "utils/constants";
+import { LUNCHES, MILKS } from "utils/constants";
 
 export const getLunchFootprint = (lunches: WeekLunches): string => {
     let res = Object.keys(lunches).reduce((acc, key) => {
@@ -14,13 +14,8 @@ export const getBreakfastFootprint = (value: string, milk: string): string => {
         vegan: 0.419,
     };
     let res = breakfastFootprint[value as keyof typeof breakfastFootprint] || 0;
-    const milkFootprint = {
-        cow: 0.47,
-        soy: 0.29,
-        oat: 0.312,
-    };
-    if (value === 'milk') {
-        res += milkFootprint[milk as keyof typeof milkFootprint] || 0;
+    if (value === 'milk' && milk !== '') {
+        res += MILKS[milk as keyof typeof MILKS].breakfast || 0;
     }
     return (res * 365).toFixed(2);
 };

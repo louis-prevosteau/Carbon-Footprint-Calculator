@@ -70,7 +70,7 @@ const Breakfast = ({ handleDataToFood }: { handleDataToFood: any }) => {
                                     value={state.params.milk}
                                     onChange={(e) => updateParam('milk', e.target.value)}
                                 >
-                                    {MILKS.map((milk) => (
+                                    {Object.keys(MILKS).map((milk) => (
                                         <FormControlLabel
                                             key={milk}
                                             value={milk}

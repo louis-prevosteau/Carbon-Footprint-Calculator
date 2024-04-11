@@ -52,23 +52,23 @@ export const getCampingCarFootprint = (
 
 const getUsage = (distance: number, motor: string, conso: number, fuel: string, type: string): number => {
     let kmFp = 0;
+    const maintenance = (((6036 * 1000000) * 0.07) / 44677000) / distance
     let entPond = 0;
     const clim = (1374000000 / 44677000) / distance;
+    const consoKm = conso / 100;
     if (motor === 'thermic') {
-        const consoKm = conso / 100;
         kmFp = consoKm * FUEL_FP_PER_LITER[fuel as keyof typeof FUEL_FP_PER_LITER];
-        entPond = (((6036 * 1000000) * 0.07) / 44677000) / distance;
+        entPond = maintenance;
     }
     else if (motor === 'hybrid') {
-        const consoKm = conso / 100;
         kmFp = consoKm * FUEL_FP_PER_LITER[fuel as keyof typeof FUEL_FP_PER_LITER] * 0.85;
-        entPond = ((((6036 * 1000000) * 0.07) / 44677000) / distance) * 0.9;
+        entPond = maintenance * 0.9;
     }
     else if (motor === 'electric') {
         if (type === 'small') kmFp = 0.0159;
         else if (type === 'medium') kmFp = 0.0198;
         else kmFp = 0.0273;
-        entPond = ((((6036 * 1000000) * 0.07) / 44677000) / distance) * 0.75;
+        entPond = maintenance * 0.75;
     }
     const baseKm = entPond + clim; 
     return distance * (kmFp + baseKm);
@@ -89,16 +89,5 @@ const getConstruct = (motor: string, type: string) => {
 
 const getConstructAmort = (motor: string, type: string, recent: boolean) => {
     const amort = recent ? 0.1 : 0;
-    let construct = 0
-    if (motor === 'thermic') {
-        if (type === 'small' || type === 'medium') construct = 6700;
-        else if (type === 'berline' || type === 'vul' || type === 'suv') construct = 7600;    
-    } else if (motor === 'hybrid') {
-        if (type === 'small' || type === 'medium') construct = 9600;
-        else if (type === 'berline' || type === 'vul' || type === 'suv') construct = 6900;
-    } else if (motor === 'electric') {
-        if (type === 'small' || type === 'medium') construct = 10200;
-        else if (type === 'berline' || type === 'vul' || type === 'suv') construct = 20200;
-    }
-    return construct * amort;
+    return getConstruct(motor, type) as number * amort;
 }

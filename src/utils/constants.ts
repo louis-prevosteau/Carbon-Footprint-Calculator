@@ -1,5 +1,18 @@
 export const LEVELS = ['never', 'sometimes', 'often', 'always'];
-export const MILKS = ['cow', 'soy', 'oat'];
+export const MILKS = {
+    cow: {
+        breakfast: 0.47,
+        hotDrink: 1.32
+    },
+    soy: {
+        breakfast: 0.29,
+        hotDrink: 0.44
+    },
+    oat: {
+        breakfast: 0.312,
+        hotDrink: 0.54
+    }
+};
 export const BREAKFASTS = ['british', 'continental', 'milk', 'vegan'];
 export const TRASH_LEVELS = ['base', 'reduction', 'zero'];
 export const CAR_TYPES = ['small', 'medium', 'berline', 'vul', 'suv'];
@@ -56,11 +69,6 @@ export const HOT_DRINKS_FOOTPRINTS = {
     tea: (0.04 * (1 - 0.25)) * 0.25,
     chocolate: (27.06 * 0.02),
     chicory: 5.43 * 0.03
-};
-export const HOT_DRINKS_MILK_FOOTPRINTS = {
-    cow: 1.32,
-    soy:0.44,
-    oat: 0.54
 };
 export const HOLIDAYS_FOOTPRINTS = {
     hotel: 6.93,

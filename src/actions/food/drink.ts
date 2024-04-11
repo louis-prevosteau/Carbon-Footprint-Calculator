@@ -1,9 +1,9 @@
-import { HOT_DRINKS_FOOTPRINTS, HOT_DRINKS_MILK_FOOTPRINTS } from "utils/constants";
+import { HOT_DRINKS_FOOTPRINTS, MILKS } from "utils/constants";
 
 export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
     let res = 0;
     for (const drink in drinks) {
-        if (drink === 'chocolate') res += drinks[drink] * (HOT_DRINKS_FOOTPRINTS[drink as keyof typeof HOT_DRINKS_FOOTPRINTS] + (milkFootprint(milk) * 0.2))
+        if (drink === 'chocolate') res += drinks[drink] * (HOT_DRINKS_FOOTPRINTS[drink as keyof typeof HOT_DRINKS_FOOTPRINTS] + (milkFootprint(milk) * 0.2));
         else res += drinks[drink as keyof typeof drinks] * HOT_DRINKS_FOOTPRINTS[drink as keyof typeof HOT_DRINKS_FOOTPRINTS];
     }
     return (res * 52).toFixed(2);
@@ -11,7 +11,7 @@ export const getHotDrinksFootprint = (drinks: HotDrinks, milk: string) => {
 
 const milkFootprint = (milk: string): number => {
     if (milk === '') return 0;
-    return HOT_DRINKS_MILK_FOOTPRINTS[milk as keyof typeof HOT_DRINKS_MILK_FOOTPRINTS]
+    return MILKS[milk as keyof typeof MILKS].hotDrink;
 };
 
 export const getWaterBottleFootprint = (conso: boolean): number => {

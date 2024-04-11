@@ -1,9 +1,10 @@
 import { Remove, Add } from '@mui/icons-material';
-import { Box, Grid, IconButton, Input, Paper, Typography } from '@mui/material';
+import { Box, FormControlLabel, FormGroup, Grid, IconButton, Input, Paper, Radio, RadioGroup, Typography } from '@mui/material';
 import { amber } from '@mui/material/colors';
 import { getHotDrinksFootprint } from 'actions/food';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MILKS } from 'utils/constants';
 
 const HotDrinks = ({ handleDataToFood }: { handleDataToFood: any }) => {
 
@@ -78,6 +79,34 @@ const HotDrinks = ({ handleDataToFood }: { handleDataToFood: any }) => {
                         {drinks}
                     </Grid>
                 </Grid>
+                {state.params.chocolate > 0 && (
+                    <Grid container item alignItems='center' spacing={2}>
+                        <FormGroup>
+                            <RadioGroup
+                                value={state.params.milk}
+                                onChange={(e) => updateParam('milk', e.target.value)}
+                            >
+                                {Object.keys(MILKS).map((milk) => (
+                                    <FormControlLabel
+                                        key={milk}
+                                        value={milk}
+                                        control={
+                                            <Radio
+                                                sx={{
+                                                    color: amber[300],
+                                                    '&.Mui-checked': {
+                                                    color: amber[700],
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        label={t(`common.milks.${milk}`)}
+                                    />
+                                ))}
+                            </RadioGroup>
+                        </FormGroup>
+                    </Grid>
+                )}
             </Box>
         </Paper>
     );
