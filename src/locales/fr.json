@@ -466,6 +466,17 @@
         "normal": "Normale (environ 5 produits)",
         "high": "Elevée (environ 10 produits)"
       }
+    },
+    "newManufacts": {
+      "title": "Produits manufacturés neufs",
+      "questions": {
+        "level": "comment estimeriez-vous votre niveau de dépenses en produits neufs (décoration d'intérieur, bricolage, jeux, loisirs créatifs, outils, etc.) ?"
+      },
+      "options": {
+        "minimum": "Moins de 50€ / mois",
+        "medium": "Environ 80€ / mois",
+        "maximum": "Plus de 120€ / mois"
+      }
     }
   },
   "publicServices": {

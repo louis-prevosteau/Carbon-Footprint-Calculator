@@ -1,5 +1,4 @@
-import { Box, Grid, Input, InputAdornment, MenuItem, Paper, Select, Typography } from '@mui/material';
-import { green } from '@mui/material/colors';
+import { Box, Grid, Input, InputAdornment, MenuItem, Select, Typography } from '@mui/material';
 import { getSecondaryResidenceFootprint } from 'actions/house';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
