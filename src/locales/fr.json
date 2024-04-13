@@ -477,6 +477,12 @@
         "medium": "Environ 80€ / mois",
         "maximum": "Plus de 120€ / mois"
       }
+    },
+    "smoking": {
+      "title": "Tabac",
+      "questions": {
+        "cigarretes": "Quelle est votre consommation (paquets) par semaine de tabac ?"
+      }
     }
   },
   "publicServices": {

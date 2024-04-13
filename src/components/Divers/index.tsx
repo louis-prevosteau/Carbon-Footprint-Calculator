@@ -9,6 +9,7 @@ import TechDevices from './TechDevices';
 import Streaming from './Streaming';
 import Consomable from './Consomable';
 import NewManufacts from './NewManufacts';
+import Smoking from './Smoking';
 
 const Divers = ({ people, handleDataToChart }: { people: number, handleDataToChart: any }) => {
 
@@ -78,6 +79,9 @@ const Divers = ({ people, handleDataToChart }: { people: number, handleDataToCha
                 </Grid>
                 <Grid item xs={12} lg={3} sm={12}>
                     <NewManufacts handleDataToDivers={addFootprint} />
+                </Grid>
+                <Grid item xs={12} lg={3} sm={12}>
+                    <Smoking handleDataToDivers={addFootprint} />
                 </Grid>
             </Grid>
         </Paper>
