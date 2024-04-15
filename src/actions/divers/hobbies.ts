@@ -21,7 +21,7 @@ interface Sports {
     equestring: boolean;
     surfing: boolean;
     motors: boolean;
-    ball: boolean
+    ball: boolean;
     martial: boolean;
     bodybuilding: boolean;
     golf: boolean;

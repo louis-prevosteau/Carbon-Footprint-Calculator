@@ -10,6 +10,8 @@ import Streaming from './Streaming';
 import Consomable from './Consomable';
 import NewManufacts from './NewManufacts';
 import Smoking from './Smoking';
+import Sports from './Sports';
+import Culture from './Culture';
 
 const Divers = ({ people, handleDataToChart }: { people: number, handleDataToChart: any }) => {
 
@@ -82,6 +84,12 @@ const Divers = ({ people, handleDataToChart }: { people: number, handleDataToCha
                 </Grid>
                 <Grid item xs={12} lg={3} sm={12}>
                     <Smoking handleDataToDivers={addFootprint} />
+                </Grid>
+                <Grid item xs={12} lg={4} sm={12}>
+                    <Sports handleDataToDivers={addFootprint} />
+                </Grid>
+                <Grid item xs={12} lg={4} sm={12}>
+                    <Culture handleDataToDivers={addFootprint} />
                 </Grid>
             </Grid>
         </Paper>

@@ -52,7 +52,7 @@ const Outside = ({ people, handleDataToHouse }: { people: number, handleDataToHo
                         <Grid container item spacing={{lg: 8}}>
                             {Object.keys(state.params).map((param) => (
                                 <Grid item key={param}>
-                                    <Paper elevation={1} sx={{ padding: '20px', height: '45%', width: '170px', backgroundColor: green['A100'], borderRadius: '8px' }}>
+                                    <Paper elevation={1} sx={{ padding: '20px', height: 'fit-content', width: '170px', backgroundColor: green['A100'], borderRadius: '8px' }}>
                                         <FormGroup>
                                             <FormControlLabel
                                                 control={

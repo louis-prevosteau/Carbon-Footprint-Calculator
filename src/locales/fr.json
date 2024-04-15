@@ -483,6 +483,34 @@
       "questions": {
         "cigarretes": "Quelle est votre consommation (paquets) par semaine de tabac ?"
       }
+    },
+    "sports": {
+      "title": "Sports",
+      "question": "Quels sont les sports que vous pratiquez régulièrement ?",
+      "options": {
+        "externalSport": "Sports individuels en extérieur (course à pied, cyclisme, skate)",
+        "swimming": "Natation",
+        "athletics": "Athlétisme",
+        "equestring": "Equitation",
+        "surfing": "Sports nautiques",
+        "motors": "Sports mécaniques",
+        "ball": "Sports de balle ou ballon",
+        "martial": "Arts martiaux",
+        "bodybuilding": "Salle de sport ou musculation",
+        "golf": "Golf",
+        "winter": "Sports d'hiver",
+        "other": "Autres (tir, escalade, ...)"
+      }
+    },
+    "culture": {
+      "title": "Activités Culturelles",
+      "question": "Quelles sont vos pratiques culturelles ?",
+      "options": {
+        "show": "Concerts et spectacles",
+        "museum": "Musées et monuments",
+        "books": "Lectures",
+        "music": "Pratique de la musique"
+      }
     }
   },
   "publicServices": {
