@@ -42,6 +42,7 @@ const NewManufacts = ({ handleDataToDivers }: { handleDataToDivers: any }) => {
                                 <RadioGroup
                                     value={state.params.level}
                                     onChange={(e) => updateParam('level', e.target.value)}
+                                    row
                                 >
                                     {Object.keys(NEW_MANUFACT_LEVELS).map((level) => (
                                         <FormControlLabel

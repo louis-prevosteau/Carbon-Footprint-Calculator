@@ -90,6 +90,7 @@ const HomeAppliances = ({ people, handleDataToDivers }: { people: number, handle
                                 <RadioGroup
                                     value={state.params.preservation}
                                     onChange={(e) => updateParam('preservation', e.target.value)}
+                                    row
                                 >
                                     {Object.keys(PRESERV_FACTOR).map((level) => (
                                         <FormControlLabel
@@ -119,6 +120,7 @@ const HomeAppliances = ({ people, handleDataToDivers }: { people: number, handle
                         <Grid container item>
                             {Object.keys(state.params.homeAppliances).map((item) => (
                                 <Grid key={item} container item direction='row' lg={6} alignItems='center'>
+                                    <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`divers.homeAppliances.options.${item}`)}</Typography>
                                     <Grid item>
                                         <IconButton
                                             onClick={() => updateHomeAppliance(item as keyof typeof state.params.homeAppliances, state.params.homeAppliances[item as keyof typeof state.params.homeAppliances] - 1)}
@@ -128,7 +130,6 @@ const HomeAppliances = ({ people, handleDataToDivers }: { people: number, handle
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`divers.homeAppliances.options.${item}`)}</Typography>
                                         <Input
                                             type='number'
                                             value={state.params.homeAppliances[item as keyof typeof state.params.homeAppliances]}

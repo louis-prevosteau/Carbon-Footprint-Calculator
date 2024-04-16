@@ -42,6 +42,7 @@ const Consomable = ({ handleDataToDivers }: { handleDataToDivers: any }) => {
                                 <RadioGroup
                                     value={state.params.conso}
                                     onChange={(e) => updateParam('conso', e.target.value)}
+                                    row
                                 >
                                     {Object.keys(CONSOMABLE_CONSO).map((level) => (
                                         <FormControlLabel

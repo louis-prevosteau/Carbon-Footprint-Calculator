@@ -511,6 +511,16 @@
         "books": "Lectures",
         "music": "Pratique de la musique"
       }
+    },
+    "pets": {
+      "title": "Animaux Domestiques",
+      "question": "Combien d'animaux vivent avec vous, au sein de votre foyer ?",
+      "options": {
+        "littleDog": "Petit chien",
+        "mediumDog": "Chien de taille moyenne",
+        "bigDog": "Gros chien",
+        "cat": "Chat"
+      }
     }
   },
   "publicServices": {

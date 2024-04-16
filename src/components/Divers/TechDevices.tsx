@@ -88,6 +88,7 @@ const TechDevices = ({ handleDataToDivers }: { handleDataToDivers: any }) => {
                                 <RadioGroup
                                     value={state.params.preservation}
                                     onChange={(e) => updateParam('preservation', e.target.value)}
+                                    row
                                 >
                                     {Object.keys(PRESERV_FACTOR).map((level) => (
                                         <FormControlLabel
@@ -117,6 +118,7 @@ const TechDevices = ({ handleDataToDivers }: { handleDataToDivers: any }) => {
                         <Grid container item>
                             {Object.keys(state.params.techDevices).map((item) => (
                                 <Grid key={item} container item direction='row' lg={6} alignItems='center'>
+                                    <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`divers.techDevices.options.${item}`)}</Typography>
                                     <Grid item>
                                         <IconButton
                                             onClick={() => updateTechDevice(item as keyof typeof state.params.techDevices, state.params.techDevices[item as keyof typeof state.params.techDevices] - 1)}
@@ -126,7 +128,6 @@ const TechDevices = ({ handleDataToDivers }: { handleDataToDivers: any }) => {
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`divers.techDevices.options.${item}`)}</Typography>
                                         <Input
                                             type='number'
                                             value={state.params.techDevices[item as keyof typeof state.params.techDevices]}

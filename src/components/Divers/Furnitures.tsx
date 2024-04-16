@@ -78,6 +78,7 @@ const Furnitures = ({ people, handleDataToDivers }: { people: number, handleData
                                 <RadioGroup
                                     value={state.params.preservation}
                                     onChange={(e) => updateParam('preservation', e.target.value)}
+                                    row
                                 >
                                     {Object.keys(PRESERV_FACTOR).map((level) => (
                                         <FormControlLabel
@@ -107,6 +108,7 @@ const Furnitures = ({ people, handleDataToDivers }: { people: number, handleData
                         <Grid container item>
                             {Object.keys(state.params.furnitures).map((item) => (
                                 <Grid key={item} container item direction='row' lg={6} alignItems='center'>
+                                    <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`divers.furnitures.options.${item}`)}</Typography>
                                     <Grid item>
                                         <IconButton
                                             onClick={() => updateFurniture(item as keyof typeof state.params.furnitures, state.params.furnitures[item as keyof typeof state.params.furnitures] - 1)}
@@ -116,7 +118,6 @@ const Furnitures = ({ people, handleDataToDivers }: { people: number, handleData
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`divers.furnitures.options.${item}`)}</Typography>
                                         <Input
                                             type='number'
                                             value={state.params.furnitures[item as keyof typeof state.params.furnitures]}

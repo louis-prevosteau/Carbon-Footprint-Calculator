@@ -12,6 +12,7 @@ import NewManufacts from './NewManufacts';
 import Smoking from './Smoking';
 import Sports from './Sports';
 import Culture from './Culture';
+import Pets from './Pets';
 
 const Divers = ({ people, handleDataToChart }: { people: number, handleDataToChart: any }) => {
 
@@ -73,23 +74,26 @@ const Divers = ({ people, handleDataToChart }: { people: number, handleDataToCha
                 <Grid item xs={12} lg={6} sm={12}>
                     <TechDevices handleDataToDivers={addFootprint} />
                 </Grid>
-                <Grid item xs={12} lg={3} sm={12}>
+                <Grid item xs={12} lg={2} sm={12}>
                     <Streaming handleDataToDivers={addFootprint} />
                 </Grid>
-                <Grid item xs={12} lg={3} sm={12}>
+                <Grid item xs={12} lg={4} sm={12}>
                     <Consomable handleDataToDivers={addFootprint} />
                 </Grid>
-                <Grid item xs={12} lg={3} sm={12}>
+                <Grid item xs={12} lg={4} sm={12}>
                     <NewManufacts handleDataToDivers={addFootprint} />
                 </Grid>
-                <Grid item xs={12} lg={3} sm={12}>
+                <Grid item xs={12} lg={2} sm={12}>
                     <Smoking handleDataToDivers={addFootprint} />
                 </Grid>
-                <Grid item xs={12} lg={4} sm={12}>
+                <Grid item xs={12} lg={12} sm={12}>
                     <Sports handleDataToDivers={addFootprint} />
                 </Grid>
-                <Grid item xs={12} lg={4} sm={12}>
+                <Grid item xs={12} lg={6} sm={12}>
                     <Culture handleDataToDivers={addFootprint} />
+                </Grid>
+                <Grid item xs={12} lg={6} sm={12}>
+                    <Pets handleDataToDivers={addFootprint} />
                 </Grid>
             </Grid>
         </Paper>
