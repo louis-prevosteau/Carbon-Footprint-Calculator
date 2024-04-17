@@ -42,6 +42,7 @@ const Breakfast = ({ handleDataToFood }: { handleDataToFood: any }) => {
                             <RadioGroup
                                 value={state.params.value}
                                 onChange={(e) => updateParam('value', e.target.value)}
+                                row
                             >
                                 {BREAKFASTS.map((breakFast) => (
                                     <FormControlLabel
@@ -65,10 +66,12 @@ const Breakfast = ({ handleDataToFood }: { handleDataToFood: any }) => {
                     </Grid>
                     {state.params.value === 'milk' && (
                         <Grid container item alignItems='center' spacing={2}>
+                            <Typography variant='body1'>{t('common.milk')}</Typography>
                             <FormGroup>
                                 <RadioGroup
                                     value={state.params.milk}
                                     onChange={(e) => updateParam('milk', e.target.value)}
+                                    row
                                 >
                                     {Object.keys(MILKS).map((milk) => (
                                         <FormControlLabel

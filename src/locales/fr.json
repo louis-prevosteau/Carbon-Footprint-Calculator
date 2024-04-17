@@ -19,7 +19,8 @@
       "maximum": "Effort maximum"
     },
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "milk": "Quel type de lait prenez-vous ?"
   },
   "ok": "Ok",
   "adornments": {
@@ -187,7 +188,7 @@
         "vegetarian": "Végétarien",
         "meat1": "Poulet, Porc, Fromage",
         "meat2": "Boeuf, Veau, Agneau",
-        "fish1": "Saumon, Sardine, Maquereau",
+        "fish1": "Poisson gras",
         "fish2": "Poisson blanc"
       }
     },

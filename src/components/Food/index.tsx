@@ -78,10 +78,10 @@ const Food = ({ handleDataToChart }: { handleDataToChart: any }) => {
                 <Grid item xs={12} lg={6} sm={12}>
                     <Lunch handleDataToFood={addFootprint} updateLunchParams={updateLunchParams} />
                 </Grid>
-                <Grid item xs={12} sm={6} lg={3}>
+                <Grid item xs={12} sm={6} lg={4}>
                     <Breakfast handleDataToFood={addFootprint} />
                 </Grid>
-                <Grid item xs={12} sm={6} lg={3}>
+                <Grid item xs={12} sm={6} lg={2}>
                     <Trash handleDataToFood={addFootprint} />
                 </Grid>
                 <Grid item xs={12} sm={6} lg={3}>

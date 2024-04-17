@@ -46,6 +46,7 @@ const Lunch = ({ handleDataToFood, updateLunchParams }: { handleDataToFood: any,
                         </Grid>
                         {Object.keys(state.params).map((item) => (
                             <Grid key={item} container item direction='row' lg={6} alignItems='center'>
+                                <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`food.lunch.lunches.${item}`)}</Typography>
                                 <Grid item>
                                     <IconButton
                                         onClick={() => updateParam(item as keyof typeof state.params, state.params[item as keyof typeof state.params] - 1)}
@@ -55,7 +56,6 @@ const Lunch = ({ handleDataToFood, updateLunchParams }: { handleDataToFood: any,
                                     </IconButton>
                                 </Grid>
                                 <Grid item>
-                                    <Typography variant='h6' sx={{ textAlign: 'center' }}>{t(`food.lunch.lunches.${item}`)}</Typography>
                                     <Input
                                         type='number'
                                         value={state.params[item as keyof typeof state.params]}

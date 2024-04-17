@@ -42,6 +42,7 @@ const Season = ({ handleDataToFood, lunchFP, breakfastFP }: { handleDataToFood: 
                                 <RadioGroup
                                     value={state.params.level}
                                     onChange={(e) => updateParam('level', e.target.value)}
+                                    row
                                 >
                                     {LEVELS.map((level) => (
                                         <FormControlLabel

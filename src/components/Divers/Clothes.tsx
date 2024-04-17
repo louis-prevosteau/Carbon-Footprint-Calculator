@@ -55,7 +55,7 @@ const Clothes = ({ handleDataToDivers }: { handleDataToDivers: any }) => {
             <Typography variant='h5'>{t('divers.clothes.title')}</Typography>
             <Box>
                 <Grid container>
-                    <Grid container item alignItems='center' spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid container item>
                         <Grid item>
                             <Typography variant='body1'>{t('divers.clothes.question')}</Typography>
                         </Grid>
