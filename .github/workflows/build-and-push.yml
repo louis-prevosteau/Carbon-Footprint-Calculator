@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+env:
+  IMAGE_NAME: carbon-footprint-calculator
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -30,3 +33,36 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/carbon-footprint-calculator:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Azure Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            echo "Login to DockerHub"
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+            echo "Pull latest image"
+            docker pull ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+
+            echo "Stop existing container"
+            docker stop ${{ env.IMAGE_NAME }} || true
+
+            echo "Remove old container"
+            docker rm ${{ env.IMAGE_NAME }} || true
+
+            echo "Run new container"
+            docker run -d \
+              --name ${{ env.IMAGE_NAME }} \
+              -p 3000:3000 \
+              --restart unless-stopped \
+              ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+
+            echo "Clean unused images"
+            docker image prune -f
